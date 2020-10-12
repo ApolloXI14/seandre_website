@@ -1,0 +1,8 @@
+77.88.5.40 - - [27/Sep/2020:09:33:51 -0400] "GET /robots.txt HTTP/1.1" 404 101 "-" "Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)"
+77.88.5.40 - - [27/Sep/2020:09:33:55 -0400] "GET /Contacts/ HTTP/1.1" 200 3099 "-" "Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)"
+66.249.65.46 - - [27/Sep/2020:12:11:35 -0400] "GET /robots.txt HTTP/1.1" 404 101 "-" "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+66.249.65.44 - - [27/Sep/2020:12:11:35 -0400] "GET /Contacts/ HTTP/1.1" 200 3105 "-" "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+192.71.126.175 - - [27/Sep/2020:13:05:56 -0400] "GET /robots.txt HTTP/1.1" 404 101 "http://seandre.net/robots.txt" "Go-http-client/1.1"
+192.71.36.158 - - [27/Sep/2020:13:05:57 -0400] "GET /humans.txt HTTP/1.1" 404 101 "http://seandre.net/humans.txt" "Go-http-client/1.1"
+192.71.38.71 - - [27/Sep/2020:13:05:58 -0400] "GET /ads.txt HTTP/1.1" 404 101 "http://seandre.net/ads.txt" "Go-http-client/1.1"
+192.71.12.140 - - [27/Sep/2020:13:05:59 -0400] "GET / HTTP/1.1" 200 784 "http://seandre.net/" "Go-http-client/1.1"

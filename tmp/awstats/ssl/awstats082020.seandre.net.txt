@@ -1,0 +1,360 @@
+AWSTATS DATA FILE 7.7 (build 20180105)
+# If you remove this file, all statistics for date 202008 will be lost/reset.
+# Last config file used to build this data file was /home/seanyqhz/tmp/awstats/ssl/awstats.seandre.net.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 28
+POS_GENERAL 2012                
+POS_TIME 2689                
+POS_VISITOR 8180                
+POS_DAY 8975                
+POS_DOMAIN 3321                
+POS_LOGIN 3633                
+POS_ROBOT 3788                
+POS_WORMS 4109                
+POS_EMAILSENDER 4240                
+POS_EMAILRECEIVER 4383                
+POS_SESSION 9400                
+POS_SIDER 9547                
+POS_FILETYPES 4518                
+POS_DOWNLOADS 4650                
+POS_OS 4698                
+POS_BROWSER 4833                
+POS_SCREENSIZE 5087                
+POS_UNKNOWNREFERER 5161                
+POS_UNKNOWNREFERERBROWSER 5424                
+POS_ORIGIN 5597                
+POS_SEREFERRALS 5730                
+POS_PAGEREFS 5874                
+POS_SEARCHWORDS 6022                
+POS_KEYWORDS 6174                
+POS_MISC 2353                
+POS_ERRORS 6233                
+POS_CLUSTER 3489                
+POS_SIDER_404 6331                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20200901000154 11 1620 8432396269225
+FirstTime 20200801173905
+LastTime 20200831040246
+LastUpdate 20200901084229 11 0 10 0 0
+TotalVisits 30                  
+TotalUnique 19                  
+MonthHostsKnown 0                   
+MonthHostsUnknown 19                  
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+RealPlayerSupport 0 0 0
+JavascriptDisabled 0 0 0
+PDFSupport 0 0 0
+JavaEnabled 0 0 0
+DirectorSupport 0 0 0
+QuickTimeSupport 0 0 0
+AddToFavourites 0 0 0
+TotalMisc 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+FlashSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 1 1 784 3 5 1871
+1 2 2 2726 10 11 4318
+2 1 1 784 4 6 1972
+3 1 1 784 1 1 101
+4 2 2 3884 29 31 14866
+5 1 1 1942 3 7 3556
+6 2 2 1568 11 16 60405
+7 2 2 3884 12 15 34741
+8 1 1 1942 14 20 19694
+9 1 1 0 22 28 43242
+10 1 7 1477072 11 25 127291
+11 2 2 0 9 13 4045
+12 1 1 0 7 9 2958
+13 2 2 1568 4 8 9430
+14 2 2 2726 6 10 4425
+15 2 2 0 29 35 27966
+16 0 0 0 5 12 39785
+17 1 1 784 2 3 986
+18 1 1 0 8 8 2649
+19 0 0 0 10 21 67981
+20 1 1 0 38 74 19807
+21 1 1 1942 14 30 5352
+22 1 1 1942 6 9 2958
+23 3 3 2352 9 19 20045
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 25 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 8
+de 12 12 3136
+us 9 9 12846
+gb 5 5 5078
+ua 2 2 3884
+ca 1 1 1942
+id 1 1 1942
+in 1 1 784
+cl 1 7 1477072
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 0
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 25 first Hits must be first (order not required for others)
+BEGIN_ROBOT 5
+Googlebot/ 84 450359 20200823115313 0
+AhrefsBot/ 25 19600 20200829075324 0
+bot[\s_+:,\.\;\/\\-] 7 13594 20200815014102 0
+YandexBot/ 6 4704 20200831083253 0
+bingbot/ 1 3099 20200803134510 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 4
+js 2 39305 0 0
+html 32 30396 0 0
+jpeg 1 1411289 0 0
+css 3 25694 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 0
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS ID - Hits - Pages 6
+linux 13 13
+win10 2 2
+ios_iphone 7 1
+macosx5 1 1
+Unknown 7 7
+win7 8 8
+END_OS
+
+# Browser ID - Hits - Pages
+BEGIN_BROWSER 11
+safari13.0.1 7 1
+edge12 1 1
+firefox15.0.1 1 1
+chrome83.0.4103.97 1 1
+chrome78.0.3904.108 4 4
+chrome40.0.2214.85 8 8
+firefox78.0 4 4
+chrome79.0.3945.130 1 1
+mozilla 2 2
+chrome79.0.3945.79 4 4
+Unknown 5 5
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 4
+Go-http-client/1.1 20200815230618
+Mozilla/5.0_(compatible;_NetcraftSurveyAgent/1.0;__info@netcraft.com) 20200809070353
+\ 20200823224953
+Python/3.8_aiohttp/3.6.2 20200820035242
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 3
+Go-http-client/1.1 20200815230618
+\ 20200823224953
+Python/3.8_aiohttp/3.6.2 20200820035242
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 28 28
+From1 0 0
+From2 0 0
+From3 0 0
+From4 4 10
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 0
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 25 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 0
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 25 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 2
+301 4 0
+404 288 29088
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referrer
+BEGIN_SIDER_404 60
+/wp-config.php.save 1 seandre.net
+/phpMyAdmin/print.css/ 1 -
+/wp-config.php.bak 1 seandre.net
+/database/.env 1 -
+/admin/login.html/ 1 -
+/administrator/.env 1 -
+/uploads/.env 1 -
+/site/.env 1 -
+/wp-config.php~ 2 seandre.net
+/ads.txt 31 -
+/v1/.env 1 -
+/cron/.env 1 -
+/wp-login.php/ 2 http://seandre.net/wp-login.php
+/admin/login.php/ 1 -
+/pma/print.css/ 1 -
+/web/.env 1 -
+/wp-config.php.1 1 seandre.net
+/admin/ 3 http://seandre.net/admin/
+/wp-config.php.original 2 seandre.net
+/wp-config_good 2 seandre.net
+/wp-config-good 2 seandre.net
+/wp-config.php.disabled 1 seandre.net
+/wp-config.php.orig 2 seandre.net
+/.git/HEAD 2 -
+/wp-config.php.old 1 seandre.net
+/wp-config.bak 2 seandre.net
+/js/admin.js/ 1 http://seandre.net/js/admin.js
+/lib/.env 1 -
+/wp-config.php-original 2 seandre.net
+/apps/.env 1 -
+/wp-config.php.swp 2 seandre.net
+/core/.env 1 -
+/wp-config.php.new 2 seandre.net
+/.git/HEAD/ 2 -
+/admin.html/ 1 -
+/database/print.css/ 1 -
+/.env 1 -
+/wp-config.good 2 seandre.net
+/mysql/print.css/ 1 -
+/js/admin.js 1 -
+/humans.txt/ 4 http://seandre.net/humans.txt
+/robots.txt 77 -
+/app/.env 1 -
+/ads.txt/ 34 -
+/wp-admin/admin-ajax.php 1 seandre.net
+/.git/config/ 1 http://seandre.net/.git/config
+/wp-config.phporiginal 2 seandre.net
+/phpmyadmin/print.css/ 1 -
+/public/.env 1 -
+/wp-config.php_orig 2 seandre.net
+/adminer.php/ 1 -
+/myadmin/print.css/ 1 -
+/wp-config.php_original 2 seandre.net
+/config/.env 1 -
+/wp-config.php.backup 1 seandre.net
+/robots.txt/ 68 -
+/laravel/.env 1 -
+/wp-config.php_ 2 seandre.net
+/admin.php/ 1 -
+/admin/.env 1 -
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 25 first Hits must be first (order not required for others)
+BEGIN_VISITOR 19
+138.246.253.15 8 8 0 20200828151800
+131.220.6.156 4 4 3136 20200816064601
+3.81.245.94 3 3 5826 20200823224953
+195.123.241.39 2 2 3884 20200829143349
+51.158.97.248 1 1 784 20200803003941
+198.27.85.233 1 1 1942 20200826010232
+104.131.44.227 1 1 1942 20200809070353
+34.220.223.226 1 1 784 20200815230618
+163.172.163.25 1 1 784 20200803024940
+51.15.242.216 1 1 784 20200803010204
+104.131.77.226 1 1 1942 20200809053110
+103.56.148.238 1 1 1942 20200831040246
+181.215.222.123 1 7 1477072 20200818103919
+35.164.235.49 1 1 784 20200815141929
+128.199.131.220 1 1 1942 20200829084929
+34.67.156.19 1 1 784 20200820035242
+34.209.40.169 1 1 784 20200815230535
+51.158.117.104 1 1 784 20200805231046
+45.148.10.180 1 1 784 20200801173905
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 19
+20200801 1 1 784 1
+20200803 3 3 2352 3
+20200805 1 1 784 1
+20200806 1 1 0 1
+20200809 2 2 3884 2
+20200811 2 2 1568 1
+20200813 2 2 0 2
+20200815 3 3 2352 3
+20200816 2 2 1568 1
+20200817 2 2 1942 2
+20200818 2 8 1477072 2
+20200820 1 1 784 1
+20200821 1 1 0 1
+20200822 2 2 1942 2
+20200823 1 1 1942 1
+20200826 2 2 3884 2
+20200828 1 1 0 1
+20200829 2 2 3884 2
+20200831 1 1 1942 1
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 1
+0s-30s 30
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 25 first Pages must be first (order not required for others)
+BEGIN_SIDER 1
+/ 32 30396 30 30
+END_SIDER

@@ -1,0 +1,349 @@
+AWSTATS DATA FILE 7.7 (build 20180105)
+# If you remove this file, all statistics for date 202004 will be lost/reset.
+# Last config file used to build this data file was /home/seanyqhz/tmp/awstats/ssl/awstats.seandre.net.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 28
+POS_GENERAL 2012                
+POS_TIME 2686                
+POS_VISITOR 9129                
+POS_DAY 9961                
+POS_DOMAIN 3314                
+POS_LOGIN 3581                
+POS_ROBOT 3736                
+POS_WORMS 4087                
+POS_EMAILSENDER 4218                
+POS_EMAILRECEIVER 4361                
+POS_SESSION 10337               
+POS_SIDER 10506               
+POS_FILETYPES 4496                
+POS_DOWNLOADS 4631                
+POS_OS 4679                
+POS_BROWSER 4798                
+POS_SCREENSIZE 5040                
+POS_UNKNOWNREFERER 5114                
+POS_UNKNOWNREFERERBROWSER 5663                
+POS_ORIGIN 5779                
+POS_SEREFERRALS 5911                
+POS_PAGEREFS 6055                
+POS_SEARCHWORDS 6203                
+POS_KEYWORDS 6355                
+POS_MISC 2350                
+POS_ERRORS 6414                
+POS_CLUSTER 3437                
+POS_SIDER_404 6512                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20200501014458 8 1303 9227115500559
+FirstTime 20200401030530
+LastTime 20200430222024
+LastUpdate 20200501085105 8 0 7 0 0
+TotalVisits 34                  
+TotalUnique 20                  
+MonthHostsKnown 0                   
+MonthHostsUnknown 20                  
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+AddToFavourites 0 0 0
+QuickTimeSupport 0 0 0
+RealPlayerSupport 0 0 0
+DirectorSupport 0 0 0
+PDFSupport 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+JavascriptDisabled 0 0 0
+TotalMisc 0 0 0
+FlashSupport 0 0 0
+JavaEnabled 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 1 6 65783 19 33 5382
+1 1 1 784 10 22 67298
+2 4 4 3510 9 17 4449
+3 3 8 68509 4 9 2275
+4 0 0 0 11 13 5003
+5 3 3 1568 3 9 66086
+6 1 1 0 26 45 45439
+7 3 3 2352 4 7 33933
+8 0 0 0 3 4 11931
+9 1 1 784 10 11 2477
+10 1 1 0 10 13 9848
+11 1 1 0 3 5 1871
+12 1 1 2419 5 6 2655
+13 0 0 0 6 7 1390
+14 3 3 0 7 9 2275
+15 1 6 65783 4 5 1188
+16 2 2 1568 8 8 1491
+17 0 0 0 7 14 67957
+18 2 6 1437767 13 19 5233
+19 1 1 784 8 17 68159
+20 1 1 784 6 11 3160
+21 4 4 3136 12 19 8232
+22 1 1 784 10 11 23493
+23 1 1 0 25 39 10621
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 25 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 4
+de 23 38 206757
+us 9 13 1444787
+gb 3 3 2352
+au 1 1 2419
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 0
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 25 first Hits must be first (order not required for others)
+BEGIN_ROBOT 6
+Googlebot/ 41 365509 20200430233446 0
+AhrefsBot/ 38 33754 20200430174923 0
+YandexBot/ 8 6272 20200429213118 0
+bot[\s_+:,\.\;\/\\-] 5 9710 20200424211812 0
+MJ12bot/ 4 11048 20200428104125 0
+bingbot/ 1 0 20200410212331 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 4
+html 36 24335 0 0
+css 12 102776 0 0
+jpeg 1 1411289 0 0
+js 6 117915 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 0
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS ID - Hits - Pages 5
+win7 8 8
+winxp 2 2
+linux 28 9
+win10 1 1
+Unknown 16 16
+END_OS
+
+# Browser ID - Hits - Pages
+BEGIN_BROWSER 10
+Unknown 3 3
+firefox71.0 5 1
+firefox50.0 18 3
+chrome41.0.2224.3 1 1
+chrome40.0.2214.85 8 8
+mozilla 13 13
+firefox62.0 2 2
+chrome79.0.3945.130 1 1
+chrome36.0.1985.67 1 1
+chrome78.0.3904.108 3 3
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 5
+Mozilla/5.0_zgrab/0.x_(compatible;_Researchscan/t12sns;__http://researchscan.comsys.rwth-aachen.de) 20200430222024
+Mozilla/5.0_(compatible;_NetcraftSurveyAgent/1.0;__info@netcraft.com) 20200404033128
+Go-http-client/1.1 20200410215205
+Mozilla/5.0_zgrab/0.x_(compatible;_Researchscan/t13rl;__http://researchscan.comsys.rwth-aachen.de) 20200430215340
+Mozilla/5.0_zgrab/0.x_(compatible;_Researchscan/t12ca;__http://researchscan.comsys.rwth-aachen.de) 20200407074401
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 1
+Go-http-client/1.1 20200410215205
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 34 49
+From1 0 0
+From2 0 0
+From3 0 0
+From4 2 6
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 0
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 25 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 0
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 25 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 2
+301 2 0
+404 253 25553
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referrer
+BEGIN_SIDER_404 54
+/info/license.txt/ 1 http://seandre.net/info/license.txt
+/dev/.env 1 -
+/robots.txt/ 65 -
+/manager/min/README.txt/ 1 http://seandre.net/manager/min/README.txt
+/back/license.txt/ 1 http://seandre.net/back/license.txt
+/2019/license.txt/ 1 http://seandre.net/2019/license.txt
+/new/license.txt 1 -
+/ht.access/ 1 http://seandre.net/ht.access
+/theblog/license.txt/ 1 http://seandre.net/theblog/license.txt
+/new/license.txt/ 1 http://seandre.net/new/license.txt
+/old/license.txt/ 1 http://seandre.net/old/license.txt
+/new1/license.txt 1 -
+/wp/license.txt/ 1 http://seandre.net/wp/license.txt
+/license.txt/ 1 http://seandre.net/license.txt
+/new1/license.txt/ 1 http://seandre.net/new1/license.txt
+/admin/ 3 http://seandre.net/admin/
+/.env-file 1 -
+/site/license.txt/ 1 http://seandre.net/site/license.txt
+/administrator/ 1 -
+/ads.txt/ 31 -
+/phpmyadmin/ 1 http://seandre.net/phpmyadmin/
+/site/license.txt 1 -
+/2018/license.txt/ 1 http://seandre.net/2018/license.txt
+/test1/license.txt/ 1 http://seandre.net/test1/license.txt
+/test/license.txt 1 -
+/12/license.txt/ 1 http://seandre.net/12/license.txt
+/test/license.txt/ 1 http://seandre.net/test/license.txt
+/admin.php/ 1 -
+/2017/license.txt/ 1 http://seandre.net/2017/license.txt
+/dev/license.txt/ 1 http://seandre.net/dev/license.txt
+/temp/ 2 http://seandre.net/temp/
+/adm/ 1 -
+/bl/license.txt/ 1 http://seandre.net/bl/license.txt
+/2015/license.txt/ 1 http://seandre.net/2015/license.txt
+/admin/admin.php/ 1 -
+/blogs/license.txt/ 1 http://seandre.net/blogs/license.txt
+/inf/license.txt/ 1 http://seandre.net/inf/license.txt
+/2014/license.txt/ 1 http://seandre.net/2014/license.txt
+/phpMyAdmin/ 1 http://seandre.net/phpMyAdmin/
+/wp-login.php/ 11 http://seandre.net/wp-login.php
+/tmp/license.txt/ 1 http://seandre.net/tmp/license.txt
+/backup/license.txt/ 1 http://seandre.net/backup/license.txt
+/www/license.txt/ 1 http://seandre.net/www/license.txt
+/2020/license.txt/ 1 http://seandre.net/2020/license.txt
+/license.txt 1 -
+/ads.txt 29 -
+/www/license.txt 1 -
+/w/license.txt/ 1 http://seandre.net/w/license.txt
+/humans.txt/ 2 http://seandre.net/humans.txt
+/tmp/license.txt 1 -
+/b/license.txt/ 1 http://seandre.net/b/license.txt
+/wordpress/license.txt/ 1 http://seandre.net/wordpress/license.txt
+/robots.txt 64 -
+/blog/license.txt/ 1 http://seandre.net/blog/license.txt
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 25 first Hits must be first (order not required for others)
+BEGIN_VISITOR 20
+138.246.253.15 6 6 0 20200423104806
+137.226.113.26 5 5 3920 20200430215340
+137.226.113.27 4 4 3136 20200430222024
+137.226.113.34 3 18 197349 20200416031749
+138.246.253.5 2 2 0 20200404232431
+137.226.113.28 2 2 1568 20200415202938
+138.197.144.119 1 1 0 20200401145322
+44.234.61.74 1 1 784 20200407214445
+51.15.241.250 1 1 784 20200401030530
+34.223.219.65 1 1 784 20200405212720
+163.172.164.113 1 1 784 20200401054909
+35.164.235.49 1 1 784 20200422050243
+174.138.51.15 1 1 1942 20200404023657
+54.191.222.169 1 1 784 20200410215205
+163.172.154.242 1 1 784 20200401074237
+203.22.132.90 1 1 2419 20200419122442
+5.189.164.217 1 1 784 20200427194813
+159.203.24.155 1 1 0 20200401145322
+108.46.150.143 1 5 1437767 20200402183557
+138.197.9.250 1 1 1942 20200404033128
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 16
+20200401 5 5 2352 5
+20200402 2 6 1437767 2
+20200404 3 3 3884 3
+20200405 2 2 784 2
+20200406 1 1 0 1
+20200407 4 4 3136 3
+20200409 2 12 131566 2
+20200410 1 1 784 1
+20200415 1 1 784 1
+20200416 4 9 66567 4
+20200419 1 1 2419 1
+20200422 2 2 784 2
+20200423 3 3 1568 2
+20200427 1 1 784 1
+20200429 2 2 1568 2
+20200430 2 2 1568 2
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 3
+30s-2mn 1
+0s-30s 32
+15mn-30mn 1
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 25 first Pages must be first (order not required for others)
+BEGIN_SIDER 2
+/ 35 21916 33 33
+/About-us/ 1 2419 1 1
+END_SIDER

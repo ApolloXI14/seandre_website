@@ -1,0 +1,430 @@
+AWSTATS DATA FILE 7.7 (build 20180105)
+# If you remove this file, all statistics for date 201912 will be lost/reset.
+# Last config file used to build this data file was /home/seanyqhz/tmp/awstats/ssl/awstats.seandre.net.conf.
+
+# Position (offset in bytes) in this file for beginning of each section for
+# direct I/O access. If you made changes somewhere in this file, you should
+# also remove completely the MAP section (AWStats will rewrite it at next
+# update).
+BEGIN_MAP 28
+POS_GENERAL 2012                
+POS_TIME 2690                
+POS_VISITOR 10203               
+POS_DAY 11575               
+POS_DOMAIN 3341                
+POS_LOGIN 3729                
+POS_ROBOT 3884                
+POS_WORMS 4269                
+POS_EMAILSENDER 4400                
+POS_EMAILRECEIVER 4543                
+POS_SESSION 11995               
+POS_SIDER 12175               
+POS_FILETYPES 4678                
+POS_DOWNLOADS 4878                
+POS_OS 4926                
+POS_BROWSER 5153                
+POS_SCREENSIZE 5879                
+POS_UNKNOWNREFERER 5953                
+POS_UNKNOWNREFERERBROWSER 6235                
+POS_ORIGIN 6427                
+POS_SEREFERRALS 6561                
+POS_PAGEREFS 6705                
+POS_SEARCHWORDS 6896                
+POS_KEYWORDS 7048                
+POS_MISC 2354                
+POS_ERRORS 7107                
+POS_CLUSTER 3585                
+POS_SIDER_404 7197                
+END_MAP
+
+# LastLine    = Date of last record processed - Last record line number in last log - Last record offset in last log - Last record signature value
+# FirstTime   = Date of first visit for history file
+# LastTime    = Date of last visit for history file
+# LastUpdate  = Date of last update - Nb of parsed records - Nb of parsed old records - Nb of parsed new records - Nb of parsed corrupted - Nb of parsed dropped
+# TotalVisits = Number of visits
+# TotalUnique = Number of unique visitors
+# MonthHostsKnown   = Number of hosts known
+# MonthHostsUnKnown = Number of hosts unknown
+BEGIN_GENERAL 8
+LastLine 20200101051058 11 1570 11574087141377
+FirstTime 20191201164744
+LastTime 20191230075117
+LastUpdate 20200101075531 11 0 10 0 0
+TotalVisits 45                  
+TotalUnique 34                  
+MonthHostsKnown 0                   
+MonthHostsUnknown 34                  
+END_GENERAL
+
+# Misc ID - Pages - Hits - Bandwidth
+BEGIN_MISC 10
+RealPlayerSupport 0 0 0
+AddToFavourites 0 0 0
+JavaEnabled 0 0 0
+PDFSupport 0 0 0
+JavascriptDisabled 0 0 0
+TotalMisc 0 0 0
+FlashSupport 0 0 0
+DirectorSupport 0 0 0
+QuickTimeSupport 0 0 0
+WindowsMediaPlayerSupport 0 0 0
+END_MISC
+
+# Hour - Pages - Hits - Bandwidth - Not viewed Pages - Not viewed Hits - Not viewed Bandwidth
+BEGIN_TIME 24
+0 2 2 2100 8 9 3965
+1 1 1 4783 4 7 1390
+2 11 33 115471 1 3 2144
+3 4 4 20913 5 7 2073
+4 1 1 4791 10 10 4217
+5 1 1 4783 4 6 6605
+6 1 1 0 13 20 75049
+7 1 1 784 5 10 43865
+8 1 1 4783 6 11 8816
+9 3 3 5567 9 9 2127
+10 0 0 0 10 13 4961
+11 0 0 0 7 9 909
+12 3 3 1568 26 26 3841
+13 4 4 3136 10 10 8276
+14 3 3 25867 5 6 1289
+15 4 4 7415 20 23 3689
+16 6 6 33282 5 6 7820
+17 5 16 2964313 22 35 4901
+18 0 0 0 22 36 8001
+19 2 2 6099 45 64 13561
+20 16 43 7810041 19 38 4319
+21 3 3 25867 7 9 2275
+22 3 3 6883 15 19 8333
+23 3 3 7439 3 4 1087
+END_TIME
+
+# Domain - Pages - Hits - Bandwidth
+# The 25 first Pages must be first (order not required for others)
+BEGIN_DOMAIN 13
+us 24 51 7826450
+de 14 14 39580
+il 8 30 110372
+ru 8 8 6804
+gb 8 8 14082
+ie 3 3 25867
+se 3 3 25867
+it 3 3 25867
+cl 2 13 2958214
+ro 2 2 9608
+nl 1 1 10542
+jp 1 1 1316
+ca 1 1 1316
+END_DOMAIN
+
+# Cluster ID - Pages - Hits - Bandwidth
+BEGIN_CLUSTER 0
+END_CLUSTER
+
+# Login - Pages - Hits - Bandwidth - Last visit
+# The 10 first Pages must be first (order not required for others)
+BEGIN_LOGIN 0
+END_LOGIN
+
+# Robot ID - Hits - Bandwidth - Last visit - Hits on robots.txt
+# The 25 first Hits must be first (order not required for others)
+BEGIN_ROBOT 7
+AhrefsBot/ 35 39127 20191231223252 0
+bot[\s_+:,\.\;\/\\-] 14 35727 20191230222556 0
+Googlebot/ 6 43469 20191212085650 0
+msnbot/ 5 64999 20191227063836 0
+MJ12bot/ 4 4203 20191221015327 0
+YandexBot/ 3 2884 20191218231128 0
+bingbot/ 1 784 20191227051952 0
+END_ROBOT
+
+# Worm ID - Hits - Bandwidth - Last visit
+# The 5 first Hits must be first (order not required for others)
+BEGIN_WORMS 0
+END_WORMS
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first Hits must be first (order not required for others)
+BEGIN_EMAILSENDER 0
+END_EMAILSENDER
+
+# EMail - Hits - Bandwidth - Last visit
+# The 20 first hits must be first (order not required for others)
+BEGIN_EMAILRECEIVER 0
+END_EMAILRECEIVER
+
+# Files type - Hits - Bandwidth - Bandwidth without compression - Bandwidth after compression
+BEGIN_FILETYPES 8
+js 3 48004 0 0
+png 1 4454 0 0
+xml 2 316 0 0
+css 49 266973 0 0
+jpeg 2 2822578 0 0
+html 75 216872 0 0
+jpg 5 7619528 0 0
+woff2 1 77160 0 0
+END_FILETYPES
+
+# Downloads - Hits - Bandwidth
+BEGIN_DOWNLOADS 0
+END_DOWNLOADS
+
+# OS ID - Hits
+BEGIN_OS ID - Hits - Pages 14
+win7 30 22
+win8 1 0
+linux 61 21
+win8.1 5 1
+Unknown 13 13
+macosx11 3 3
+macosx8 2 0
+macosx6 1 0
+macosx10 1 1
+winxp 3 3
+winlong 4 3
+macosx9 3 0
+winnt 8 8
+win10 3 3
+END_OS
+
+# Browser ID - Hits - Pages
+BEGIN_BROWSER 36
+msie7.0 1 1
+safari10.0.3 1 1
+chrome55.0.2883.87 1 1
+chrome31.0.1650.63 7 2
+chrome39.0.2171.95 1 1
+msie11.0 5 2
+msie9.0 9 8
+firefox13.0.1 1 1
+firefox60.0 1 1
+edge14 1 1
+opera54.0.2952.54 3 3
+firefox27.0 1 0
+mozilla 3 3
+firefox26.0 8 2
+chrome40.0.2214.111 1 0
+firefox15.0.1 1 1
+chrome56.0.2924.87 1 1
+chrome67.0.3396.99 3 3
+safari6.0.5 1 0
+chrome78.0.3904.87 2 2
+firefox54.0 1 1
+Unknown 10 10
+chrome66.0.3359.181 3 3
+opera63.0.3368.94 13 2
+firefox33.0 2 1
+chrome78.0.3904.108 2 2
+chrome31.0.1650.57 1 0
+chrome13.0.782.112 1 1
+firefox27.3 2 0
+firefox62.0 1 1
+chrome12.0.742.91 1 1
+chrome40.0.2214.85 4 4
+firefox69.0 40 13
+chrome47.0.2526.111 3 3
+firefox52.0 1 1
+safari9.0.2 1 1
+END_BROWSER
+
+# Screen size - Hits
+BEGIN_SCREENSIZE 0
+END_SCREENSIZE
+
+# Unknown referer OS - Last visit date
+BEGIN_UNKNOWNREFERER 4
+Mozilla/5.0_(compatible;_NetcraftSurveyAgent/1.0;__info@netcraft.com) 20191205040755
+python-requests/2.21.0 20191210034712
+Go-http-client/1.1 20191228202800
+python-requests/2.22.0 20191215120241
+END_UNKNOWNREFERER
+
+# Unknown referer Browser - Last visit date
+BEGIN_UNKNOWNREFERERBROWSER 3
+Go-http-client/1.1 20191228202800
+python-requests/2.21.0 20191210034712
+python-requests/2.22.0 20191215120241
+END_UNKNOWNREFERERBROWSER
+
+# Origin - Pages - Hits 
+BEGIN_ORIGIN 6
+From0 48 55
+From1 0 0
+From2 0 0
+From3 2 2
+From4 28 81
+From5 0 0
+END_ORIGIN
+
+# Search engine referers ID - Pages - Hits
+BEGIN_SEREFERRALS 0
+END_SEREFERRALS
+
+# External page referers - Pages - Hits
+# The 25 first Pages must be first (order not required for others)
+BEGIN_PAGEREFS 1
+https://server259.web-hosting.com:2083 2 2
+END_PAGEREFS
+
+# Search keyphrases - Number of search
+# The 10 first number of search must be first (order not required for others)
+BEGIN_SEARCHWORDS 0
+END_SEARCHWORDS
+
+# Search keywords - Number of search
+# The 25 first number of search must be first (order not required for others)
+BEGIN_KEYWORDS 0
+END_KEYWORDS
+
+# Errors - Hits - Bandwidth
+BEGIN_ERRORS 1
+404 320 32320
+END_ERRORS
+
+# URL with 404 errors - Hits - Last URL referrer
+BEGIN_SIDER_404 65
+/magento2/admin/ 1 -
+/backup/wp-login.php/ 1 http://seandre.net/backup/wp-login.php
+/2019/wp-login.php/ 1 http://www.seandre.net//2019/wp-login.php
+/vendor/phpunit/phpunit/build.xml/ 4 -
+/index.php/ 1 http://www.seandre.net/index.php
+/wordpress/wp-login.php/ 4 http://seandre.net/wordpress/wp-login.php
+/.remote-sync.json 1 -
+/phpmyadmin/ 1 http://seandre.net:80/phpmyadmin/
+/store/admin/ 1 -
+/magento/ 1 -
+/.vscode/sftp.json 1 -
+/magento/pub/errors/503.php 1 -
+/robots.txt/ 67 -
+/.git/HEAD/ 6 -
+/web/wp-login.php/ 1 http://seandre.net/web/wp-login.php
+/magento2/pub/errors/503.php 1 -
+/components/ 2 -
+/ftpsync.settings 1 -
+/administrator/index.php/ 1 http://seandre.net:80/administrator/index.php
+/admin/ 1 -
+/wp-login.php/ 15 http://seandre.net/wp-login.php
+/.vscode/ftp-sync.json 1 -
+/wp-content/plugins/jekyll-exporter/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php 4 -
+/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php 4 -
+/store/pub/errors/503.php 1 -
+/shop/pub/errors/503.php 1 -
+/info/wp-login.php/ 1 http://SEANDRE.NET/info/wp-login.php
+/pub/errors/503.php 1 -
+/user/login/ 1 http://seandre.net:80/user/login
+/blog/wp-login.php/ 4 http://SEANDRE.NET/blog/wp-login.php
+/ads.txt 31 -
+/.env/ 1 -
+/deployment-config.json 1 -
+/laravel/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php 4 -
+/shop/ 1 -
+/www/wp-login.php/ 1 http://www.seandre.net//www/wp-login.php
+/store/ 1 -
+/magento2/ 1 -
+/wp-includes/wlwmanifest.xml/ 2 -
+/admin/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php 4 -
+/cms/wp-login.php/ 2 http://seandre.net/cms/wp-login.php
+/.ftpconfig 1 -
+/sites/all/libraries/mailchimp/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php 4 -
+/vendor/phpunit/phpunit/LICENSE/ 2 -
+/panel/tables.php/ 1 http://seandre.net/panel/tables.php
+/wp-content/plugins/cloudflare/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php 4 -
+/wp-load.php 1 -
+/favicon.ico/ 1 -
+/css/bootstrap.min.css.map 1 -
+/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php/ 6 -
+/sftp-config.json 1 -
+/public_html/wp-login.php/ 1 http://www.seandre.net//public_html/wp-login.php
+/ads.txt/ 31 -
+/robots.txt 66 -
+/phpunit/src/Util/PHP/eval-stdin.php/ 1 -
+/app/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php 4 -
+/wp/wp-login.php/ 1 http://www.seandre.net//wp/wp-login.php
+/wp-content/plugins/mm-plugin/inc/vendors/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php 4 -
+/wp-content/plugins/dzs-videogallery/class_parts/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php 4 -
+/vendor/phpunit/phpunit/phpunit.xml/ 1 -
+/sites/all/libraries/mailchimp/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php/ 1 -
+/site/wp-login.php/ 1 http://seandre.net/site/wp-login.php
+/license.php/ 1 -
+/shop/admin/ 1 -
+/magento/admin/ 1 -
+END_SIDER_404
+
+# Host - Pages - Hits - Bandwidth - Last visit date - [Start date of last visit] - [Last page of last visit]
+# [Start date of last visit] and [Last page of last visit] are saved only if session is not finished
+# The 25 first Hits must be first (order not required for others)
+BEGIN_VISITOR 34
+108.46.150.143 13 40 7803150 20191208203045
+82.80.244.59 8 30 110372 20191205021140
+5.9.60.220 8 8 38264 20191208092946
+92.63.111.27 7 7 5488 20191230075117
+138.246.253.5 4 4 0 20191223060514
+84.17.61.131 3 3 25867 20191206214723
+185.108.128.64 3 3 25867 20191203145953
+193.9.114.218 3 3 25867 20191204161342
+181.215.110.150 2 13 2958214 20191208170859
+128.199.34.210 2 2 316 20191208021007
+157.245.171.41 2 2 2635 20191207232451
+54.187.20.36 1 1 784 20191228202800
+104.155.12.235 1 1 784 20191224093349
+94.16.113.89 1 1 0 20191215120241
+68.183.148.170 1 1 4791 20191205040755
+51.158.114.198 1 1 784 20191225002628
+52.226.77.100 1 1 1316 20191205165124
+89.47.161.229 1 1 4804 20191202233611
+89.238.139.10 1 1 4783 20191208151933
+34.211.29.186 1 1 1316 20191205204737
+213.159.213.137 1 1 1316 20191203172618
+51.159.30.30 1 1 4783 20191206170539
+52.32.161.172 1 1 784 20191210034712
+47.254.83.208 1 1 1316 20191201164744
+159.203.114.246 1 1 4783 20191205035943
+51.11.40.185 1 1 1316 20191205225504
+45.118.134.43 1 1 1316 20191202152347
+163.172.163.25 1 1 784 20191223223304
+78.47.166.154 1 1 1316 20191207000836
+8.209.79.9 1 1 1316 20191204154724
+167.71.178.49 1 1 4791 20191202202814
+89.47.163.216 1 1 4804 20191203030018
+193.176.85.115 1 1 10542 20191222031828
+51.140.12.146 1 1 1316 20191204194431
+END_VISITOR
+
+# Date - Pages - Hits - Bandwidth - Visits
+BEGIN_DAY 18
+20191201 2 2 6099 2
+20191202 3 3 10911 3
+20191203 6 6 36770 4
+20191204 7 7 38065 5
+20191205 14 36 123894 7
+20191206 6 6 40216 4
+20191207 4 4 8734 3
+20191208 19 57 10771246 5
+20191209 1 1 0 1
+20191210 1 1 784 1
+20191215 1 1 0 1
+20191222 2 2 10542 2
+20191223 2 2 784 2
+20191224 1 1 784 1
+20191225 1 1 784 1
+20191226 6 6 4704 1
+20191228 1 1 784 1
+20191230 1 1 784 1
+END_DAY
+
+# Session range - Number of visits
+BEGIN_SESSION 4
+0s-30s 42
+5mn-15mn 1
+15mn-30mn 1
+2mn-5mn 1
+END_SESSION
+
+# URL - Pages - Bandwidth - Entry - Exit
+# The 25 first Pages must be first (order not required for others)
+BEGIN_SIDER 5
+/ 61 124773 43 38
+/Contacts/ 9 79998 1 5
+/About-us/ 5 12101 0 0
+/sitemap.xml 2 316 1 1
+/css/fonts/fontawesome-webfont.woff2 1 77160 0 1
+END_SIDER
