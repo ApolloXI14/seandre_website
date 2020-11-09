@@ -22,23 +22,65 @@ module.exports = {
             }
          },
          {
-        test: /\.less$/,
-        use: [
+           test: /\.less$/,
+              use: [
+                {
+                  loader: 'style-loader',
+                },
+                {
+                  loader: 'css-loader',
+                },
+                {
+                  loader: 'less-loader',
+                  options: {
+                    lessOptions: {
+                      strictMath: true,
+                    },
+                  },
+                },
+              ],
+         },
+         {
+           test: /.*\.(gif|png|jpe?g|svg)$/i,
+           use: [
+             {
+               loader: 'image-webpack-loader',
+               options: {
+                 name: '[path][name].[ext]',
+                 
+               }
+             },
+           ]
+         },
           {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-          },
-          {
-            loader: 'less-loader',
-            options: {
-              lessOptions: {
-                strictMath: true,
-              },
-            },
-          },
-        ],
+           test: /\.(jpe?g|png|gif|svg)$/i,
+           use: [
+             'url-loader?limit=10000',
+             {
+               loader: 'img-loader',
+               options: {
+                 plugins: [
+                   require('imagemin-gifsicle')({
+                     interlaced: false
+                   }),
+                   require('imagemin-mozjpeg')({
+                     progressive: true,
+                     arithmetic: false
+                   }),
+                   require('imagemin-pngquant')({
+                     floyd: 0.5,
+                     speed: 2
+                   }),
+                   require('imagemin-svgo')({
+                     plugins: [
+                       { removeTitle: true },
+                       { convertPathData: false }
+                     ]
+                   })
+                 ]
+               }
+             }
+           ]
       }
       ]
    },
