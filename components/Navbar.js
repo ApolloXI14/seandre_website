@@ -6,16 +6,16 @@ class Navbar extends Component{
       return(
          <div class="navbar">
           <div><a href="#home">Home</a></div>
-		  <div><a href="#news">News</a></div>
+		  <div><a href="#news">Music</a></div>
 		  
 			  <div class="dropdown">
-			    <button class="dropbtn">Dropdown
+			    <button class="dropbtn">Writing
 			      <i class=""></i>
 			    </button>
 			    <div class="dropdown-content">
-			      <a href="#">Link 1</a>
-			      <a href="#">Link 2</a>
-			      <a href="#">Link 3</a>
+			      <a href="#">Short Stories</a>
+			      <a href="#">Poems</a>
+			      <a href="#">Blog</a>
 			    </div>
 			  </div>
 		
