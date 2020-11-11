@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styles from './less/index.less'
-import background from './www/img/background.jpeg'
 
 class App extends Component{
    render(){
