@@ -31,6 +31,9 @@ module.exports = {
                   loader: 'css-loader',
                 },
                 {
+                 loader: 'resolve-url-loader',
+               },
+                {
                   loader: 'less-loader',
                   options: {
                     lessOptions: {
@@ -44,44 +47,42 @@ module.exports = {
            test: /.*\.(gif|png|jpe?g|svg)$/i,
            use: [
              {
-               loader: 'image-webpack-loader',
+               loader: 'file-loader',
                options: {
-                 name: '[path][name].[ext]',
-                 
+                 name: '[name].[ext]',
+                outputPath: 'static/assets/',
+                publicPath: 'static/assets/',
+                 emitFile: true,
+                 byPassOnDebug: true,
+                 disable: true
                }
              },
-           ]
-         },
-          {
-           test: /\.(jpe?g|png|gif|svg)$/i,
-           use: [
-             'url-loader?limit=10000',
              {
-               loader: 'img-loader',
-               options: {
-                 plugins: [
-                   require('imagemin-gifsicle')({
-                     interlaced: false
-                   }),
-                   require('imagemin-mozjpeg')({
-                     progressive: true,
-                     arithmetic: false
-                   }),
-                   require('imagemin-pngquant')({
-                     floyd: 0.5,
-                     speed: 2
-                   }),
-                   require('imagemin-svgo')({
-                     plugins: [
-                       { removeTitle: true },
-                       { convertPathData: false }
-                     ]
-                   })
-                 ]
-               }
-             }
-           ]
+      loader: 'image-webpack-loader',
+      options: {
+        mozjpeg: {
+          progressive: true,
+        },
+        // optipng.enabled: false will disable optipng
+        optipng: {
+          enabled: false,
+        },
+        pngquant: {
+          quality: [0.65, 0.90],
+          speed: 4
+        },
+        gifsicle: {
+          interlaced: false,
+        },
+        // the webp option will enable WEBP
+        webp: {
+          quality: 75
+        }
       }
+    }
+           ]
+         }
+          
       ]
    },
    plugins:[
