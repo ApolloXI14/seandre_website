@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import styles from './less/index.less'
 
 class App extends Component{
    render(){
