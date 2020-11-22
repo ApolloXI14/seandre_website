@@ -6,7 +6,5 @@ import Navbar from './components/Navbar.js';
 import styles from './less/index.less';
 import { BrowserRouter } from 'react-router-dom';
 
-ReactDOM.render(<App />, document.getElementById('app'));
-ReactDOM.render(<BrowserRouter>
-      <Navbar />
-  </BrowserRouter>, document.getElementById('navbar'));
+ReactDOM.render(<BrowserRouter><App />
+	</BrowserRouter>, document.getElementById('app'));
