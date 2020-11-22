@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from '../less/Navbar.less'
-import { Switch, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Navbar extends Component{
    render(){
@@ -14,13 +14,13 @@ class Navbar extends Component{
 			      <i class=""></i>
 			    </button>
 			    <div class="dropdown-content">
-		    		<Switch>
+		    		
 		    			<ul>
 				      		<Link to="/poems">Poems</Link>
 				      		<Link to="/">Short Stories</Link>
 				      		<Link to="/">Blog</Link>
 			      		</ul>
-			      	</Switch>
+			      	
 			    </div>
 			  </div>
 		
