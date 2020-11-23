@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class poems extends Component{
+class Poems extends Component{
    render(){
       return(
          <div>
@@ -9,4 +9,4 @@ class poems extends Component{
       );
    }
 }
-export default poems;
+export default Poems;

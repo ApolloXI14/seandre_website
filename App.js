@@ -13,7 +13,7 @@ class App extends Component{
          	<Navbar />
             <h1>Hello World</h1>
             <Switch>
-   				<Route exact path="/poems" component={Poems} />
+   				<Route exact path="/poems">
    			</Switch>
          </div>
       );
