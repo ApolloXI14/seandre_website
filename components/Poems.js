@@ -1,3 +1,5 @@
+// TODO: IMPLEMENT <Slideshow> img pulling
+
 import React, { Component } from 'react';
 
 class Poems extends Component{
@@ -5,6 +7,7 @@ class Poems extends Component{
       return(
          <div>
           	POEMS Component
+          	
 		</div>
       );
    }

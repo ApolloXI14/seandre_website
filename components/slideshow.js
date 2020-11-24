@@ -1,60 +1,86 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
 
-function slideshowDot(props) {
-	return (
-		<span class="dot" onclick="currentSlide({props.index})"></span>
-	);
-}
+class Slideshow extends Component{
+	constructor(props) {
+	    super(props);
+	    this.state = {slideIndex: 1,
+	    			imgArray: []};
+  	}
 
-function slideshowDotsList(props) {
-	const imgArray = props.imgArray;
-	const dotsArray = imgArray.map((img) => 
-		<slideshowDot index={img.index} />
-	);
-	return (
-		{dotsArray}
-	);
-}
+  	componentDidMount() {
+  		function importAll(props) {
+		    let images = {};
+		    props.imgPath.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+		    return images;
+		}
 
-function slideshow(props) {
-	const imgArray = props.imgArray;
-	const slidesArray = imgArray.map((img) => 
-		<slide index={img.index} length={imgArray.length} img={img.img} caption={img.caption} />
-	);
-	return (
-		{slidesArray}
-		// <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  // 		<a class="next" onclick="plusSlides(1)">&#10095;</a>
-	);
-}
+  		const imgArray = importAll(require.context(props.imgPath, false, '/\.jpg/'));
+  		this.setState({imgArray: imgArray}); // render imgArray
+  	}
 
-function slide(props) {
-	return (
-		<div class="mySlides fade">
-			    <div class="numbertext">{props.index} / {props.length}</div>
-			    	<img src={props.img} style="width:100%" />
-			    <div class="text">{props.caption}</div>
-	  	</div>
-	  );
+
+  	slideshowDot(index) {
+		return (
+			<span class="dot" onclick="currentSlide({index})"></span>
+		);
 	}
 
-const slideshowBody = (
-	<div class="slideshow-container">
-		<slideshow imgArray={imgArray} />
-	</div>
-);
+	slideshowDotsList(props) {
+		const imgArray = props.imgArray;
+		const dotsArray = imgArray.map((img, index) => 
+			<slideshowDot index={index} />
+		);
+		return (
+			{dotsArray}
+		);
+	}
 
-const slideshowFooter = (
-	<div style="text-align:center">
-		<slideshowDotsList imgArray={imgArray} />
-	</div>
-);
+	slideshow(props) {
+		const imgArray = props.imgArray;
+		const slidesArray = imgArray.map((img, index) => 
+			<slide index={index} length={imgArray.length} img={img.img} caption={img.caption} />
+		);
+		return (
+			{slidesArray}
+			// <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+	  // 		<a class="next" onclick="plusSlides(1)">&#10095;</a>
+		);
+	}
+
+	slide(props) {
+		return (
+			<div class="mySlides fade">
+				    <div class="numbertext">{props.index} / {props.length}</div>
+				    	<img src={props.img} style="width:100%" />
+				    <div class="text">{props.caption}</div>
+		  	</div>
+		  );
+		}
+
+	slideshowBody(props) {
+		return (
+			<div class="slideshow-container">
+				<slideshow imgArray={props.imgArray} />
+			</div>
+		);
+	}
+
+	slideshowFooter(props) { 
+		return (
+			<div style="text-align:center">
+				<slideshowDotsList imgArray={props.imgArray} />
+			</div>
+		);
+	}
 
 
-ReactDOM.render(
-<div>
-	<slideshowBody imgArray={imgArray} />
-	<slideshowFooter imgArray={imgArray} />
-</div>, document.getElementById('root')
-);
+  	render() {
+  		return (
+  			<div>
+				<slideshowBody imgArray={this.state.imgArray} />
+				<slideshowFooter imgArray={this.state.imgArray} />
+			</div>
+		);
+  	}
+
+}
