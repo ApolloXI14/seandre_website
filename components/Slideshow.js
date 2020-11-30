@@ -24,13 +24,13 @@ class Slideshow extends Component{
   		const imgArray = importAll(req);
   		const imgSrcArray = imgArray.map((img) => img.default );
   		const slidesArray = imgArray.map((img, index) => 
-				<Slide index={index} length={imgArray.length} imgSrc={imgSrcArray[index]} caption="test" />
+				<Slide key={index} index={index} length={imgArray.length} imgSrc={imgSrcArray[index]} caption="test" />
 			);
-  		// TOFIX: "slidesArray" is not updating
-  		this.setState((state, props) => ({
-  			slidesArray: this.state.slidesArray.concat(props.slidesArray)
-  		}));
-  		this.renderBody();
+  		this.setState({
+  			slidesArray: slidesArray
+  		}, () => {
+  			this.renderBody();
+  		});
   	}
 
   	renderBody() {
