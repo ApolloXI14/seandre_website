@@ -5,7 +5,7 @@ class Slide extends Component{
    	return (
 			<div className="mySlides fade">
 				    <div className="numbertext">{this.props.index} / {this.props.length}</div>
-				    	<img id="currentImg" src={this.props.imgSrc} />
+				    	<img id="currentImg" src={this.props.imgSrc} style={{display: this.props.display}} />
 				    <div className="text">{this.props.caption}</div>
 		  	</div>
 		  );
