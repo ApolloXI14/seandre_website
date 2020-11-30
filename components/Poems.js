@@ -6,7 +6,7 @@ export default class Poems extends Component{
       return(
          <div>
           	POEMS Component
-          	<Slideshow imgPath="../www/img/poems" />
+          	<Slideshow imgPath={POEMS_DIR} />
 		</div>
       );
    }
