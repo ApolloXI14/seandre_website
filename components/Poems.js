@@ -1,15 +1,13 @@
-// TODO: IMPLEMENT <Slideshow> img pulling
-
 import React, { Component } from 'react';
+import Slideshow from './Slideshow';
 
-class Poems extends Component{
+export default class Poems extends Component{
    render(){
       return(
          <div>
           	POEMS Component
-          	
+          	<Slideshow imgPath="../www/img/poems" />
 		</div>
       );
    }
 }
-export default Poems;

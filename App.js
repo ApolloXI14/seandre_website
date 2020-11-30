@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Navbar from './components/Navbar'
-import Poems from './components/Poems'
-import { Route, Switch, Link, withRouter } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import Poems from './components/Poems';
+import { Route, Switch, withRouter } from 'react-router-dom';
 
 
 
@@ -13,6 +14,7 @@ class App extends Component{
          	<Navbar />
             <h1>Hello World</h1>
             <Switch>
+               <Route exact path="/" component={Home} />
    				<Route exact path="/poems" component={Poems} />
    			</Switch>
          </div>

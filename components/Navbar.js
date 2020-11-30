@@ -6,15 +6,14 @@ class Navbar extends Component{
    render(){
       return(
          <div class="navbar">
-          <div><a href="#home">Home</a></div>
-		  <div><a href="#news">Music</a></div>
+          <div><Link to="/">Home</Link></div>
+		  <div><Link to="/music">Music</Link></div>
 		  
 			  <div class="dropdown">
 			    <button class="dropbtn">Writing
 			      <i class=""></i>
 			    </button>
 			    <div class="dropdown-content">
-		    		
 		    			<ul>
 				      		<Link to="/poems">Poems</Link>
 				      		<Link to="/">Short Stories</Link>
@@ -28,4 +27,5 @@ class Navbar extends Component{
       );
    }
 }
+
 export default Navbar;
