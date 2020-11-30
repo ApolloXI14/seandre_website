@@ -32,7 +32,7 @@ class Slideshow extends Component{
   		const imgArray = importAll(req);
   		const imgSrcArray = imgArray.map((img) => img.default );
   		const slidesArray = imgArray.map((img, index) => 
-				<Slide key={index} index={index} length={imgArray.length} imgSrc={imgSrcArray[index]} caption="test" display={checkSlideIndex(index, this.state.slideIndex)} />
+				<Slide key={index} index={index+1} length={imgArray.length} imgSrc={imgSrcArray[index]} caption="test" display={checkSlideIndex(index, this.state.slideIndex)} />
 			);
   		this.setState({
   			slidesArray: slidesArray
