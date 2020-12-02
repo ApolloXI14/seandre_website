@@ -20,6 +20,7 @@ class SlideshowBody extends Component {
 	}
 	render() {
 		const imgSrcArray = this.props.imgArray.map((img) => img.default );
+		// TOFIX: this.checkSlideIndex.bind not getting hit
 		const slidesArray = this.props.imgArray.map((img, index) => 
 			<Slide key={index} index={index+1} length={imgSrcArray.length} 
 				imgSrc={imgSrcArray[index]} caption="test"
