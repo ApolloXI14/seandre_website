@@ -20,30 +20,15 @@ class Slideshow extends Component{
 		    return images;
 		}
 
-		function checkSlideIndex(currentIndex, stateIndex) {
-			if (currentIndex+1 === stateIndex) {
-				return "block";
-			} else {
-				return "none";
-			}
-		}
-
 		const req = require.context(POEMS_DIR, true, /.jpg$/);
   		const imgArray = importAll(req);
-  		const imgSrcArray = imgArray.map((img) => img.default );
-  		const slidesArray = imgArray.map((img, index) => 
-				<Slide key={index} index={index+1} length={imgArray.length} imgSrc={imgSrcArray[index]} caption="test" display={checkSlideIndex(index, this.state.slideIndex)} />
-			);
-  		this.setState({
-  			slidesArray: slidesArray
-  		}, () => {
-  			this.renderBody();
-  		});
+  		this.renderBody(imgArray);
   	}
 
-  	renderBody() {
+  	renderBody(imgArray) {
   		ReactDOM.render(
-  			<SlideshowBody slidesArray={this.state.slidesArray} />, document.getElementById('body'));
+  			<SlideshowBody
+  				imgArray={imgArray} slideIndex={this.state.slideIndex} />, document.getElementById('body'));
   		
   	}
 
