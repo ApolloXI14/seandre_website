@@ -26,8 +26,18 @@ class SlideshowBody extends Component {
 		});
 	}
 	changeSlides(index) {
+		function checkSlideLimit(slideIndex, slidesArrayLength) {
+			if ((slideIndex + index) === 0) {
+				return slidesArrayLength;
+			} else if ((slideIndex + index) > slidesArrayLength) {
+				return 1;
+			} else {
+				return slideIndex + index;
+			}
+			
+		}
 		this.setState( (state,props) => ({
-			slideIndex: state.slideIndex + index
+			slideIndex: checkSlideLimit(state.slideIndex, state.slidesArray.length)
 		}), () => {
 			const newSlidesArray = this.createSlidesArray(this.state);
 			this.setState((state, props) => ({
