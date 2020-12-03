@@ -28,7 +28,7 @@ class Slideshow extends Component{
   	renderBody(imgArray) {
   		ReactDOM.render(
   			<SlideshowBody
-  				imgArray={imgArray} slideIndex={this.state.slideIndex} />, document.getElementById('body'));
+  				imgArray={imgArray} slideIndex={this.state.slideIndex} slidesArray={this.state.slidesArray} />, document.getElementById('body'));
   		
   	}
 
