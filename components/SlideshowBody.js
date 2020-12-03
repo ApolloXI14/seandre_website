@@ -5,15 +5,22 @@ import Slide from './Slide';
 class SlideshowBody extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			slidesArray: [],
+			slideIndex: this.props.slideIndex
+		}
 	}
-	componentDidMount(props) {
+	createSlidesArray(props) {
 		const isCurrentIndex = (index, currentIndex) => { return index === currentIndex } ;
 		const imgSrcArray = this.props.imgArray.map((img) => img.default );
-		const slidesArray = this.props.imgArray.map((img, index) => 
+		return this.props.imgArray.map((img, index) => 
 			<Slide key={index} index={index+1} length={imgSrcArray.length} 
 				imgSrc={imgSrcArray[index]} caption="test"
-				display={isCurrentIndex(index+1, this.props.slideIndex) ? "block" : "none" } />
+				display={isCurrentIndex(index+1, this.state.slideIndex) ? "block" : "none" } />
 		);
+	}
+	componentDidMount(props) {
+		const slidesArray = this.createSlidesArray(props);
 		const SlideshowContainer = () => {
 				return (
 				<div id="slideshow-container" className="slideshow-container">
@@ -25,25 +32,19 @@ class SlideshowBody extends Component {
 				</div>
 			);
 		}
-		ReactDOM.render(
-  			<SlideshowContainer/>, document.getElementById('slideshowBody'));
+		this.setState({
+			slidesArray: slidesArray
+		}, ReactDOM.render(
+  			<SlideshowContainer/>, document.getElementById('slideshowBody')));
 	}
 	changeSlides(index) {
-		console.log('changeSlides: ', index);
-		this.setState({
-			slideIndex: index
-		});
-	}
-	renderSlides(slidesArray) {
-		const newSlidesArray = this.props.slidesArray.forEach((slide, index) => {
-			if (index === this.props.slideIndex) {
-				slidesArray[index].props.display = 'block';
-			} else {
-				slidesArray[index].props.display = 'none';
-			}
-		});
-		this.setState({
-			slidesArray: newSlidesArray
+		this.setState( (state,props) => ({
+			slideIndex: state.slideIndex + index
+		}), () => {
+			const newSlidesArray = this.createSlidesArray(this.state);
+			this.setState((state, props) => ({
+				slidesArray: newSlidesArray
+			}));
 		});
 	}
 	render() {
