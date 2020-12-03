@@ -21,21 +21,9 @@ class SlideshowBody extends Component {
 	}
 	componentDidMount(props) {
 		const slidesArray = this.createSlidesArray(props);
-		const SlideshowContainer = () => {
-				return (
-				<div id="slideshow-container" className="slideshow-container">
-					{slidesArray}
-					<div id="slideshowButtons">
-						<a className="prev" onClick={this.changeSlides.bind(this, -1)}>&#10094;</a>
-						<a className="next" onClick={this.changeSlides.bind(this, 1)}>&#10095;</a>
-					</div>
-				</div>
-			);
-		}
 		this.setState({
 			slidesArray: slidesArray
-		}, ReactDOM.render(
-  			<SlideshowContainer/>, document.getElementById('slideshowBody')));
+		});
 	}
 	changeSlides(index) {
 		this.setState( (state,props) => ({
@@ -50,7 +38,13 @@ class SlideshowBody extends Component {
 	render() {
 		return (
 		<div id="slideshowBody">
-			
+			<div id="slideshow-container" className="slideshow-container">
+				<div id="slidesDiv"> {this.state.slidesArray} </div>
+				<div id="slideshowButtons">
+					<a className="prev" onClick={this.changeSlides.bind(this, -1)}>&#10094;</a>
+					<a className="next" onClick={this.changeSlides.bind(this, 1)}>&#10095;</a>
+				</div>
+			</div>	
 		</div>
 		)
 	}
