@@ -7,9 +7,11 @@ import ReactDOM from 'react-dom';
 class Slideshow extends Component{
 	constructor(props) {
 	    super(props);
-	    this.state = {slideIndex: 1,
-	    			slidesArray:   [],
-	    			imgPath: ''};
+	    this.state = {
+	    	slideIndex: 1,
+	    	slidesArray:   [],
+	    	imgPath: ''
+	    };
   	}
 
   	componentDidMount() {
@@ -20,7 +22,7 @@ class Slideshow extends Component{
 		    return images;
 		}
 
-		const req = require.context(POEMS_DIR, true, /.jpg$/);
+		const req = require.context(POEMS_DIR, true, /.jpg$|.png$/);
   		const imgArray = importAll(req);
   		this.renderBody(imgArray);
   	}
@@ -33,23 +35,6 @@ class Slideshow extends Component{
   				slidesArray={this.state.slidesArray} />, document.getElementById('body'));
   		
   	}
-
-
-  	SlideshowDot(index) {
-		return (
-			<span class="dot" onclick="currentSlide({index})"></span>
-		);
-	}
-
-	SlideshowDotsList(props) {
-		const imgArray = props.imgArray;
-		const dotsArray = imgArray.map((img, index) => 
-			<SlideshowDot index={index} />
-		);
-		return (
-			{dotsArray}
-		);
-	}
 
   	render() {
   		return (

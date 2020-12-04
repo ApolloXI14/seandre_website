@@ -7,6 +7,7 @@ class SlideshowBody extends Component {
 		super(props);
 		this.state = {
 			slidesArray: [],
+			slideDotsArray: [],
 			slideIndex: this.props.slideIndex
 		}
 	}
@@ -15,17 +16,19 @@ class SlideshowBody extends Component {
 		const imgSrcArray = this.props.imgArray.map((img) => img.default );
 		return this.props.imgArray.map((img, index) => 
 			<Slide key={index} index={index+1} length={imgSrcArray.length} 
-				imgSrc={imgSrcArray[index]} caption="test"
+				imgSrc={imgSrcArray[index]}
 				display={isCurrentIndex(index+1, this.state.slideIndex) ? "block" : "none" } />
 		);
 	}
 	componentDidMount(props) {
 		const slidesArray = this.createSlidesArray(props);
+		const slideDotsArray = this.createSlideshowDotsArray(props);
 		this.setState({
-			slidesArray: slidesArray
+			slidesArray: slidesArray,
+			slideDotsArray: slideDotsArray
 		});
 	}
-	changeSlides(index) {
+	changeSlides(index, isDotChange) {
 		function checkSlideLimit(slideIndex, slidesArrayLength) {
 			if ((slideIndex + index) === 0) {
 				return slidesArrayLength;
@@ -37,7 +40,7 @@ class SlideshowBody extends Component {
 			
 		}
 		this.setState( (state,props) => ({
-			slideIndex: checkSlideLimit(state.slideIndex, state.slidesArray.length)
+			slideIndex: isDotChange ? index : checkSlideLimit(state.slideIndex, state.slidesArray.length)
 		}), () => {
 			const newSlidesArray = this.createSlidesArray(this.state);
 			this.setState((state, props) => ({
@@ -45,14 +48,29 @@ class SlideshowBody extends Component {
 			}));
 		});
 	}
+	currentSlide(props) {
+		this.changeSlides(props.index, true);
+	}
+	createSlideshowDotsArray(props) {
+		const SlideDot = (index) => {
+			return (
+				<span className="dot" onClick={this.currentSlide.bind(this, index)}></span>
+			);
+		}
+		const imgArray = this.props.imgArray;
+		return imgArray.map((img, index) => 
+			<SlideDot key={index} index={index+1} />
+		);
+	}
 	render() {
 		return (
 		<div id="slideshowBody">
+			<div id="dotsDiv">{this.state.slideDotsArray}</div>
 			<div id="slideshow-container" className="slideshow-container">
 				<div id="slidesDiv"> {this.state.slidesArray} </div>
 				<div id="slideshowButtons">
-					<a className="prev" onClick={this.changeSlides.bind(this, -1)}>&#10094;</a>
-					<a className="next" onClick={this.changeSlides.bind(this, 1)}>&#10095;</a>
+					<a className="prev" onClick={this.changeSlides.bind(this, -1, false)}>&#10094;</a>
+					<a className="next" onClick={this.changeSlides.bind(this, 1, false)}>&#10095;</a>
 				</div>
 			</div>	
 		</div>
