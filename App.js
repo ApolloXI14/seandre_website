@@ -14,8 +14,8 @@ class App extends Component{
          	<Navbar />
             <h1>Hello World</h1>
             <Switch>
-               <Route path="/poems" component={Poems} exact />
-               <Route path="/" component={Home} exact />
+               <Route exact path="/" component={Home} />
+   				<Route exact path="/poems" component={Poems} />
    			</Switch>
          </div>
       );
