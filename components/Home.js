@@ -6,8 +6,8 @@ class Home extends Component{
       return(
          <div>
           	<h2>Welcome to my writing/music website!</h2>
-          	<p>Please check out the <Link to="/journal">Journal</Link>, <Link to="/poems">Poems</Link>, and <Link to="/about">About Me</Link> sections. All other sections
-will be coming soon!</p>
+          	<div>Please check out the <Link to="/journal">Journal</Link>, <Link to="/poems">Poems</Link>, and <Link to="/about">About Me</Link> sections. All other sections
+will be coming soon!</div>
 		</div>
       );
    }
