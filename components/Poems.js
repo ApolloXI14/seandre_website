@@ -6,6 +6,9 @@ export default class Poems extends Component{
       return(
          <div>
           	<Slideshow imgPath={POEMS_DIR} />
+          	<footer>
+          		<p>© 2020 Sean McHugh</p>
+          	</footer>
 		</div>
       );
    }
