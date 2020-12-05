@@ -6,8 +6,8 @@ class Navbar extends Component{
    render(){
       return(
          <div className="navbar">
-          <div><Link to="/">Home</Link></div>
-		  <div><Link to="/">Music</Link></div>
+          <div><Link className="link" to="/">Home</Link></div>
+		  <div><Link className="link" to="/">Music</Link></div>
 		  
 			  <div className="dropdown">
 			    <button className="dropbtn">Writing
@@ -15,14 +15,14 @@ class Navbar extends Component{
 			    </button>
 			    <div className="dropdown-content">
 		    			<ul>
-				      		<Link to="/poems">Poems</Link>
-				      		<Link to="/">Short Stories</Link>
-				      		<Link to="/journal">Journal</Link>
+				      		<Link className="link" to="/poems">Poems</Link>
+				      		<Link className="link" to="/">Short Stories</Link>
+				      		<Link className="link" to="/journal">Journal</Link>
 			      		</ul>
 			      	
 			    </div>
 			  </div>
-			  <div><Link to="/about">About</Link></div>
+			  <div><Link className="link" to="/about">About</Link></div>
 		
 		</div>
       );
