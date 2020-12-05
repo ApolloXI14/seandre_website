@@ -5,8 +5,8 @@ class Home extends Component{
    render(){
       return(
          <div>
-          	<p>Welcome to my writing/music website!</p>
-          	<p>Please check out the <Link to="/home">Journal</Link>, <Link to="/poems">Poems</Link>, and <Link to="/about">About Me</Link> sections. All other sections
+          	<h2>Welcome to my writing/music website!</h2>
+          	<p>Please check out the <Link to="/journal">Journal</Link>, <Link to="/poems">Poems</Link>, and <Link to="/about">About Me</Link> sections. All other sections
 will be coming soon!</p>
 		</div>
       );

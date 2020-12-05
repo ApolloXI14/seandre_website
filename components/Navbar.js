@@ -5,23 +5,24 @@ import { Link } from 'react-router-dom';
 class Navbar extends Component{
    render(){
       return(
-         <div class="navbar">
+         <div className="navbar">
           <div><Link to="/">Home</Link></div>
 		  <div><Link to="/">Music</Link></div>
 		  
-			  <div class="dropdown">
-			    <button class="dropbtn">Writing
-			      <i class=""></i>
+			  <div className="dropdown">
+			    <button className="dropbtn">Writing
+			      <i className=""></i>
 			    </button>
-			    <div class="dropdown-content">
+			    <div className="dropdown-content">
 		    			<ul>
 				      		<Link to="/poems">Poems</Link>
 				      		<Link to="/">Short Stories</Link>
-				      		<Link to="/">Journal</Link>
+				      		<Link to="/journal">Journal</Link>
 			      		</ul>
 			      	
 			    </div>
 			  </div>
+			  <div><Link to="/about">About</Link></div>
 		
 		</div>
       );
