@@ -15,7 +15,7 @@ class App extends Component{
             <h1>Hello World</h1>
             <Switch>
                <Route exact path="/poems" component={Poems} />
-               <Route exact path="/home" component={Home} />
+               <Route exact path="/" component={Home} />
    			</Switch>
          </div>
       );
