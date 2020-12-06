@@ -43,7 +43,7 @@ module.exports = {
                options: {
                  name: '[name].[ext]',
                 outputPath: 'static/assets/',
-                publicPath: 'static/assets/',
+                publicPath: 'prod/static/assets/',
                  emitFile: true,
                  byPassOnDebug: true,
                  disable: true
