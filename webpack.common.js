@@ -79,13 +79,11 @@ module.exports = {
    },
    plugins:[
       new HtmlWebpackPlugin({
-         template: './index.html'
+         template: './index.html',
+         hash: true
       }),
       new webpack.DefinePlugin({
         POEMS_DIR: JSON.stringify('../www/img/poems/')
       })
-   ],
-   externals: [
-    'require'
    ]
 }
