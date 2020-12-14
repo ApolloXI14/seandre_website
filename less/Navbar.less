@@ -8,12 +8,12 @@
 }
 
 .navbar div {
-  .link {
-     font-size: 50px;
-  }
   width: 200px;
   text-align: center;
   font-size: 50px;
+  & .link {
+     font-size: 50px;
+  }
 }
 
 /* Links inside the navbar */
@@ -51,20 +51,19 @@
 
 /* Dropdown content (hidden by default; set "display: block" to debug) */
 .dropdown-content {
-  ul{
-    margin-top: 3px;
-    margin-bottom: 0px;
-    .link {
-         font-size: 30px;
-      }
-    } 
-
   display: none;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  & ul {
+    margin-top: 3px;
+    margin-bottom: 0px;
+    .link {
+         font-size: 30px;
+      }
+    } 
 }
 
 /* Links inside the dropdown */
