@@ -5041,13 +5041,21 @@ var Navbar_Navbar = /*#__PURE__*/function (_Component) {
   _createClass(Navbar, [{
     key: "render",
     value: function render() {
+      // <Link> react component must be styled directly, not in less, because it won't work in minified CSS in prod
+      var fontSize = {
+        fontSize: "50px"
+      };
+      var dropdownStyles = {
+        fontSize: "30px",
+        marginLeft: "-40px"
+      };
       return /*#__PURE__*/react.createElement("div", {
         className: "navbar"
       }, /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement(Link, {
-        className: "link",
+        style: fontSize,
         to: "/"
       }, "Home")), /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement(Link, {
-        className: "link",
+        style: fontSize,
         to: "/"
       }, "Music")), /*#__PURE__*/react.createElement("div", {
         className: "dropdown"
@@ -5058,16 +5066,16 @@ var Navbar_Navbar = /*#__PURE__*/function (_Component) {
       })), /*#__PURE__*/react.createElement("div", {
         className: "dropdown-content"
       }, /*#__PURE__*/react.createElement("ul", null, /*#__PURE__*/react.createElement(Link, {
-        className: "link",
+        style: dropdownStyles,
         to: "/poems"
       }, "Poems"), /*#__PURE__*/react.createElement(Link, {
-        className: "link",
+        style: dropdownStyles,
         to: "/"
       }, "Short Stories"), /*#__PURE__*/react.createElement(Link, {
-        className: "link",
+        style: dropdownStyles,
         to: "/journal"
       }, "Journal")))), /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement(Link, {
-        className: "link",
+        style: fontSize,
         to: "/about"
       }, "About")));
     }
