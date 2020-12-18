@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import parse from 'html-react-parser';
+import { Link } from 'react-router-dom';
 
 class JournalEntry extends Component{
 	constructor(props) {
@@ -16,8 +17,13 @@ class JournalEntry extends Component{
 	}
    render(){
       return(
-         <div>
-      		{this.state.html}
+      	<div>
+	         <div>
+	      		{this.state.html}
+		    </div>
+		    <div>
+		    	<Link to="/journal">Back</Link>
+		    </div>
 	    </div>
       );
    }
