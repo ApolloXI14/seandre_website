@@ -104,10 +104,10 @@
     "webpack-sources": "^2.2.0",
     "wildcard": "^2.0.0",
     "yargs": "^13.3.2",
-    "yarn": "^1.22.10"
+    "yarn": "^1.22.10",
+    "file-rawtxt-loader": "^1.0.2",
+    "html-react-parser": "^1.0.0"
   },
-  "devDependencies": {
-    "file-rawtxt-loader": "^1.0.2"
-  },
+  "devDependencies": {},
   "description": ""
 }
