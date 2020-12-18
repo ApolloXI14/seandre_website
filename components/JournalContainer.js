@@ -2,7 +2,7 @@
 // PLAN: Similar to "Slideshow" comp, folder of plaintext files CONTAINING CONTENT AND LIGHT HTML is read
 // FILENAME WILL CONTAIN METADATA FOR POST (TITLE, DATE, ETC.), AND BE PARSED TO SUPPLY THAT
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import JournalMenu from './JournalMenu';
 import JournalEntry from './JournalEntry';
@@ -39,12 +39,10 @@ class Journal extends Component{
    render(){
       return (
         <div id="journalContainer">
-          <Router>
-            <Switch>
+          
               <JournalMenu array={this.state.journalEntriesArray} />
-              <Route exact path="journal/entry/:id" component={JournalEntry} />
-            </Switch>
-          </Router>
+              
+            
         </div>
       );
    }

@@ -1,7 +1,9 @@
-// TODO: Make component dynamic in future, to loop through a cache of text entries and render
 import React, { Component } from 'react';
 
 class JournalEntry extends Component{
+	componentDidMount(props) {
+		console.log('JournalEntry');
+	}
    render(){
       return(
          <div>

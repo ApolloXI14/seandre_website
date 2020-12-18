@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Poems from './components/Poems';
 import JournalContainer from './components/JournalContainer';
+import JournalEntry from './components/JournalEntry';
 import About from './components/About';
 import { Route, Switch, withRouter } from 'react-router-dom';
 
@@ -15,6 +16,7 @@ class App extends Component{
          <div className="intro">
          	<Navbar />
             <Switch>
+               <Route exact path="/journal/entry/:id" component={JournalEntry} />
                <Route exact path="/poems" component={Poems} />
                <Route exact path="/journal" component={JournalContainer} />
                <Route exact path="/about" component={About} />
