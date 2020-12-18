@@ -88,7 +88,7 @@ module.exports = {
       }),
       new webpack.DefinePlugin({
         POEMS_DIR: JSON.stringify('../www/img/poems/'),
-        JOURNAL_DIR: JSON.stringify('../www/img/journal/')
+        JOURNAL_DIR: JSON.stringify('../www/txt/journal/')
       })
    ]
 }
