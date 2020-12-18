@@ -5,7 +5,7 @@ class JournalEntry extends Component{
    render(){
       return(
          <div>
-          	
+          JOURNAL ENTRY
 		    </div>
       );
    }
