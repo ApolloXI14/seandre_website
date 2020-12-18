@@ -1,32 +1,56 @@
 // TODO: Make component dynamic in future, to loop through a cache of text entries and render
+// PLAN: Similar to "Slideshow" comp, folder of plaintext files CONTAINING CONTENT AND LIGHT HTML is read
+// FILENAME WILL CONTAIN METADATA FOR POST (TITLE, DATE, ETC.), AND BE PARSED TO SUPPLY THAT
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 
 class Journal extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      journalEntriesArray: []
+    };
+  }
+
+  componentDidMount(props) {
+      function importAll(req) {
+        let txtfiles = []; // 2D array
+        req.keys().map((fileName, index) => {
+          txtfiles.push( [fileName, req(fileName) ] ); });
+          return txtfiles;
+      }
+
+    const req = require.context(JOURNAL_DIR, true, /.txt$/);
+    this.setState((state, props) => ({
+        journalEntriesArray: importAll(req)
+      }), () => {
+        console.log('journalEntriesArray: ', this.state.journalEntriesArray);
+        // const EntryLinks = this.createJournalLinksArray()
+        // const JournalMenu = (EntryLinks) => {
+        //   return(
+        //     <ul>
+        //     {EntryLinks}
+        //   </ul>
+        //   );
+        // };
+        this.renderBody();
+      });
+    }
+    renderBody(props) {
+      ReactDOM.render(
+        <ul>
+          {this.state.journalEntriesArray.map((entry, index) => (
+            <li key={index}><Link to="/">{entry[0]}</Link></li>
+            ))}
+        </ul>, document.getElementById('body'));
+    }
+
    render(){
-      return(
-         <div>
-          	<p>12/5/20 7AM</p>
-          	<p>This is my first journal entry for this website. Thank you once again for
-coming here again, and reading this.</p>
-			<p>With the exception of a few other life pitfalls, 2020 has definitely
-been the most challenging year in my living memory, and I'm sure you
-probably feel the same. I've dealt with so many emotional challenges
-this year. I've had to fight my tendency of withdrawl and
-self-isolation...in an era defined by high anxiety and isolation. I've
-had to deal with anger issues, punching holes, hurting myself
-unnecessarily, and fixing everything.
-I've cried randomly several times this year, completely by my own
-surprise, most recently just yesterday, thinking about how much I
-missed everyone, and one of which was right after destroying something and asking myself, "Why am I so
-angry?"</p>
-		<p>This site and this post is a re-commitment to myself. The most
-important relationship we all have is with ourselves, and I think I
-lost track of that, and myself. I took too long to make this site, and
-if I didn't do it now in the year of quarantine, when would I ever?</p>
-	<p>This is to my inner child, who was so passionate about writing things
-and sharing them he couldn't care less how sloppy/rudimentary that
-          	</p>
-		</div>
+      return (
+        <div id="body">
+          JOURNAL COMPONENT
+        </div>
       );
    }
 }

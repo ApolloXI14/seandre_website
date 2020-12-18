@@ -106,6 +106,8 @@
     "yargs": "^13.3.2",
     "yarn": "^1.22.10"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "file-rawtxt-loader": "^1.0.2"
+  },
   "description": ""
 }
