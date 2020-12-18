@@ -10,9 +10,8 @@ class JournalEntry extends Component{
    render(){
       return(
          <div>
-          JOURNAL ENTRY
-          
-		    </div>
+      		{this.props.entryContent}
+	    </div>
       );
    }
 }

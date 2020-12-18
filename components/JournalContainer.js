@@ -14,7 +14,7 @@ class Journal extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      currentEntry: null,
+      currentEntryId: null,
       journalEntriesArray: []
     };
   }
@@ -38,29 +38,43 @@ class Journal extends Component{
     componentDidUpdate(prevProps) {
       console.log('update: ', prevProps);
       if (prevProps.match.params !== this.props.match.params) {
-            const currentEntry = Number(this.props.match.params.id);
+            const currentEntryId = Number(this.props.match.params.id) -1; // minusShifting for array
             this.setState((state, props) => ({
-              currentEntry: currentEntry
+              currentEntryId: currentEntryId
             }), () => {
               console.log('STATE UPDATE: ', this);
+              //ReactDOM.render()
+              let content = this.determineContent(this.state.currentEntryId, this.state.journalEntriesArray);
+              console.log('NEW CONTENT: ', content);
             });
       }
-      // if (this.props.match) {
-      //     this.setState((state, props) => ({
-      //       currentEntry: this.props.params.id
-      //     }), () => {
-      //       console.log('update: ', this);
-      //     });
-      // }
     }
-
+    determineContent(currentEntryId, journalEntriesArray) {
+      let content;
+      if (currentEntryId !== null) {
+        const entryContent = journalEntriesArray[currentEntryId][1];
+        content = <JournalEntry entryContent={entryContent} />
+      } else {
+        content = <JournalMenu array={journalEntriesArray} />
+      }
+      return content;
+    }
    render(){
+      const currentEntryId = this.state.currentEntryId;
+      let content;
+      if (currentEntryId) {
+        const entryContent = this.state.journalEntriesArray[this.state.currentEntryId][1];
+        content = <JournalEntry entryContent={entryContent} />
+      } else {
+        content = <JournalMenu array={this.state.journalEntriesArray} />
+      }
       return (
         <div id="journalContainer">
-          
-              <JournalMenu array={this.state.journalEntriesArray} />
-              
-            
+          <div id="journalDiv">
+            {this.state.currentEntryId === null ? 
+              <JournalMenu array={this.state.journalEntriesArray} /> :
+              <JournalEntry entryContent={this.state.journalEntriesArray[this.state.currentEntryId][1]} />}
+          </div>
         </div>
       );
    }
