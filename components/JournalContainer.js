@@ -38,12 +38,11 @@ class Journal extends Component{
     componentDidUpdate(prevProps) {
       console.log('update: ', prevProps);
       if (prevProps.match.params !== this.props.match.params) {
-            const currentEntryId = Number(this.props.match.params.id) -1; // minusShifting for array
+            const currentEntryId = this.props.match.params.id ? Number(this.props.match.params.id) -1 : null; // minusShifting for array
             this.setState((state, props) => ({
               currentEntryId: currentEntryId
             }), () => {
               console.log('STATE UPDATE: ', this);
-              //ReactDOM.render()
               let content = this.determineContent(this.state.currentEntryId, this.state.journalEntriesArray);
               console.log('NEW CONTENT: ', content);
             });
