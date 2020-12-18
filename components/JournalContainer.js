@@ -35,6 +35,24 @@ class Journal extends Component{
         // this.renderBody();
       });
     }
+    componentDidUpdate(prevProps) {
+      console.log('update: ', prevProps);
+      if (prevProps.match.params !== this.props.match.params) {
+            const currentEntry = Number(this.props.match.params.id);
+            this.setState((state, props) => ({
+              currentEntry: currentEntry
+            }), () => {
+              console.log('STATE UPDATE: ', this);
+            });
+      }
+      // if (this.props.match) {
+      //     this.setState((state, props) => ({
+      //       currentEntry: this.props.params.id
+      //     }), () => {
+      //       console.log('update: ', this);
+      //     });
+      // }
+    }
 
    render(){
       return (
