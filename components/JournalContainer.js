@@ -3,13 +3,18 @@
 // FILENAME WILL CONTAIN METADATA FOR POST (TITLE, DATE, ETC.), AND BE PARSED TO SUPPLY THAT
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
+
+import JournalMenu from './JournalMenu';
 import JournalEntry from './JournalEntry';
+
+
 import ReactDOM from 'react-dom';
 
 class Journal extends Component{
   constructor(props) {
     super(props);
     this.state = {
+      currentEntry: null,
       journalEntriesArray: []
     };
   }
@@ -27,27 +32,19 @@ class Journal extends Component{
         journalEntriesArray: importAll(req)
       }), () => {
         console.log('journalEntriesArray: ', this.state.journalEntriesArray);
-        this.renderBody();
+        // this.renderBody();
       });
-    }
-    renderBody(props) {
-      ReactDOM.render(
-        <Router>
-        <ul>
-          {this.state.journalEntriesArray.map((entry, index) => (
-            <li key={index}><Link to="/home">{entry[0]}</Link></li>
-            ))}
-        </ul>
-        <Switch>
-          <Route exact path="/entry/:id" component={JournalEntry} />
-        </Switch>
-        </Router>, document.getElementById('body'));
     }
 
    render(){
       return (
-        <div id="body">
-          JOURNAL COMPONENT
+        <div id="journalContainer">
+          <Router>
+            <Switch>
+              <JournalMenu array={this.state.journalEntriesArray} />
+              <Route exact path="journal/entry/:id" component={JournalEntry} />
+            </Switch>
+          </Router>
         </div>
       );
    }
