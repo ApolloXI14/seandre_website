@@ -18,7 +18,7 @@ class Home extends Component{
 	        fileDate = fileDate.replace('.txt', '');
 	        let fileName = strArr[0];
 	        fileName = fileName.replace('./', '');
-	        fileName = fileName.replace('_', ' ');
+	        fileName = fileName.replace(/_/g, ' ');
 	        return [fileName, fileDate];
 	      }
 	      function importAll(req) {
@@ -36,13 +36,12 @@ class Home extends Component{
       return(
          <div id="homeDiv">
           	{this.state.homeEntriesArray.length && this.state.homeEntriesArray.map((entry, index) => (
-          		<div>
-          		<div id="entryData-flex">
-          			<div id="entryName">{entry[0][0]}</div><div id="entryDate">Dated: {entry[0][1]}</div>
+          		<div key={index}>
+          		<div className="entryData-flex">
+          			<div className="entryName">{entry[0][0]}</div><div className="entryDate">Dated: {entry[0][1]}</div>
           		</div>
-          		
-          		
-            	<div key={index}>{entry[1][index]}</div>
+            	<div>{entry[1]}</div>
+            	<hr/>
             	</div>
             ))}
 		</div>

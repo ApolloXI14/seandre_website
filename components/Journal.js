@@ -20,7 +20,7 @@ class Journal extends Component{
         fileDate = fileDate.replace('.txt', '');
         let fileName = strArr[0];
         fileName = fileName.replace('./', '');
-        fileName = fileName.replace('_', ' ');
+        fileName = fileName.replace(/_/g, ' ');
         return [fileName, fileDate];
       }
       function importAll(req) {
