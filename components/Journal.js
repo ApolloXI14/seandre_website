@@ -14,16 +14,18 @@ class Journal extends Component{
     };
   }
   componentDidMount(props) {
-      function sanitizeFileName(str) {
-        str = str.replace('./', '');
-        str = str.replace('_', ' ');
-        str = str.replace('.txt', '');
-        return str;
+      function getFileMetaData(str) {
+        let strArr = str.split('__');
+        let fileDate = strArr[1].slice(0,2) + '/' + strArr[1].slice(2,4) + '/' + strArr[1].slice(4,6);
+        fileDate = fileDate.replace('.txt', '');
+        let fileName = strArr[0];
+        fileName = fileName.replace('./', '');
+        return [fileName, fileDate];
       }
       function importAll(req) {
-        let txtfiles = []; // 2D array
+        let txtfiles = []; // 2D array in [['', ...], ''] form, to get array of metadata (parsed from fileName) and file content
         req.keys().map((fileName, index) => {
-          txtfiles.push( [sanitizeFileName(fileName), req(fileName) ] ); });
+          txtfiles.push( [getFileMetaData(fileName), req(fileName) ] ); });
           return txtfiles;
       }
       const req = require.context(JOURNAL_DIR, true, /.txt$/);
