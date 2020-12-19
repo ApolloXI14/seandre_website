@@ -7,3 +7,4 @@ Format should be .txt, and content must contain HTML only: `<p>`, `<i>`,
 
 _ALL FILES **MUST** HAVE A ROOT ELEMENT, OTHERWISE ERRORS WILL
 OCCUR_
+Do **NOT** include HTML comments `<!-- ... -->`

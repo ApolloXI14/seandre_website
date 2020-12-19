@@ -1,3 +1,4 @@
+// <Link> React components are not handled by "html-react-parser"; consider enhancement?
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../less/Home.less'
@@ -34,7 +35,7 @@ class Home extends Component{
       return(
          <div id="homeDiv">
           	{this.state.homeEntriesArray.length && this.state.homeEntriesArray.map((entry, index) => (
-            	<div>{entry[1][index]}</div>
+            	<div key={index}>{entry[1][index]}</div>
             ))}
 		</div>
       );
