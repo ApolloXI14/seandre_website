@@ -1,4 +1,3 @@
-// FILENAME WILL CONTAIN METADATA FOR POST (TITLE, DATE, ETC.), AND BE PARSED TO SUPPLY THAT
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import JournalMenu from './JournalMenu';
