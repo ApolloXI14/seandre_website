@@ -62,7 +62,7 @@ class Journal extends Component{
           <div id="journalDiv">
             {this.state.currentEntryId === null ? 
               <JournalMenu array={this.state.journalEntriesArray} /> :
-              <JournalEntry entryContent={this.state.journalEntriesArray[this.state.currentEntryId][1]} lastEntryId={this.state.journalEntriesArray.length} />}
+              <JournalEntry entriesArray={this.state.journalEntriesArray} lastEntryId={this.state.journalEntriesArray.length} />}
           </div>
         </div>
       );

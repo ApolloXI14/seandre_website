@@ -8,19 +8,40 @@ class JournalEntry extends Component{
 		super(props);
 		this.state = {
 			html: null,
+			entriesArray: this.props.entriesArray,
+			currentEntryId: null,
 			lastEntryId: this.props.lastEntryId
 		};
 	}
-	componentDidMount(props) {
-		const html = parse(this.props.entryContent);
-		this.setState({
-			html: html
-		});
-	}
-   render(){
-   		let location = this.props.location.pathname.split('/');
+	getParamId(props) {
+		let location = this.props.location.pathname.split('/');
    		let val = location[location.length-1];
    		let currentParamId = !isNaN(val) && Number(val);
+   		return currentParamId
+	}
+	getHTML(index) {
+		let html = this.props.entriesArray[index-1][1];
+		return html = parse(html);
+	}
+	componentDidMount(props) {
+		const currentParamId = this.getParamId();
+		const html = this.getHTML(currentParamId);
+		this.setState((state, props) => ({
+			html: html,
+			currentEntryId: currentParamId
+		}));
+	}
+	componentDidUpdate(prevProps) {
+		if (prevProps.match.params !== this.props.match.params) {
+			const currentParamId = this.getParamId();
+			const html = currentParamId ? this.getHTML(currentParamId) : null;
+			this.setState((state, props) => ({
+				html: html,
+				currentEntryId: currentParamId
+			}));
+		}
+	}
+   render(){
       return(
       	<div>
 	         <div>
@@ -28,11 +49,11 @@ class JournalEntry extends Component{
 		    </div>
 		    <div>
 		    	<Link to="/journal">Back</Link>
-		    	{(currentParamId !== 1) &&
-		    		<Link to={`/journal/${currentParamId - 1}`}>Prev</Link>
+		    	{(this.state.currentEntryId !== 1) &&
+		    		<Link to={`/journal/${this.state.currentEntryId - 1}`}>Prev</Link>
 		    	 }
-		    	{(currentParamId !== this.state.lastEntryId) &&
-		    		<Link to={`/journal/${currentParamId + 1}`}>Next</Link>
+		    	{(this.state.currentEntryId !== this.state.lastEntryId) &&
+		    		<Link to={`/journal/${this.state.currentEntryId + 1}`}>Next</Link>
 		    	 }
 		    </div>
 	    </div>
