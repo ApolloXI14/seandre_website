@@ -9,8 +9,7 @@ class Slideshow extends Component{
 	    super(props);
 	    this.state = {
 	    	slideIndex: 1,
-	    	slidesArray:   [],
-	    	imgPath: ''
+	    	slidesArray:   []
 	    };
   	}
 

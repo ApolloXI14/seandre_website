@@ -36,6 +36,10 @@ module.exports = {
               ],
          },
          {
+           test: /\.txt$/,
+           use: 'file-rawtxt-loader'
+         },
+         {
            test: /.*\.(gif|png|jpe?g|svg)$/i,
            use: [
              {
@@ -83,7 +87,9 @@ module.exports = {
          hash: true
       }),
       new webpack.DefinePlugin({
-        POEMS_DIR: JSON.stringify('../www/img/poems/')
+        POEMS_DIR: JSON.stringify('../www/img/poems/'),
+        JOURNAL_DIR: JSON.stringify('../www/txt/journal/'),
+        HOME_DIR: JSON.stringify('../www/txt/home/')
       })
    ]
 }

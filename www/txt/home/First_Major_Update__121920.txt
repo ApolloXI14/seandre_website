@@ -1,0 +1,7 @@
+<div>
+<p>With the exception of a few breaks, I've been coding for almost
+two straight days on this update...the first of many more to come! 
+I improved the styling, implemented menus, and I have a new "Journal"
+entry. Please check it out when you can. I'm gonna go recuperate
+now.</p>
+</div>

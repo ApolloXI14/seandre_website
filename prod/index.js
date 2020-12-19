@@ -205,7 +205,7 @@ module.exports = function cssWithMappingToString(item) {
 
 /***/ }),
 
-/***/ 290:
+/***/ 678:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -217,7 +217,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 221:
+/***/ 837:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -229,7 +229,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 942:
+/***/ 123:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -241,7 +241,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 491:
+/***/ 353:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -253,7 +253,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 289:
+/***/ 483:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -274,6 +274,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("prod/static/assets/where_are_you.jpg");
+
+/***/ }),
+
+/***/ 816:
+/***/ ((module) => {
+
+module.exports = "<p>This is my first journal entry for this website. Thank you once again for coming here again, and reading this.</p><p>With the exception of a few other life pitfalls 2020 has definitely been the most challenging year in my living memory, and I'm sure you probably feel the same. I've dealt with so many emotional challenges this year. I've had to fight my tendency of withdrawl and self-isolation...in an era defined by high anxiety and isolation. I've had to deal with anger issues, punching holes, hurting myself unnecessarily, and fixing everything. I've cried randomly several times this year, completely by my own surprise, most recently just yesterday, thinking about how much I missed everyone, and one of which was right after destroying something and asking myself, \"Why am I so angry?\"</p><p>This site and this post is a re-commitment to myself. The most important relationship we all have is with ourselves, and I think I lost track of that, and myself. I took too long to make this site, and if I didn't do it now in the year of quarantine, when would I ever?</p><p>This is to my inner child, who was so passionate about writing things and sharing them he couldn't care less how sloppy/rudimentary that.</p>\n"
 
 /***/ }),
 
@@ -1776,15 +1783,44 @@ module.exports = function (list, options) {
 
 /***/ }),
 
+/***/ 452:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+var map = {
+	"./My_First_Entry.txt": 816
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 452;
+
+/***/ }),
+
 /***/ 182:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
-	"./black_faces_sm.png": 290,
-	"./pursuit_of_happiness.jpg": 221,
-	"./she_is_a_science.jpg": 942,
-	"./the_world_is_flat.jpg": 491,
-	"./track_runner.jpg": 289,
+	"./black_faces_sm.png": 678,
+	"./pursuit_of_happiness.jpg": 837,
+	"./she_is_a_science.jpg": 123,
+	"./the_world_is_flat.jpg": 353,
+	"./track_runner.jpg": 483,
 	"./where_are_you.jpg": 121
 };
 
@@ -5431,8 +5467,7 @@ var Slideshow_Slideshow = /*#__PURE__*/function (_Component) {
     _this = _super.call(this, props);
     _this.state = {
       slideIndex: 1,
-      slidesArray: [],
-      imgPath: ''
+      slidesArray: []
     };
     return _this;
   }
@@ -5516,9 +5551,7 @@ var Poems = /*#__PURE__*/function (_Component) {
   Poems_createClass(Poems, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement(components_Slideshow, {
-        imgPath: "../www/img/poems/"
-      }), /*#__PURE__*/react.createElement("footer", null, /*#__PURE__*/react.createElement("p", null, "\xA9 2020 Sean McHugh")));
+      return /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement(components_Slideshow, null), /*#__PURE__*/react.createElement("footer", null, /*#__PURE__*/react.createElement("p", null, "\xA9 2020 Sean McHugh")));
     }
   }]);
 
@@ -5550,6 +5583,8 @@ function Journal_isNativeReflectConstruct() { if (typeof Reflect === "undefined"
 function Journal_getPrototypeOf(o) { Journal_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return Journal_getPrototypeOf(o); }
 
 // TODO: Make component dynamic in future, to loop through a cache of text entries and render
+// PLAN: Similar to "Slideshow" comp, folder of plaintext files CONTAINING CONTENT AND LIGHT HTML is read
+// FILENAME WILL CONTAIN METADATA FOR POST (TITLE, DATE, ETC.), AND BE PARSED TO SUPPLY THAT
 
 
 var Journal = /*#__PURE__*/function (_Component) {
@@ -5557,16 +5592,41 @@ var Journal = /*#__PURE__*/function (_Component) {
 
   var _super = Journal_createSuper(Journal);
 
-  function Journal() {
+  function Journal(props) {
+    var _this;
+
     Journal_classCallCheck(this, Journal);
 
-    return _super.apply(this, arguments);
+    _this = _super.call(this, props);
+    _this.state = {
+      journalEntriesArray: []
+    };
+    return _this;
   }
 
   Journal_createClass(Journal, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      function importAll(req) {
+        var txtfiles = [];
+        req.keys().map(function (fileName, index) {
+          txtfiles.push({
+            fileName: fileName,
+            content: req(fileName)
+          });
+        });
+        return txtfiles;
+      }
+
+      var req = __webpack_require__(452);
+
+      var journalEntriesArray = importAll(req);
+      console.log('journalEntriesArray: ', journalEntriesArray); //this.renderBody(journalEntriesArray);
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement("p", null, "12/5/20 7AM"), /*#__PURE__*/react.createElement("p", null, "This is my first journal entry for this website. Thank you once again for coming here again, and reading this."), /*#__PURE__*/react.createElement("p", null, "With the exception of a few other life pitfalls, 2020 has definitely been the most challenging year in my living memory, and I'm sure you probably feel the same. I've dealt with so many emotional challenges this year. I've had to fight my tendency of withdrawl and self-isolation...in an era defined by high anxiety and isolation. I've had to deal with anger issues, punching holes, hurting myself unnecessarily, and fixing everything. I've cried randomly several times this year, completely by my own surprise, most recently just yesterday, thinking about how much I missed everyone, and one of which was right after destroying something and asking myself, \"Why am I so angry?\""), /*#__PURE__*/react.createElement("p", null, "This site and this post is a re-commitment to myself. The most important relationship we all have is with ourselves, and I think I lost track of that, and myself. I took too long to make this site, and if I didn't do it now in the year of quarantine, when would I ever?"), /*#__PURE__*/react.createElement("p", null, "This is to my inner child, who was so passionate about writing things and sharing them he couldn't care less how sloppy/rudimentary that"));
+      return /*#__PURE__*/react.createElement("div", null, "JOURNAL COMPONENT");
     }
   }]);
 

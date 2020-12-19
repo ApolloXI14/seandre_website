@@ -5,7 +5,7 @@ export default class Poems extends Component{
    render(){
       return(
          <div>
-          	<Slideshow imgPath={POEMS_DIR} />
+          	<Slideshow />
           	<footer>
           		<p>© 2020 Sean McHugh</p>
           	</footer>
