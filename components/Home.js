@@ -40,7 +40,7 @@ class Home extends Component{
           		<div className="entryData-flex">
           			<div className="entryName">{entry[0][0]}</div><div className="entryDate">Dated: {entry[0][1]}</div>
           		</div>
-            	<div>{entry[1]}</div>
+            	<div className="entryContent">{entry[1]}</div>
             	<hr/>
             	</div>
             ))}
