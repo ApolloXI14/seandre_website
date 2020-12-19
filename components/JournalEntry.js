@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import parse from 'html-react-parser';
 import { withRouter, Link } from 'react-router-dom';
+import styles from '../less/JournalEntry.less'
 // "withRouter" must be imported AND USED TO EXPORT COMP for route access
 
 class JournalEntry extends Component{
@@ -20,7 +21,7 @@ class JournalEntry extends Component{
    		return currentParamId
 	}
 	getHTML(index) {
-		let html = this.props.entriesArray[index-1][1];
+		let html = this.props.entriesArray[index-1][1]; // minus shifting for array index
 		return html = parse(html);
 	}
 	componentDidMount(props) {
@@ -43,12 +44,11 @@ class JournalEntry extends Component{
 	}
    render(){
       return(
-      	<div>
+      	<div id="journalEntryDiv">
 	         <div>
 	      		{this.state.html}
 		    </div>
-		    <div>
-		    	<Link to="/journal">Back</Link>
+		    <div id="links">
 		    	{(this.state.currentEntryId !== 1) &&
 		    		<Link to={`/journal/${this.state.currentEntryId - 1}`}>Prev</Link>
 		    	 }
@@ -56,6 +56,7 @@ class JournalEntry extends Component{
 		    		<Link to={`/journal/${this.state.currentEntryId + 1}`}>Next</Link>
 		    	 }
 		    </div>
+		    <div id="links"><Link to="/journal">Back</Link></div>
 	    </div>
       );
    }

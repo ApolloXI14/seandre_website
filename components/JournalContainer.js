@@ -18,7 +18,6 @@ class Journal extends Component{
       journalEntriesArray: []
     };
   }
-
   componentDidMount(props) {
       function sanitizeFileName(str) {
         str = str.replace('./', '');
@@ -32,9 +31,8 @@ class Journal extends Component{
           txtfiles.push( [sanitizeFileName(fileName), req(fileName) ] ); });
           return txtfiles;
       }
-
-    const req = require.context(JOURNAL_DIR, true, /.txt$/);
-    this.setState((state, props) => ({
+      const req = require.context(JOURNAL_DIR, true, /.txt$/);
+      this.setState((state, props) => ({
         journalEntriesArray: importAll(req)
       }));
     }
@@ -46,24 +44,12 @@ class Journal extends Component{
             }));
       }
     }
-    determineContent(currentEntryId, journalEntriesArray) {
-      let content;
-      if (currentEntryId !== null) {
-        const entryContent = journalEntriesArray[currentEntryId][1];
-        content = <JournalEntry entryContent={entryContent} />
-      } else {
-        content = <JournalMenu array={journalEntriesArray} />
-      }
-      return content;
-    }
    render(){
       return (
         <div id="journalContainer">
-          <div id="journalDiv">
             {this.state.currentEntryId === null ? 
               <JournalMenu array={this.state.journalEntriesArray} /> :
               <JournalEntry entriesArray={this.state.journalEntriesArray} lastEntryId={this.state.journalEntriesArray.length} />}
-          </div>
         </div>
       );
    }
