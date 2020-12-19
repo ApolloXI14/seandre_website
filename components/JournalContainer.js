@@ -1,5 +1,3 @@
-// TODO: Make component dynamic in future, to loop through a cache of text entries and render
-// PLAN: Similar to "Slideshow" comp, folder of plaintext files CONTAINING CONTENT AND LIGHT HTML is read
 // FILENAME WILL CONTAIN METADATA FOR POST (TITLE, DATE, ETC.), AND BE PARSED TO SUPPLY THAT
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
