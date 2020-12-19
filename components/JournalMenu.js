@@ -9,7 +9,7 @@ class JournalMenu extends Component{
       <ul>
         <ul>
           {this.props.array.map((entry, index) => (
-            <li key={index++}><Link to={`journal/${index++}`}>{entry[0]}</Link></li>
+            <li key={index++}><Link to={`journal/${index++}`}>{entry[0]}</Link> - <cite>test</cite></li>
             ))}
         </ul>
       </ul>
