@@ -57,20 +57,12 @@ class Journal extends Component{
       return content;
     }
    render(){
-      const currentEntryId = this.state.currentEntryId;
-      let content;
-      if (currentEntryId) {
-        const entryContent = this.state.journalEntriesArray[this.state.currentEntryId][1];
-        content = <JournalEntry entryContent={entryContent} />
-      } else {
-        content = <JournalMenu array={this.state.journalEntriesArray} />
-      }
       return (
         <div id="journalContainer">
           <div id="journalDiv">
             {this.state.currentEntryId === null ? 
               <JournalMenu array={this.state.journalEntriesArray} /> :
-              <JournalEntry entryContent={this.state.journalEntriesArray[this.state.currentEntryId][1]} />}
+              <JournalEntry entryContent={this.state.journalEntriesArray[this.state.currentEntryId][1]} lastEntryId={this.state.journalEntriesArray.length} />}
           </div>
         </div>
       );
