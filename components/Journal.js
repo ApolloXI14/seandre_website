@@ -14,7 +14,7 @@ class Journal extends Component{
     };
   }
   componentDidMount(props) {
-      function getFileMetaData(str) {
+      function getFileMetaData(str) {  // TODO: Export to own utility later, to de-duplicate
         let strArr = str.split('__');
         let fileDate = strArr[1].slice(0,2) + '/' + strArr[1].slice(2,4) + '/' + strArr[1].slice(4,6);
         fileDate = fileDate.replace('.txt', '');
