@@ -7,6 +7,7 @@ import styles from '../less/JournalEntry.less'
 class JournalEntry extends Component{
 	constructor(props) {
 		super(props);
+		this.myRef = React.createRef();
 		this.state = {
 			html: null,
 			entriesArray: this.props.entriesArray,
@@ -30,7 +31,9 @@ class JournalEntry extends Component{
 		this.setState((state, props) => ({
 			html: html,
 			currentEntryId: currentParamId
-		}));
+		}), () => {
+			this.myRef.current.scrollIntoView(); // ensure scroll to top occurs
+		});
 	}
 	componentDidUpdate(prevProps) {
 		if (prevProps.match.params !== this.props.match.params) {
@@ -39,25 +42,34 @@ class JournalEntry extends Component{
 			this.setState((state, props) => ({
 				html: html,
 				currentEntryId: currentParamId
-			}));
+			}), () => {
+				this.myRef.current.scrollIntoView(); // ensure scroll to top occurs
+			});
 		}
 	}
    render(){
       return(
-      	<div id="journalEntryDiv">
-	         <div>
-	      		{this.state.html}
+
+      	<div ref={this.myRef} id="journalEntryContainer">
+	      	<div id="journalEntryDiv-flex">
+	      		<div className="previous">
+	      			{(this.state.currentEntryId !== 1) ?
+			    		<Link style={{textDecoration: "none"}} to={`/journal/${this.state.currentEntryId - 1}`}>&#10094;</Link> :
+			    		<div><Link style={{textDecoration: "none"}} to="/journal">&#10094; <br/><p className="btnTxt">(Back)</p></Link></div>
+			    	 }
+	      		</div>
+		         <div id="htmlDiv">
+		      		{this.state.html}
+			    </div>
+			    <div className="nextBtn">
+			    	{(this.state.currentEntryId !== this.state.lastEntryId) ?
+			    		<Link style={{textDecoration: "none"}} to={`/journal/${this.state.currentEntryId + 1}`}>&#10095;</Link> :
+			    		<div><Link style={{textDecoration: "none"}} to="/journal">&#10095; <br/><p className="btnTxt">(End)</p></Link></div>
+			    	 }
+			    </div>
 		    </div>
-		    <div id="links">
-		    	{(this.state.currentEntryId !== 1) &&
-		    		<Link to={`/journal/${this.state.currentEntryId - 1}`}>Prev</Link>
-		    	 }
-		    	{(this.state.currentEntryId !== this.state.lastEntryId) &&
-		    		<Link to={`/journal/${this.state.currentEntryId + 1}`}>Next</Link>
-		    	 }
-		    </div>
-		    <div id="links"><Link to="/journal">Back</Link></div>
 	    </div>
+
       );
    }
 }
