@@ -54,7 +54,7 @@ class JournalEntry extends Component{
 	      	<div id="journalEntryDiv-flex">
 	      		<div className="previous">
 	      			{(this.state.currentEntryId !== 1) ?
-			    		<Link to={`/journal/${this.state.currentEntryId - 1}`}>&#10094;</Link> :
+			    		<Link style={{textDecoration: "none"}} to={`/journal/${this.state.currentEntryId - 1}`}>&#10094;</Link> :
 			    		<Link to="/journal">Back</Link>
 			    	 }
 	      		</div>
@@ -63,7 +63,7 @@ class JournalEntry extends Component{
 			    </div>
 			    <div className="nextBtn">
 			    	{(this.state.currentEntryId !== this.state.lastEntryId) ?
-			    		<Link to={`/journal/${this.state.currentEntryId + 1}`}>&#10095;</Link> :
+			    		<Link style={{textDecoration: "none"}} to={`/journal/${this.state.currentEntryId + 1}`}>&#10095;</Link> :
 			    		<Link to="/journal">End</Link>
 			    	 }
 			    </div>
