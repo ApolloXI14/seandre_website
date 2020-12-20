@@ -340,7 +340,7 @@ module.exports = "<div>\n<p>With the exception of a few breaks, I've been coding
 /***/ 3534:
 /***/ ((module) => {
 
-module.exports = "<div>\n\t<h3>Two major updates</h3>\n\t<p>1. seandre.com is now acquired and live! seandre.net\n\t\tnow auto-redirects here.</p>\n\t<p>2. I have improved the navigation in the \"Journal\"\n\t\tsection.</p>\n\t<p>Check it out when you can, and happy Sunday.</p>\n</div>\n"
+module.exports = "<div>\n\t<h3>Two major updates</h3>\n\t<div>1. seandre.com is now acquired and live! seandre.net\n\t\tnow auto-redirects here.</div>\n\t<div>2. I have improved the navigation in the \"Journal\"\n\t\tsection.</div>\n\t<div>Check it out when you can, and happy Sunday.</div>\n</div>\n"
 
 /***/ }),
 

@@ -1,8 +1,8 @@
 <div>
 	<h3>Two major updates</h3>
-	<p>1. seandre.com is now acquired and live! seandre.net
-		now auto-redirects here.</p>
-	<p>2. I have improved the navigation in the "Journal"
-		section.</p>
-	<p>Check it out when you can, and happy Sunday.</p>
+	<div>1. seandre.com is now acquired and live! seandre.net
+		now auto-redirects here.</div>
+	<div>2. I have improved the navigation in the "Journal"
+		section.</div>
+	<div>Check it out when you can, and happy Sunday.</div>
 </div>
