@@ -2,6 +2,28 @@
 	padding: 20px;
 }
 
-#journalEntryDiv a:visited {
+#journalEntryDiv-flex a:visited {
 	color: grey;
+}
+
+#journalEntryDiv-flex {
+	display: flex;
+}
+
+.previous, .nextBtn {
+	position: fixed;
+	top: 50%;
+	cursor: pointer;
+	transition: 0.6s ease;
+  	border-radius: 0 3px 3px 0;
+  	user-select: none;
+}
+
+.nextBtn {
+	right: 0;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.previous:hover, .nextBtn:hover {
+  background-color: rgba(0,0,0,0.8);
 }

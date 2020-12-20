@@ -44,20 +44,27 @@ class JournalEntry extends Component{
 	}
    render(){
       return(
-      	<div id="journalEntryDiv">
-	         <div>
-	      		{this.state.html}
+
+      	<div id="journalEntryContainer">
+	      	<div id="journalEntryDiv-flex">
+	      		<div className="previous">
+	      			{(this.state.currentEntryId !== 1) ?
+			    		<Link to={`/journal/${this.state.currentEntryId - 1}`}>Prev</Link> :
+			    		<Link to="/journal">Back</Link>
+			    	 }
+	      		</div>
+		         <div id="htmlDiv">
+		      		{this.state.html}
+			    </div>
+			    <div className="nextBtn">
+			    	{(this.state.currentEntryId !== this.state.lastEntryId) ?
+			    		<Link to={`/journal/${this.state.currentEntryId + 1}`}>Next</Link> :
+			    		<Link to="/journal">End</Link>
+			    	 }
+			    </div>
 		    </div>
-		    <div id="links">
-		    	{(this.state.currentEntryId !== 1) &&
-		    		<Link to={`/journal/${this.state.currentEntryId - 1}`}>Prev</Link>
-		    	 }
-		    	{(this.state.currentEntryId !== this.state.lastEntryId) &&
-		    		<Link to={`/journal/${this.state.currentEntryId + 1}`}>Next</Link>
-		    	 }
-		    </div>
-		    <div id="links"><Link to="/journal">Back</Link></div>
 	    </div>
+
       );
    }
 }
