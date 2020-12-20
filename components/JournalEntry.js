@@ -7,6 +7,7 @@ import styles from '../less/JournalEntry.less'
 class JournalEntry extends Component{
 	constructor(props) {
 		super(props);
+		this.myRef = React.createRef();
 		this.state = {
 			html: null,
 			entriesArray: this.props.entriesArray,
@@ -30,7 +31,9 @@ class JournalEntry extends Component{
 		this.setState((state, props) => ({
 			html: html,
 			currentEntryId: currentParamId
-		}));
+		}), () => {
+			this.myRef.current.scrollIntoView(); // ensure scroll to top occurs
+		});
 	}
 	componentDidUpdate(prevProps) {
 		if (prevProps.match.params !== this.props.match.params) {
@@ -39,17 +42,19 @@ class JournalEntry extends Component{
 			this.setState((state, props) => ({
 				html: html,
 				currentEntryId: currentParamId
-			}));
+			}), () => {
+				this.myRef.current.scrollIntoView(); // ensure scroll to top occurs
+			});
 		}
 	}
    render(){
       return(
 
-      	<div id="journalEntryContainer">
+      	<div ref={this.myRef} id="journalEntryContainer">
 	      	<div id="journalEntryDiv-flex">
 	      		<div className="previous">
 	      			{(this.state.currentEntryId !== 1) ?
-			    		<Link to={`/journal/${this.state.currentEntryId - 1}`}>Prev</Link> :
+			    		<Link to={`/journal/${this.state.currentEntryId - 1}`}>&#10094;</Link> :
 			    		<Link to="/journal">Back</Link>
 			    	 }
 	      		</div>
@@ -58,7 +63,7 @@ class JournalEntry extends Component{
 			    </div>
 			    <div className="nextBtn">
 			    	{(this.state.currentEntryId !== this.state.lastEntryId) ?
-			    		<Link to={`/journal/${this.state.currentEntryId + 1}`}>Next</Link> :
+			    		<Link to={`/journal/${this.state.currentEntryId + 1}`}>&#10095;</Link> :
 			    		<Link to="/journal">End</Link>
 			    	 }
 			    </div>
