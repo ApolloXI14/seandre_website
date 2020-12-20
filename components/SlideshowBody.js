@@ -5,6 +5,7 @@ import Slide from './Slide';
 class SlideshowBody extends Component {
 	constructor(props) {
 		super(props);
+		this.myRef = React.createRef();
 		this.state = {
 			slidesArray: [],
 			slideDotsArray: [],
@@ -45,7 +46,9 @@ class SlideshowBody extends Component {
 			const newSlidesArray = this.createSlidesArray(this.state);
 			this.setState((state, props) => ({
 				slidesArray: newSlidesArray
-			}));
+			}), () => {
+				this.myRef.current.scrollIntoView(); // ensure scroll to top occurs
+			});
 		});
 	}
 	currentSlide(props) {
@@ -65,7 +68,7 @@ class SlideshowBody extends Component {
 	render() {
 		return (
 		<div id="slideshowBody">
-			<div id="dotsDiv">{this.state.slideDotsArray}</div>
+			<div ref={this.myRef} id="dotsDiv">{this.state.slideDotsArray}</div>
 			<div id="slideshow-container" className="slideshow-container">
 				<div id="slidesDiv"> {this.state.slidesArray} </div>
 				<div id="slideshowButtons">
