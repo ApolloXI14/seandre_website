@@ -55,7 +55,7 @@ class JournalEntry extends Component{
 	      		<div className="previous">
 	      			{(this.state.currentEntryId !== 1) ?
 			    		<Link style={{textDecoration: "none"}} to={`/journal/${this.state.currentEntryId - 1}`}>&#10094;</Link> :
-			    		<div><Link style={{textDecoration: "none"}} to="/journal">&#10094;</Link><p className="btnTxt">(Back)</p></div>
+			    		<div><Link style={{textDecoration: "none"}} to="/journal">&#10094; <br/><p className="btnTxt">(Back)</p></Link></div>
 			    	 }
 	      		</div>
 		         <div id="htmlDiv">
@@ -64,7 +64,7 @@ class JournalEntry extends Component{
 			    <div className="nextBtn">
 			    	{(this.state.currentEntryId !== this.state.lastEntryId) ?
 			    		<Link style={{textDecoration: "none"}} to={`/journal/${this.state.currentEntryId + 1}`}>&#10095;</Link> :
-			    		<div><Link style={{textDecoration: "none"}} to="/journal">&#10095;</Link><p className="btnTxt">(End)</p></div>
+			    		<div><Link style={{textDecoration: "none"}} to="/journal">&#10095; <br/><p className="btnTxt">(End)</p></Link></div>
 			    	 }
 			    </div>
 		    </div>
