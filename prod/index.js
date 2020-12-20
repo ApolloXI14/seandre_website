@@ -323,17 +323,24 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ 4938:
+/***/ 7398:
+/***/ ((module) => {
+
+module.exports = "<div>\n<h1>Welcome to my writing/music website!</h1>\n   <div>Please check out the <Link to=\"/journal\">Journal</Link>, <Link to=\"/poems\">Poems</Link>, and <Link to=\"/about\">About Me</Link> sections. All other sections\nwill be coming soon!</div>\n</div>\n"
+
+/***/ }),
+
+/***/ 8273:
 /***/ ((module) => {
 
 module.exports = "<div>\n<p>With the exception of a few breaks, I've been coding for almost\ntwo straight days on this update...the first of many more to come! \nI improved the styling, implemented menus, and I have a new \"Journal\"\nentry. Please check it out when you can. I'm gonna go recuperate\nnow.</p>\n</div>\n"
 
 /***/ }),
 
-/***/ 2254:
+/***/ 3534:
 /***/ ((module) => {
 
-module.exports = "<div>\n<h1>Welcome to my writing/music website!</h1>\n   <div>Please check out the <Link to=\"/journal\">Journal</Link>, <Link to=\"/poems\">Poems</Link>, and <Link to=\"/about\">About Me</Link> sections. All other sections\nwill be coming soon!</div>\n</div>\n"
+module.exports = "<div>\n\t<h3>Two major updates</h3>\n\t<p>1. seandre.com is now acquired and live! seandre.net\n\t\tnow auto-redirects here.</p>\n\t<p>2. I have improved the navigation in the \"Journal\"\n\t\tsection.</p>\n\t<p>Check it out when you can, and happy Sunday.</p>\n</div>\n"
 
 /***/ }),
 
@@ -4006,8 +4013,9 @@ webpackContext.id = 5182;
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
-	"./First_Major_Update__121920.txt": 4938,
-	"./Seandre_Launch__120520.txt": 2254
+	"./201205__Seandre_Launch.txt": 7398,
+	"./201219__First_Major_Update.txt": 8273,
+	"./201220__Update_1.2.txt": 3534
 };
 
 
@@ -7409,10 +7417,11 @@ var Home_Home = /*#__PURE__*/function (_Component) {
       function getFileMetaData(str) {
         // TODO: Export to own utility later, to de-duplicate
         var strArr = str.split('__');
-        var fileDate = strArr[1].slice(0, 2) + '/' + strArr[1].slice(2, 4) + '/' + strArr[1].slice(4, 6);
-        fileDate = fileDate.replace('.txt', '');
-        var fileName = strArr[0];
-        fileName = fileName.replace('./', '');
+        var fileDate = strArr[0];
+        fileDate = fileDate.replace('./', '');
+        fileDate = fileDate.slice(2, 4) + '/' + fileDate.slice(4, 6) + '/' + fileDate.slice(0, 2);
+        var fileName = strArr[1];
+        fileName = fileName.replace('.txt', '');
         fileName = fileName.replace(/_/g, ' ');
         return [fileName, fileDate];
       }
@@ -7430,7 +7439,8 @@ var Home_Home = /*#__PURE__*/function (_Component) {
 
       this.setState(function (state, props) {
         return {
-          homeEntriesArray: importAll(req)
+          homeEntriesArray: importAll(req).reverse() // txt files are titled by date (e.g. "20201231..."), and this makes it reverse chronological
+
         };
       });
     }
@@ -7570,6 +7580,7 @@ var SlideshowBody = /*#__PURE__*/function (_Component) {
     SlideshowBody_classCallCheck(this, SlideshowBody);
 
     _this = _super.call(this, props);
+    _this.myRef = /*#__PURE__*/react.createRef();
     _this.state = {
       slidesArray: [],
       slideDotsArray: [],
@@ -7636,6 +7647,9 @@ var SlideshowBody = /*#__PURE__*/function (_Component) {
           return {
             slidesArray: newSlidesArray
           };
+        }, function () {
+          _this3.myRef.current.scrollIntoView(); // ensure scroll to top occurs
+
         });
       });
     }
@@ -7670,6 +7684,7 @@ var SlideshowBody = /*#__PURE__*/function (_Component) {
       return /*#__PURE__*/react.createElement("div", {
         id: "slideshowBody"
       }, /*#__PURE__*/react.createElement("div", {
+        ref: this.myRef,
         id: "dotsDiv"
       }, this.state.slideDotsArray), /*#__PURE__*/react.createElement("div", {
         id: "slideshow-container",
@@ -7954,6 +7969,7 @@ var JournalEntry_JournalEntry = /*#__PURE__*/function (_Component) {
     JournalEntry_classCallCheck(this, JournalEntry);
 
     _this = _super.call(this, props);
+    _this.myRef = /*#__PURE__*/react.createRef();
     _this.state = {
       html: null,
       entriesArray: _this.props.entriesArray,
@@ -7981,6 +7997,8 @@ var JournalEntry_JournalEntry = /*#__PURE__*/function (_Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount(props) {
+      var _this2 = this;
+
       var currentParamId = this.getParamId();
       var html = this.getHTML(currentParamId);
       this.setState(function (state, props) {
@@ -7988,11 +8006,16 @@ var JournalEntry_JournalEntry = /*#__PURE__*/function (_Component) {
           html: html,
           currentEntryId: currentParamId
         };
+      }, function () {
+        _this2.myRef.current.scrollIntoView(); // ensure scroll to top occurs
+
       });
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
+      var _this3 = this;
+
       if (prevProps.match.params !== this.props.match.params) {
         var currentParamId = this.getParamId();
         var html = currentParamId ? this.getHTML(currentParamId) : null;
@@ -8001,6 +8024,9 @@ var JournalEntry_JournalEntry = /*#__PURE__*/function (_Component) {
             html: html,
             currentEntryId: currentParamId
           };
+        }, function () {
+          _this3.myRef.current.scrollIntoView(); // ensure scroll to top occurs
+
         });
       }
     }
@@ -8008,18 +8034,41 @@ var JournalEntry_JournalEntry = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react.createElement("div", {
-        id: "journalEntryDiv"
-      }, /*#__PURE__*/react.createElement("div", null, this.state.html), /*#__PURE__*/react.createElement("div", {
-        id: "links"
-      }, this.state.currentEntryId !== 1 && /*#__PURE__*/react.createElement(Link, {
+        ref: this.myRef,
+        id: "journalEntryContainer"
+      }, /*#__PURE__*/react.createElement("div", {
+        id: "journalEntryDiv-flex"
+      }, /*#__PURE__*/react.createElement("div", {
+        className: "previous"
+      }, this.state.currentEntryId !== 1 ? /*#__PURE__*/react.createElement(Link, {
+        style: {
+          textDecoration: "none"
+        },
         to: "/journal/".concat(this.state.currentEntryId - 1)
-      }, "Prev"), this.state.currentEntryId !== this.state.lastEntryId && /*#__PURE__*/react.createElement(Link, {
-        to: "/journal/".concat(this.state.currentEntryId + 1)
-      }, "Next")), /*#__PURE__*/react.createElement("div", {
-        id: "links"
-      }, /*#__PURE__*/react.createElement(Link, {
+      }, "\u276E") : /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement(Link, {
+        style: {
+          textDecoration: "none"
+        },
         to: "/journal"
-      }, "Back")));
+      }, "\u276E ", /*#__PURE__*/react.createElement("br", null), /*#__PURE__*/react.createElement("p", {
+        className: "btnTxt"
+      }, "(Back)")))), /*#__PURE__*/react.createElement("div", {
+        id: "htmlDiv"
+      }, this.state.html), /*#__PURE__*/react.createElement("div", {
+        className: "nextBtn"
+      }, this.state.currentEntryId !== this.state.lastEntryId ? /*#__PURE__*/react.createElement(Link, {
+        style: {
+          textDecoration: "none"
+        },
+        to: "/journal/".concat(this.state.currentEntryId + 1)
+      }, "\u276F") : /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement(Link, {
+        style: {
+          textDecoration: "none"
+        },
+        to: "/journal"
+      }, "\u276F ", /*#__PURE__*/react.createElement("br", null), /*#__PURE__*/react.createElement("p", {
+        className: "btnTxt"
+      }, "(End)"))))));
     }
   }]);
 

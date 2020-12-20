@@ -14,10 +14,13 @@ class Home extends Component{
 	componentDidMount(props) {
 		function getFileMetaData(str) { // TODO: Export to own utility later, to de-duplicate
 	        let strArr = str.split('__');
-	        let fileDate = strArr[1].slice(0,2) + '/' + strArr[1].slice(2,4) + '/' + strArr[1].slice(4,6);
-	        fileDate = fileDate.replace('.txt', '');
-	        let fileName = strArr[0];
-	        fileName = fileName.replace('./', '');
+	        let fileDate = strArr[0];
+	        fileDate = fileDate.replace('./', '');
+	        fileDate =  fileDate.slice(2,4) + '/' + fileDate.slice(4,6) + '/' + fileDate.slice(0,2);
+	        let fileName = strArr[1];
+	        fileName = fileName.replace('.txt', '');
+
+	        
 	        fileName = fileName.replace(/_/g, ' ');
 	        return [fileName, fileDate];
 	      }
@@ -29,7 +32,7 @@ class Home extends Component{
 	      }
 	      const req = require.context(HOME_DIR, true, /.txt$/);
 	      this.setState((state, props) => ({
-	        homeEntriesArray: importAll(req)
+	        homeEntriesArray: importAll(req).reverse() // txt files are titled by date (e.g. "20201231..."), and this makes it reverse chronological
 	      }));
 	}
    render(){
