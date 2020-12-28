@@ -25,13 +25,9 @@ class Home extends Component{
 	      	)
 	      };
 	      const HomeWithData = ImportData(NewComp, this.state.req);
-	      this.setState((state, props) => ({ 
-	        comp: HomeWithData
-	      }), () => {
-	      	ReactDOM.render(
+	      ReactDOM.render(
 	      		<HomeWithData req={this.state.req} />, document.getElementById('homeDiv')
 	      		)
-	      });
 	}
    render(){
       return(
