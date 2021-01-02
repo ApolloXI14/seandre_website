@@ -22,8 +22,8 @@ class JournalEntry extends Component{
    		return currentParamId
 	}
 	getHTML(index) {
-		let html = this.props.entriesArray[index-1][1]; // minus shifting for array index
-		return html = parse(html);
+		let html = this.props.entriesArray.length && this.props.entriesArray[index-1][1]; // minus shifting for array index
+		return (html && parse(html));
 	}
 	componentDidMount(props) {
 		const currentParamId = this.getParamId();
