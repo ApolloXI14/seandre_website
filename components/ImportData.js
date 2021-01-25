@@ -14,7 +14,6 @@ export function ImportData(WrappedComponent, dataArray) {
 		}
 
 		componentDidMount(props) {
-			console.log('importData did mount');
 			function getFileMetaData(str) { // TODO: Export to own utility later, to de-duplicate
 	        let strArr = str.split('__');
 	        let fileDate = strArr[0];
@@ -36,13 +35,17 @@ export function ImportData(WrappedComponent, dataArray) {
 	      }));
 		}
 		componentDidUpdate(prevProps) {
-			console.log('importData did update');
+			if (prevProps && prevProps.dataArray && (prevProps.dataArray !== this.props.dataArray)) {
+				this.setState(() =>  ({
+					dataArray: this.state.dataArray
+				}));
+			}
 		}
 
 		render () {
 			const {extraProp, ...passThroughProps } = this.props;
 			const dataArray = this.state.dataArray;
-			return <WrappedComponent dataArray={this.state.dataArray} {...this.props} />;
+			return <WrappedComponent dataArray={this.state.dataArray} {...this.state} />;
 		}
 
 

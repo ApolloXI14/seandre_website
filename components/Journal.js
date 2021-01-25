@@ -32,7 +32,7 @@ class Journal extends Component{
         <div id="journalContainer">
               {this.state.currentEntryId === null ? 
               <JournalMenuWithData req={this.state.req} array={this.state.dataArray} /> :
-              <JournalEntryWithData req={this.state.req} entriesArray={this.state.dataArray} lastEntryId={this.state.dataArray.length} />}
+              <JournalEntryWithData req={this.state.req} dataArray={this.state.dataArray} lastEntryId={this.state.dataArray.length} />}
         </div>
       );
    }
