@@ -13,7 +13,7 @@ class App extends Component{
       return(
          <div className="intro">
          	<Navbar />
-            <Switch>
+            <Switch> 
                <Route exact path="/journal/:id" component={Journal} />
                <Route exact path="/poems" component={Poems} />
                <Route exact path="/journal" component={Journal} />
