@@ -7,7 +7,7 @@ export default class Poems extends Component{
          <div>
           	<Slideshow />
           	<footer>
-          		<p>© 2020 Sean McHugh</p>
+          		<p>© 2021 Sean McHugh</p>
           	</footer>
 		</div>
       );
