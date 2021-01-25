@@ -7940,7 +7940,7 @@ var Poems = /*#__PURE__*/function (_Component) {
   Poems_createClass(Poems, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement(components_Slideshow, null), /*#__PURE__*/react.createElement("footer", null, /*#__PURE__*/react.createElement("p", null, "\xA9 2020 Sean McHugh")));
+      return /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement(components_Slideshow, null), /*#__PURE__*/react.createElement("footer", null, /*#__PURE__*/react.createElement("p", null, "\xA9 2021 Sean McHugh")));
     }
   }]);
 
@@ -8199,11 +8199,6 @@ var Journal = /*#__PURE__*/function (_Component) {
   }
 
   Journal_createClass(Journal, [{
-    key: "componentDidMount",
-    value: function componentDidMount(props, state) {
-      console.log('Journal mounted');
-    }
-  }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps) {
       if (prevProps.match.params !== this.props.match.params) {
