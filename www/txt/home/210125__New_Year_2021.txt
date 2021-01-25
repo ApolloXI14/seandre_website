@@ -1,0 +1,7 @@
+<div>
+        <h3>Happy New Year!</h3>
+        <div>This is my first update of 2021. I did a major code
+	update, which elevated my ReactJS knowledge and will make future
+	updates much easier. And I celebrated wtih a new "Journal"
+	entry. Please check it and enjoy.</div>
+</div>

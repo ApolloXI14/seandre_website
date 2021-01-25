@@ -344,17 +344,31 @@ module.exports = "<div>\n\t<h3>Two major updates</h3>\n\t<div>1. seandre.com is 
 
 /***/ }),
 
-/***/ 4978:
+/***/ 7445:
+/***/ ((module) => {
+
+module.exports = "<div>\n        <h3>Happy New Year!</h3>\n        <div>This is my first update of 2021. I did a major code\n\tupdate, which elevated my ReactJS knowledge and will make future\n\tupdates much easier. And I celebrated wtih a new \"Journal\"\n\tentry. Please check it and enjoy.</div>\n</div>\n"
+
+/***/ }),
+
+/***/ 3820:
+/***/ ((module) => {
+
+module.exports = "<div>\n<h1>My First Entry</h1>\n<cite>12/5/20</cite>\n<p>This is my first journal entry for this website. Thank you once again for coming here again, and reading this.</p><p>With the exception of a few other life pitfalls 2020 has definitely been the most challenging year in my living memory, and I'm sure you probably feel the same. I've dealt with so many emotional challenges this year. I've had to fight my tendency of withdrawl and self-isolation...in an era defined by high anxiety and isolation. I've had to deal with anger issues, punching holes, hurting myself unnecessarily, and fixing everything. I've cried randomly several times this year, completely by my own surprise, most recently just yesterday, thinking about how much I missed everyone, and one of which was right after destroying something and asking myself, \"Why am I so angry?\"</p><p>This site and this post is a re-commitment to myself. The most important relationship we all have is with ourselves, and I think I lost track of that, and myself. I took too long to make this site, and if I didn't do it now in the year of quarantine, when would I ever?</p><p>This is to my inner child, who was so passionate about writing things and sharing them he couldn't care less how sloppy/rudimentary that.</p>\n</div>\n"
+
+/***/ }),
+
+/***/ 5253:
 /***/ ((module) => {
 
 module.exports = "<h1>Lovin' Me</h1>\n<h4>12/18/20 7:06PM</h4>\n<p>Helping me is helping we.</p>\n<p>This is what I've learned lately.</p>\n\n<p>Because what good are the things that I'm good at, if I do nothing\nwith them?</p>\n\n<p>I can be obsessive over things sometimes. Lately, I've been obsessed\nwith progress. Nothing like being stuck at home for eight months to fill\nyou with existential dread and a desperation to get your long deferred\ndesires into motion, eh?</p>\n\n<p>One of my favorite music artists ever, Kid Cudi, just released a new\nalbum \"Man on the Moon III: The Chosen One\". It wasn't the masterpiece\nI hold MoTM1-2 up as, but I did like it. As a music lover and\nsensitive soul, I always related deeply to his psychedelic\nhip-hop/rock fusion from the late 2000's, and I believe we've both\nbeen through a lot in this past decade of our (obviously very\ndifferent) lives.</p>\n\n<p>One of my favorite tracks on the new album is called \"Lovin' Me\". I\nlove the ethereal synth in the background, and how uplifting and\npositive the lyrics are.</p>\n\n<p><i>My past don't matter babe</i></p>\n<p><i>I'm much stronger</i></p>\n<p><i>In fact much farther</i></p>\n\n<p>These lyrics hit me as a perfectionist/self-critic who, in my worst\nmoments, loves to replay terrible memories/mistakes in my head and\nthinks that forbids me from deserving anything good in the present.\nThat is a lie I refuse to believe anymore.</p>\n\n<p>So I am loving me, by helping me...and we.</p>\n\n<p>Happy Friday, everyone.</p>\n"
 
 /***/ }),
 
-/***/ 709:
+/***/ 950:
 /***/ ((module) => {
 
-module.exports = "<div>\n<h1>My First Entry</h1>\n<cite>12/5/20</cite>\n<p>This is my first journal entry for this website. Thank you once again for coming here again, and reading this.</p><p>With the exception of a few other life pitfalls 2020 has definitely been the most challenging year in my living memory, and I'm sure you probably feel the same. I've dealt with so many emotional challenges this year. I've had to fight my tendency of withdrawl and self-isolation...in an era defined by high anxiety and isolation. I've had to deal with anger issues, punching holes, hurting myself unnecessarily, and fixing everything. I've cried randomly several times this year, completely by my own surprise, most recently just yesterday, thinking about how much I missed everyone, and one of which was right after destroying something and asking myself, \"Why am I so angry?\"</p><p>This site and this post is a re-commitment to myself. The most important relationship we all have is with ourselves, and I think I lost track of that, and myself. I took too long to make this site, and if I didn't do it now in the year of quarantine, when would I ever?</p><p>This is to my inner child, who was so passionate about writing things and sharing them he couldn't care less how sloppy/rudimentary that.</p>\n</div>\n"
+module.exports = "<h1>We Gon Be All Right</h1>\n<h4>01/25/21 9:30AM</h4>\n\n<p>Happy New Year to all reading this. This marks my first entry for the\nyear, and my third ever. With the recent code update I just made, it\nwill definitely be the first of many more to come.</p>\n\n<p>This was probably the most challenging New Year ever. Probably because\nit's following the most challenging year ever, 2020, the year of a\n100-year global pandemic, 50-year civil unrest, and near electoral disaster. Of course, problems\nwere never going to disappear from a simple change of year--this much\nI knew. But things eerily escalated right in the very first week, all\nwithin and without. Week 1 of 2021 didn't just seem to be a\ncontinuation of 2020, week 1 felt like 2020 itself.</p>\n\n<p>The ultimate upside is that, just like 2020, I endured much pain, but\ncame out stronger and more understanding in the end.</p>\n\n<p>Like 2020, I took stock of many things around me, and inside of me.\nDespite all the work and progress done in 2020, I realized I stlll had\nmore to do. Certain old patterns no longer served me, and despite how\nmuch stronger I thought I was, I was still too admittedly co-dependent and\nappeasing to admit it--and accordingly, I still wasn't respecting myself enough.</p>\n\n<p>I've been hurt before, even physically, in ways that exacerbate my own\nproblems, or even made me feel like I deserved what happened to me.</p>\n\n<p>I've also emotionally hurt others, too, even if unintentionally.</p>\n\n<p>There is so much pain in the world now than in any other time in my\nlife, and it's so sad. I miss so many people/places/things, and I have so many\nregrets. There are several people I wish things could've been\ndifferent with, but can now no longer talk to.</p>\n\n<p>I can't change the past, but I thank them for all the growth they have\nhelped me achieve, and I hope we can all find the peace and happiness we deserve in\nthis crazy world.</p>\n\n<p>Last year was about not giving up on myself; the beginning of this\nyear seems to be about giving up bad or non-serving things. Among\nother things, I haven't drank since the new year, either (yup, that's\na long time for me). And I'm continuing to update this site with my\nown feelings/writings, and about to start a project with a friend. I'm\nactively learning languages again every day, hopeful to travel for our\ncollective non-COVID future.  Despite the pain of week 1, like 2020 I survived, and here I am. I am\nall right.</p>\n\n<p>And I know you will be, too.</p>\n"
 
 /***/ }),
 
@@ -4015,7 +4029,8 @@ webpackContext.id = 5182;
 var map = {
 	"./201205__Seandre_Launch.txt": 7398,
 	"./201219__First_Major_Update.txt": 8273,
-	"./201220__Update_1.2.txt": 3534
+	"./201220__Update_1.2.txt": 3534,
+	"./210125__New_Year_2021.txt": 7445
 };
 
 
@@ -4044,8 +4059,9 @@ webpackContext.id = 90;
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
-	"./Lovin_Me__121820.txt": 4978,
-	"./My_First_Entry__120520.txt": 709
+	"./201205__My_First_Entry.txt": 3820,
+	"./201218__Lovin_Me.txt": 5253,
+	"./210125__We_Gon_Be_All_Right.txt": 950
 };
 
 
@@ -7365,6 +7381,119 @@ var Home_update = injectStylesIntoStyleTag_default()(Home/* default */.Z, Home_o
 // EXTERNAL MODULE: ./node_modules/html-react-parser/index.js
 var html_react_parser = __webpack_require__(488);
 var html_react_parser_default = /*#__PURE__*/__webpack_require__.n(html_react_parser);
+;// CONCATENATED MODULE: ./components/ImportData.js
+function ImportData_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { ImportData_typeof = function _typeof(obj) { return typeof obj; }; } else { ImportData_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return ImportData_typeof(obj); }
+
+function ImportData_extends() { ImportData_extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return ImportData_extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = ImportData_objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function ImportData_objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function ImportData_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function ImportData_defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function ImportData_createClass(Constructor, protoProps, staticProps) { if (protoProps) ImportData_defineProperties(Constructor.prototype, protoProps); if (staticProps) ImportData_defineProperties(Constructor, staticProps); return Constructor; }
+
+function ImportData_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) ImportData_setPrototypeOf(subClass, superClass); }
+
+function ImportData_setPrototypeOf(o, p) { ImportData_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return ImportData_setPrototypeOf(o, p); }
+
+function ImportData_createSuper(Derived) { var hasNativeReflectConstruct = ImportData_isNativeReflectConstruct(); return function _createSuperInternal() { var Super = ImportData_getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = ImportData_getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return ImportData_possibleConstructorReturn(this, result); }; }
+
+function ImportData_possibleConstructorReturn(self, call) { if (call && (ImportData_typeof(call) === "object" || typeof call === "function")) { return call; } return ImportData_assertThisInitialized(self); }
+
+function ImportData_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function ImportData_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function ImportData_getPrototypeOf(o) { ImportData_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return ImportData_getPrototypeOf(o); }
+
+// <Link> React components are not handled by "html-react-parser"; consider enhancement?
+
+
+function ImportData(WrappedComponent, dataArray) {
+  return /*#__PURE__*/function (_Component) {
+    ImportData_inherits(importData, _Component);
+
+    var _super = ImportData_createSuper(importData);
+
+    function importData(props) {
+      var _this;
+
+      ImportData_classCallCheck(this, importData);
+
+      _this = _super.call(this, props);
+      _this.state = {
+        req: _this.props.req,
+        dataArray: []
+      };
+      return _this;
+    }
+
+    ImportData_createClass(importData, [{
+      key: "componentDidMount",
+      value: function componentDidMount(props) {
+        var _this2 = this;
+
+        function getFileMetaData(str) {
+          // TODO: Export to own utility later, to de-duplicate
+          var strArr = str.split('__');
+          var fileDate = strArr[0];
+          fileDate = fileDate.replace('./', '');
+          fileDate = fileDate.slice(2, 4) + '/' + fileDate.slice(4, 6) + '/' + fileDate.slice(0, 2);
+          var fileName = strArr[1];
+          fileName = fileName.replace('.txt', '');
+          fileName = fileName.replace(/_/g, ' ');
+          return [fileName, fileDate];
+        }
+
+        function importAll(req) {
+          var txtfiles = []; // 2D array in [['', ...], ''] form, to get array of metadata (parsed from fileName) and file content
+
+          req.keys().map(function (fileName, index) {
+            txtfiles.push([getFileMetaData(fileName), html_react_parser_default()(req(fileName))]);
+          });
+          return txtfiles;
+        }
+
+        this.setState(function (state, props) {
+          return {
+            dataArray: importAll(_this2.props.req).reverse()
+          };
+        });
+      }
+    }, {
+      key: "componentDidUpdate",
+      value: function componentDidUpdate(prevProps) {
+        var _this3 = this;
+
+        if (prevProps && prevProps.dataArray && prevProps.dataArray !== this.props.dataArray) {
+          this.setState(function () {
+            return {
+              dataArray: _this3.state.dataArray
+            };
+          });
+        }
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this$props = this.props,
+            extraProp = _this$props.extraProp,
+            passThroughProps = _objectWithoutProperties(_this$props, ["extraProp"]);
+
+        var dataArray = this.state.dataArray;
+        return /*#__PURE__*/react.createElement(WrappedComponent, ImportData_extends({
+          dataArray: this.state.dataArray
+        }, this.state));
+      }
+    }]);
+
+    return importData;
+  }(react.Component);
+}
 ;// CONCATENATED MODULE: ./components/Home.js
 function Home_typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { Home_typeof = function _typeof(obj) { return typeof obj; }; } else { Home_typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return Home_typeof(obj); }
 
@@ -7388,7 +7517,6 @@ function Home_isNativeReflectConstruct() { if (typeof Reflect === "undefined" ||
 
 function Home_getPrototypeOf(o) { Home_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return Home_getPrototypeOf(o); }
 
-// <Link> React components are not handled by "html-react-parser"; consider enhancement?
 
 
 
@@ -7406,7 +7534,7 @@ var Home_Home = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      homeEntriesArray: []
+      req: __webpack_require__(90)
     };
     return _this;
   }
@@ -7414,54 +7542,33 @@ var Home_Home = /*#__PURE__*/function (_Component) {
   Home_createClass(Home, [{
     key: "componentDidMount",
     value: function componentDidMount(props) {
-      function getFileMetaData(str) {
-        // TODO: Export to own utility later, to de-duplicate
-        var strArr = str.split('__');
-        var fileDate = strArr[0];
-        fileDate = fileDate.replace('./', '');
-        fileDate = fileDate.slice(2, 4) + '/' + fileDate.slice(4, 6) + '/' + fileDate.slice(0, 2);
-        var fileName = strArr[1];
-        fileName = fileName.replace('.txt', '');
-        fileName = fileName.replace(/_/g, ' ');
-        return [fileName, fileDate];
-      }
-
-      function importAll(req) {
-        var txtfiles = []; // 2D array in [['', ...], ''] form, to get array of metadata (parsed from fileName) and file content
-
-        req.keys().map(function (fileName, index) {
-          txtfiles.push([getFileMetaData(fileName), html_react_parser_default()(req(fileName))]);
+      var NewComp = function NewComp(props) {
+        return Home_typeof(props.dataArray) === 'object' && props.dataArray.length && props.dataArray.map(function (entry, index) {
+          return /*#__PURE__*/react.createElement("div", {
+            key: index
+          }, /*#__PURE__*/react.createElement("div", {
+            className: "entryData-flex"
+          }, /*#__PURE__*/react.createElement("div", {
+            className: "entryName"
+          }, entry[0][0]), /*#__PURE__*/react.createElement("div", {
+            className: "entryDate"
+          }, "Dated: ", entry[0][1])), /*#__PURE__*/react.createElement("div", {
+            className: "entryContent"
+          }, entry[1]), /*#__PURE__*/react.createElement("hr", null));
         });
-        return txtfiles;
-      }
+      };
 
-      var req = __webpack_require__(90);
-
-      this.setState(function (state, props) {
-        return {
-          homeEntriesArray: importAll(req).reverse() // txt files are titled by date (e.g. "20201231..."), and this makes it reverse chronological
-
-        };
-      });
+      var HomeWithData = ImportData(NewComp, this.state.req);
+      react_dom.render( /*#__PURE__*/react.createElement(HomeWithData, {
+        req: this.state.req
+      }), document.getElementById('homeDiv'));
     }
   }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react.createElement("div", {
         id: "homeDiv"
-      }, this.state.homeEntriesArray.length && this.state.homeEntriesArray.map(function (entry, index) {
-        return /*#__PURE__*/react.createElement("div", {
-          key: index
-        }, /*#__PURE__*/react.createElement("div", {
-          className: "entryData-flex"
-        }, /*#__PURE__*/react.createElement("div", {
-          className: "entryName"
-        }, entry[0][0]), /*#__PURE__*/react.createElement("div", {
-          className: "entryDate"
-        }, "Dated: ", entry[0][1])), /*#__PURE__*/react.createElement("div", {
-          className: "entryContent"
-        }, entry[1]), /*#__PURE__*/react.createElement("hr", null));
-      }));
+      });
     }
   }]);
 
@@ -7900,7 +8007,7 @@ var JournalMenu_JournalMenu = /*#__PURE__*/function (_Component) {
     value: function render() {
       return /*#__PURE__*/react.createElement("div", {
         id: "journalMenuDiv"
-      }, /*#__PURE__*/react.createElement("ul", null, /*#__PURE__*/react.createElement("ul", null, this.props.array.map(function (entry, index) {
+      }, /*#__PURE__*/react.createElement("ul", null, /*#__PURE__*/react.createElement("ul", null, this.props.dataArray.map(function (entry, index) {
         return /*#__PURE__*/react.createElement("li", {
           key: index++
         }, /*#__PURE__*/react.createElement(Link, {
@@ -7955,11 +8062,10 @@ function JournalEntry_getPrototypeOf(o) { JournalEntry_getPrototypeOf = Object.s
 
 
 
-
  // "withRouter" must be imported AND USED TO EXPORT COMP for route access
 
-var JournalEntry_JournalEntry = /*#__PURE__*/function (_Component) {
-  JournalEntry_inherits(JournalEntry, _Component);
+var JournalEntry_JournalEntry = /*#__PURE__*/function (_React$PureComponent) {
+  JournalEntry_inherits(JournalEntry, _React$PureComponent);
 
   var _super = JournalEntry_createSuper(JournalEntry);
 
@@ -7990,49 +8096,16 @@ var JournalEntry_JournalEntry = /*#__PURE__*/function (_Component) {
   }, {
     key: "getHTML",
     value: function getHTML(index) {
-      var html = this.props.entriesArray[index - 1][1]; // minus shifting for array index
+      var html = this.props.dataArray.length && this.props.dataArray[index - 1][1]; // minus shifting for array index
 
-      return html = html_react_parser_default()(html);
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount(props) {
-      var _this2 = this;
-
-      var currentParamId = this.getParamId();
-      var html = this.getHTML(currentParamId);
-      this.setState(function (state, props) {
-        return {
-          html: html,
-          currentEntryId: currentParamId
-        };
-      }, function () {
-        _this2.myRef.current.scrollIntoView(); // ensure scroll to top occurs
-
-      });
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      var _this3 = this;
-
-      if (prevProps.match.params !== this.props.match.params) {
-        var currentParamId = this.getParamId();
-        var html = currentParamId ? this.getHTML(currentParamId) : null;
-        this.setState(function (state, props) {
-          return {
-            html: html,
-            currentEntryId: currentParamId
-          };
-        }, function () {
-          _this3.myRef.current.scrollIntoView(); // ensure scroll to top occurs
-
-        });
-      }
+      return html;
     }
   }, {
     key: "render",
     value: function render() {
+      var currentEntryId = this.getParamId();
+      var lastEntryId = this.props.dataArray.length;
+      var html = this.getHTML(currentEntryId);
       return /*#__PURE__*/react.createElement("div", {
         ref: this.myRef,
         id: "journalEntryContainer"
@@ -8040,11 +8113,11 @@ var JournalEntry_JournalEntry = /*#__PURE__*/function (_Component) {
         id: "journalEntryDiv-flex"
       }, /*#__PURE__*/react.createElement("div", {
         className: "previous"
-      }, this.state.currentEntryId !== 1 ? /*#__PURE__*/react.createElement(Link, {
+      }, currentEntryId !== 1 ? /*#__PURE__*/react.createElement(Link, {
         style: {
           textDecoration: "none"
         },
-        to: "/journal/".concat(this.state.currentEntryId - 1)
+        to: "/journal/".concat(currentEntryId - 1)
       }, "\u276E") : /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement(Link, {
         style: {
           textDecoration: "none"
@@ -8054,13 +8127,13 @@ var JournalEntry_JournalEntry = /*#__PURE__*/function (_Component) {
         className: "btnTxt"
       }, "(Back)")))), /*#__PURE__*/react.createElement("div", {
         id: "htmlDiv"
-      }, this.state.html), /*#__PURE__*/react.createElement("div", {
+      }, html), /*#__PURE__*/react.createElement("div", {
         className: "nextBtn"
-      }, this.state.currentEntryId !== this.state.lastEntryId ? /*#__PURE__*/react.createElement(Link, {
+      }, currentEntryId !== lastEntryId ? /*#__PURE__*/react.createElement(Link, {
         style: {
           textDecoration: "none"
         },
-        to: "/journal/".concat(this.state.currentEntryId + 1)
+        to: "/journal/".concat(currentEntryId + 1)
       }, "\u276F") : /*#__PURE__*/react.createElement("div", null, /*#__PURE__*/react.createElement(Link, {
         style: {
           textDecoration: "none"
@@ -8073,7 +8146,7 @@ var JournalEntry_JournalEntry = /*#__PURE__*/function (_Component) {
   }]);
 
   return JournalEntry;
-}(react.Component);
+}(react.PureComponent);
 
 /* harmony default export */ const components_JournalEntry = (withRouter(JournalEntry_JournalEntry));
 ;// CONCATENATED MODULE: ./components/Journal.js
@@ -8105,6 +8178,7 @@ function Journal_getPrototypeOf(o) { Journal_getPrototypeOf = Object.setPrototyp
 
 
 
+
 var Journal = /*#__PURE__*/function (_Component) {
   Journal_inherits(Journal, _Component);
 
@@ -8117,42 +8191,17 @@ var Journal = /*#__PURE__*/function (_Component) {
 
     _this = _super.call(this, props);
     _this.state = {
+      req: __webpack_require__(9764),
       currentEntryId: null,
-      journalEntriesArray: []
+      dataArray: []
     };
     return _this;
   }
 
   Journal_createClass(Journal, [{
     key: "componentDidMount",
-    value: function componentDidMount(props) {
-      function getFileMetaData(str) {
-        // TODO: Export to own utility later, to de-duplicate
-        var strArr = str.split('__');
-        var fileDate = strArr[1].slice(0, 2) + '/' + strArr[1].slice(2, 4) + '/' + strArr[1].slice(4, 6);
-        fileDate = fileDate.replace('.txt', '');
-        var fileName = strArr[0];
-        fileName = fileName.replace('./', '');
-        fileName = fileName.replace(/_/g, ' ');
-        return [fileName, fileDate];
-      }
-
-      function importAll(req) {
-        var txtfiles = []; // 2D array in [['', ...], ''] form, to get array of metadata (parsed from fileName) and file content
-
-        req.keys().map(function (fileName, index) {
-          txtfiles.push([getFileMetaData(fileName), req(fileName)]);
-        });
-        return txtfiles;
-      }
-
-      var req = __webpack_require__(9764);
-
-      this.setState(function (state, props) {
-        return {
-          journalEntriesArray: importAll(req)
-        };
-      });
+    value: function componentDidMount(props, state) {
+      console.log('Journal mounted');
     }
   }, {
     key: "componentDidUpdate",
@@ -8170,13 +8219,17 @@ var Journal = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var JournalMenuWithData = ImportData(components_JournalMenu, this.state.req);
+      var JournalEntryWithData = ImportData(components_JournalEntry, this.state.req);
       return /*#__PURE__*/react.createElement("div", {
         id: "journalContainer"
-      }, this.state.currentEntryId === null ? /*#__PURE__*/react.createElement(components_JournalMenu, {
-        array: this.state.journalEntriesArray
-      }) : /*#__PURE__*/react.createElement(components_JournalEntry, {
-        entriesArray: this.state.journalEntriesArray,
-        lastEntryId: this.state.journalEntriesArray.length
+      }, this.state.currentEntryId === null ? /*#__PURE__*/react.createElement(JournalMenuWithData, {
+        req: this.state.req,
+        array: this.state.dataArray
+      }) : /*#__PURE__*/react.createElement(JournalEntryWithData, {
+        req: this.state.req,
+        dataArray: this.state.dataArray,
+        lastEntryId: this.state.dataArray.length
       }));
     }
   }]);
