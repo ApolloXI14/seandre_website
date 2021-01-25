@@ -14,18 +14,15 @@ class Journal extends Component{
       dataArray: []
     };
   }
-  componentDidMount(props, state) {
-      console.log('Journal mounted');
-    }
-    componentDidUpdate(prevProps) {
-      if (prevProps.match.params !== this.props.match.params) {
-            const currentEntryId = this.props.match.params.id ? Number(this.props.match.params.id) -1 : null; // minusShifting for array
-            this.setState((state, props) => ({
-              currentEntryId: currentEntryId
-            }));
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params !== this.props.match.params) {
+      const currentEntryId = this.props.match.params.id ? Number(this.props.match.params.id) -1 : null; // minusShifting for array
+        this.setState((state, props) => ({
+          currentEntryId: currentEntryId
+        }));
       }
     }
-   render(){
+    render(){
       const JournalMenuWithData = ImportData(JournalMenu, this.state.req);
       const JournalEntryWithData = ImportData(JournalEntry, this.state.req);
       return (
