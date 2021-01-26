@@ -6,7 +6,6 @@ import styles from '../less/JournalEntry.less'
 class JournalEntry extends React.PureComponent{
 	constructor(props) {
                super(props);
-               this.myRef = React.createRef();
                this.state = {
                        html: null,
                        entriesArray: this.props.entriesArray,
@@ -28,6 +27,11 @@ class JournalEntry extends React.PureComponent{
    		const currentEntryId = this.getParamId();
    		const lastEntryId = this.props.dataArray.length;
    		const html = this.getHTML(currentEntryId);
+   		if (this.myRef && this.myRef.current) {
+   			this.myRef.current.scrollIntoView();
+   		} else {
+   			this.myRef = React.createRef();
+   		}
       return(
       	<div ref={this.myRef} id="journalEntryContainer">
 	      	<div id="journalEntryDiv-flex">

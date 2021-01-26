@@ -8075,7 +8075,6 @@ var JournalEntry_JournalEntry = /*#__PURE__*/function (_React$PureComponent) {
     JournalEntry_classCallCheck(this, JournalEntry);
 
     _this = _super.call(this, props);
-    _this.myRef = /*#__PURE__*/react.createRef();
     _this.state = {
       html: null,
       entriesArray: _this.props.entriesArray,
@@ -8106,6 +8105,13 @@ var JournalEntry_JournalEntry = /*#__PURE__*/function (_React$PureComponent) {
       var currentEntryId = this.getParamId();
       var lastEntryId = this.props.dataArray.length;
       var html = this.getHTML(currentEntryId);
+
+      if (this.myRef && this.myRef.current) {
+        this.myRef.current.scrollIntoView();
+      } else {
+        this.myRef = /*#__PURE__*/react.createRef();
+      }
+
       return /*#__PURE__*/react.createElement("div", {
         ref: this.myRef,
         id: "journalEntryContainer"
