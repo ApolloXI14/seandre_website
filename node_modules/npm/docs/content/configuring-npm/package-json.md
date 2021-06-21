@@ -325,6 +325,8 @@ This should be a module relative to the root of your package folder.
 For most modules, it makes the most sense to have a main script and often
 not much else.
 
+If `main` is not set it defaults to `index.js` in the packages root folder.
+
 ### browser
 
 If your module is meant to be used client-side the browser field should be
@@ -383,6 +385,8 @@ would be the same as this:
 Please make sure that your file(s) referenced in `bin` starts with
 `#!/usr/bin/env node`, otherwise the scripts are started without the node
 executable!
+
+Note that you can also set the executable files using [directories.bin](#directoriesbin).
 
 ### man
 
@@ -562,8 +566,7 @@ tarball or git URL.
 **Please do not put test harnesses or transpilers or other "development"
 time tools in your `dependencies` object.**  See `devDependencies`, below.
 
-See [semver]([/using-npm/semver](https://github.com/npm/node-semver#versions))
-for more details about specifying version ranges.
+See [semver](https://github.com/npm/node-semver#versions) for more details about specifying version ranges.
 
 * `version` Must match `version` exactly
 * `>version` Must be greater than `version`

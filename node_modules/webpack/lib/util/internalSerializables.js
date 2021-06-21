@@ -45,6 +45,8 @@ module.exports = {
 		require("../dependencies/AMDRequireItemDependency"),
 	"dependencies/CachedConstDependency": () =>
 		require("../dependencies/CachedConstDependency"),
+	"dependencies/CreateScriptUrlDependency": () =>
+		require("../dependencies/CreateScriptUrlDependency"),
 	"dependencies/CommonJsRequireContextDependency": () =>
 		require("../dependencies/CommonJsRequireContextDependency"),
 	"dependencies/CommonJsExportRequireDependency": () =>
@@ -150,6 +152,8 @@ module.exports = {
 		require("../dependencies/WebAssemblyExportImportedDependency"),
 	"dependencies/WebAssemblyImportDependency": () =>
 		require("../dependencies/WebAssemblyImportDependency"),
+	"dependencies/WebpackIsIncludedDependency": () =>
+		require("../dependencies/WebpackIsIncludedDependency"),
 	"dependencies/WorkerDependency": () =>
 		require("../dependencies/WorkerDependency"),
 	"optimize/ConcatenatedModule": () =>
@@ -159,8 +163,11 @@ module.exports = {
 	DllModule: () => require("../DllModule"),
 	ExternalModule: () => require("../ExternalModule"),
 	FileSystemInfo: () => require("../FileSystemInfo"),
+	InvalidDependenciesModuleWarning: () =>
+		require("../InvalidDependenciesModuleWarning"),
 	Module: () => require("../Module"),
 	ModuleBuildError: () => require("../ModuleBuildError"),
+	ModuleDependencyWarning: () => require("../ModuleDependencyWarning"),
 	ModuleError: () => require("../ModuleError"),
 	ModuleGraph: () => require("../ModuleGraph"),
 	ModuleParseError: () => require("../ModuleParseError"),

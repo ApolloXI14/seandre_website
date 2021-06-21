@@ -31,7 +31,8 @@ const {
 	keyToRuntime,
 	forEachRuntime,
 	mergeRuntimeOwned,
-	subtractRuntime
+	subtractRuntime,
+	intersectRuntime
 } = require("./util/runtime");
 
 /** @typedef {import("./Chunk")} Chunk */
@@ -39,6 +40,7 @@ const {
 /** @typedef {import("./Compiler")} Compiler */
 /** @typedef {import("./Module")} Module */
 /** @typedef {import("./RuntimeModule")} RuntimeModule */
+/** @typedef {import("./util/runtime").RuntimeSpec} RuntimeSpec */
 
 /**
  * @typedef {Object} HMRJavascriptParserHooks
@@ -81,13 +83,13 @@ class HotModuleReplacementPlugin {
 	 * @returns {void}
 	 */
 	apply(compiler) {
+		if (compiler.options.output.strictModuleErrorHandling === undefined)
+			compiler.options.output.strictModuleErrorHandling = true;
 		const runtimeRequirements = [RuntimeGlobals.module];
 
 		const createAcceptHandler = (parser, ParamDependency) => {
-			const {
-				hotAcceptCallback,
-				hotAcceptWithoutCallback
-			} = HotModuleReplacementPlugin.getParserHooks(parser);
+			const { hotAcceptCallback, hotAcceptWithoutCallback } =
+				HotModuleReplacementPlugin.getParserHooks(parser);
 
 			return expr => {
 				const module = parser.state.module;
@@ -120,7 +122,9 @@ class HotModuleReplacementPlugin {
 						});
 						if (expr.arguments.length > 1) {
 							hotAcceptCallback.call(expr.arguments[1], requests);
-							parser.walkExpression(expr.arguments[1]); // other args are ignored
+							for (let i = 1; i < expr.arguments.length; i++) {
+								parser.walkExpression(expr.arguments[i]);
+							}
 							return true;
 						} else {
 							hotAcceptWithoutCallback.call(expr, requests);
@@ -301,9 +305,7 @@ class HotModuleReplacementPlugin {
 						}
 						records.chunkModuleIds = {};
 						for (const chunk of compilation.chunks) {
-							records.chunkModuleIds[
-								chunk.id
-							] = Array.from(
+							records.chunkModuleIds[chunk.id] = Array.from(
 								chunkGraph.getOrderedChunkModulesIterable(
 									chunk,
 									compareModulesById(chunkGraph)
@@ -316,37 +318,60 @@ class HotModuleReplacementPlugin {
 				/** @type {TupleSet<[Module, Chunk]>} */
 				const updatedModules = new TupleSet();
 				/** @type {TupleSet<[Module, Chunk]>} */
-				const lazyHashedModules = new TupleSet();
+				const fullHashModules = new TupleSet();
+				/** @type {TupleSet<[Module, RuntimeSpec]>} */
+				const nonCodeGeneratedModules = new TupleSet();
 				compilation.hooks.fullHash.tap("HotModuleReplacementPlugin", hash => {
 					const chunkGraph = compilation.chunkGraph;
 					const records = compilation.records;
 					for (const chunk of compilation.chunks) {
-						/** @type {Set<Module>} */
-						const lazyHashedModulesInThisChunk = new Set();
-						const fullHashModules = chunkGraph.getChunkFullHashModulesIterable(
-							chunk
-						);
-						if (fullHashModules !== undefined) {
-							for (const module of fullHashModules) {
-								lazyHashedModules.add(module, chunk);
-								lazyHashedModulesInThisChunk.add(module);
+						const getModuleHash = module => {
+							if (
+								compilation.codeGenerationResults.has(module, chunk.runtime)
+							) {
+								return compilation.codeGenerationResults.getHash(
+									module,
+									chunk.runtime
+								);
+							} else {
+								nonCodeGeneratedModules.add(module, chunk.runtime);
+								return chunkGraph.getModuleHash(module, chunk.runtime);
+							}
+						};
+						const fullHashModulesInThisChunk =
+							chunkGraph.getChunkFullHashModulesSet(chunk);
+						if (fullHashModulesInThisChunk !== undefined) {
+							for (const module of fullHashModulesInThisChunk) {
+								fullHashModules.add(module, chunk);
 							}
 						}
 						const modules = chunkGraph.getChunkModulesIterable(chunk);
 						if (modules !== undefined) {
-							if (
-								records.chunkModuleHashes &&
-								records.fullHashChunkModuleHashes
-							) {
-								for (const module of modules) {
-									const key = `${chunk.id}|${module.identifier()}`;
-									const hash = chunkGraph.getModuleHash(module, chunk.runtime);
-									if (lazyHashedModulesInThisChunk.has(module)) {
-										if (records.fullHashChunkModuleHashes[key] !== hash) {
-											updatedModules.add(module, chunk);
+							if (records.chunkModuleHashes) {
+								if (fullHashModulesInThisChunk !== undefined) {
+									for (const module of modules) {
+										const key = `${chunk.id}|${module.identifier()}`;
+										const hash = getModuleHash(module);
+										if (
+											fullHashModulesInThisChunk.has(
+												/** @type {RuntimeModule} */ (module)
+											)
+										) {
+											if (records.fullHashChunkModuleHashes[key] !== hash) {
+												updatedModules.add(module, chunk);
+											}
+											fullHashChunkModuleHashes[key] = hash;
+										} else {
+											if (records.chunkModuleHashes[key] !== hash) {
+												updatedModules.add(module, chunk);
+											}
+											chunkModuleHashes[key] = hash;
 										}
-										fullHashChunkModuleHashes[key] = hash;
-									} else {
+									}
+								} else {
+									for (const module of modules) {
+										const key = `${chunk.id}|${module.identifier()}`;
+										const hash = getModuleHash(module);
 										if (records.chunkModuleHashes[key] !== hash) {
 											updatedModules.add(module, chunk);
 										}
@@ -354,12 +379,24 @@ class HotModuleReplacementPlugin {
 									}
 								}
 							} else {
-								for (const module of modules) {
-									const key = `${chunk.id}|${module.identifier()}`;
-									const hash = chunkGraph.getModuleHash(module, chunk.runtime);
-									if (lazyHashedModulesInThisChunk.has(module)) {
-										fullHashChunkModuleHashes[key] = hash;
-									} else {
+								if (fullHashModulesInThisChunk !== undefined) {
+									for (const module of modules) {
+										const key = `${chunk.id}|${module.identifier()}`;
+										const hash = getModuleHash(module);
+										if (
+											fullHashModulesInThisChunk.has(
+												/** @type {RuntimeModule} */ (module)
+											)
+										) {
+											fullHashChunkModuleHashes[key] = hash;
+										} else {
+											chunkModuleHashes[key] = hash;
+										}
+									}
+								} else {
+									for (const module of modules) {
+										const key = `${chunk.id}|${module.identifier()}`;
+										const hash = getModuleHash(module);
 										chunkModuleHashes[key] = hash;
 									}
 								}
@@ -388,9 +425,14 @@ class HotModuleReplacementPlugin {
 						) {
 							return;
 						}
-						for (const [module, chunk] of lazyHashedModules) {
+						for (const [module, chunk] of fullHashModules) {
 							const key = `${chunk.id}|${module.identifier()}`;
-							const hash = chunkGraph.getModuleHash(module, chunk.runtime);
+							const hash = nonCodeGeneratedModules.has(module, chunk.runtime)
+								? chunkGraph.getModuleHash(module, chunk.runtime)
+								: compilation.codeGenerationResults.getHash(
+										module,
+										chunk.runtime
+								  );
 							if (records.chunkModuleHashes[key] !== hash) {
 								updatedModules.add(module, chunk);
 							}
@@ -405,16 +447,14 @@ class HotModuleReplacementPlugin {
 							allOldRuntime = mergeRuntimeOwned(allOldRuntime, runtime);
 						}
 						forEachRuntime(allOldRuntime, runtime => {
-							const {
-								path: filename,
-								info: assetInfo
-							} = compilation.getPathWithInfo(
-								compilation.outputOptions.hotUpdateMainFilename,
-								{
-									hash: records.hash,
-									runtime
-								}
-							);
+							const { path: filename, info: assetInfo } =
+								compilation.getPathWithInfo(
+									compilation.outputOptions.hotUpdateMainFilename,
+									{
+										hash: records.hash,
+										runtime
+									}
+								);
 							hotUpdateMainContentByRuntime.set(runtime, {
 								updatedChunkIds: new Set(),
 								removedChunkIds: new Set(),
@@ -463,16 +503,19 @@ class HotModuleReplacementPlugin {
 							);
 							if (currentChunk) {
 								chunkId = currentChunk.id;
-								newRuntime = currentChunk.runtime;
+								newRuntime = intersectRuntime(
+									currentChunk.runtime,
+									allOldRuntime
+								);
+								if (newRuntime === undefined) continue;
 								newModules = chunkGraph
 									.getChunkModules(currentChunk)
 									.filter(module => updatedModules.has(module, currentChunk));
 								newRuntimeModules = Array.from(
 									chunkGraph.getChunkRuntimeModulesIterable(currentChunk)
 								).filter(module => updatedModules.has(module, currentChunk));
-								const fullHashModules = chunkGraph.getChunkFullHashModulesIterable(
-									currentChunk
-								);
+								const fullHashModules =
+									chunkGraph.getChunkFullHashModulesIterable(currentChunk);
 								newFullHashModules =
 									fullHashModules &&
 									Array.from(fullHashModules).filter(module =>
@@ -500,7 +543,12 @@ class HotModuleReplacementPlugin {
 									const runtimes = chunkGraph.getModuleRuntimes(module);
 									if (oldRuntime === newRuntime && runtimes.has(newRuntime)) {
 										// Module is still in the same runtime combination
-										const hash = chunkGraph.getModuleHash(module, newRuntime);
+										const hash = nonCodeGeneratedModules.has(module, newRuntime)
+											? chunkGraph.getModuleHash(module, newRuntime)
+											: compilation.codeGenerationResults.getHash(
+													module,
+													newRuntime
+											  );
 										if (hash !== oldHash) {
 											if (module.type === "runtime") {
 												newRuntimeModules = newRuntimeModules || [];
@@ -580,13 +628,11 @@ class HotModuleReplacementPlugin {
 										filename = entry.filename;
 										assetInfo = entry.info;
 									} else {
-										({
-											path: filename,
-											info: assetInfo
-										} = compilation.getPathWithInfo(
-											entry.filenameTemplate,
-											entry.pathOptions
-										));
+										({ path: filename, info: assetInfo } =
+											compilation.getPathWithInfo(
+												entry.filenameTemplate,
+												entry.pathOptions
+											));
 									}
 									const source = entry.render();
 									compilation.additionalChunkAssets.push(filename);
