@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import styles from '../less/Navbar.less'
-import { Link } from 'react-router-dom';
+import styles from '../styles/navbar.module.scss';
+import Link from 'next/link';
 
 class Navbar extends Component{
    render(){
@@ -11,24 +11,23 @@ class Navbar extends Component{
    		marginLeft: "-40px"
    	};
       return(
-         <div className="navbar">
-          <div><Link style={fontSize} to="/">Home</Link></div>
-		  <div><Link style={fontSize} to="/">Music</Link></div>
+         <div className={styles.navbarDiv}>
+          <div><Link style={fontSize} href="/home">Home</Link></div>
+		  <div><Link style={fontSize} href="/">Music</Link></div>
 		  
-			  <div className="dropdown">
-			    <button className="dropbtn">Writing
+			  <div className={styles.dropdown}>
+			    <button className={styles.dropbtn}>Writing
 			      <i className=""></i>
 			    </button>
-			    <div className="dropdown-content">
-		    			<ul>
-				      		<Link style={dropdownStyles} to="/poems">Poems</Link>
-				      		<Link style={dropdownStyles} to="/">Short Stories</Link>
-				      		<Link style={dropdownStyles} to="/journal">Journal</Link>
-			      		</ul>
-			      	
+			    <div className={styles['dropdown-content']}>
+		    			<ul className="ul-class">
+				      		<div><Link style={dropdownStyles} href="/poems">Poems</Link></div>
+				      		<div><Link style={dropdownStyles} href="/">Short Stories</Link></div>
+				      		<div><Link style={dropdownStyles} href="/journal">Journal</Link></div>
+			      		</ul>			      	
 			    </div>
 			  </div>
-			  <div><Link style={fontSize} to="/about">About</Link></div>
+			  <div><Link style={fontSize} href="/about">About</Link></div>
 		
 		</div>
       );

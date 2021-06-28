@@ -1,5 +1,5 @@
 /* Navbar container */
-.navbar {
+.navbarDiv {
   overflow: hidden;
   background-color: #333;
   font-family: Arial;
@@ -7,14 +7,14 @@
    justify-content: center;
 }
 
-.navbar div {
+.navbarDiv div {
   width: 200px;
   text-align: center;
   font-size: 50px;
 }
 
 /* Links inside the navbar */
-.navbar a {
+.navbarDiv a {
   float: left;
   font-size: 16px;
   color: white;
@@ -42,7 +42,7 @@
 }
 
 /* Add a red background color to navbar links on hover */
-.navbar a:hover, .dropdown:hover .dropbtn {
+.navbarDiv a:hover, .dropdown:hover .dropbtn {
   background-color: red;
 }
 
