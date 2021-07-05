@@ -12,22 +12,20 @@ class Navbar extends Component{
    	};
       return(
          <div className={styles.navbarDiv}>
-          <div><Link style={fontSize} href="/home">Home</Link></div>
-		  <div><Link style={fontSize} href="/">Music</Link></div>
+          <div className={styles.linkDiv}><Link href="/">Home</Link></div>
+		  <div className={styles.linkDiv}><Link href="/">Music</Link></div>
 		  
 			  <div className={styles.dropdown}>
-			    <button className={styles.dropbtn}>Writing
-			      <i className=""></i>
-			    </button>
+			    <button id="dropbtn" className={styles.dropbtn}>Writing</button>
 			    <div className={styles['dropdown-content']}>
-		    			<ul className="ul-class">
-				      		<div><Link style={dropdownStyles} href="/poems">Poems</Link></div>
-				      		<div><Link style={dropdownStyles} href="/">Short Stories</Link></div>
-				      		<div><Link style={dropdownStyles} href="/journal">Journal</Link></div>
+		    			<ul className={styles['ul-class']}>
+				      		<div><Link href="/poems">Poems</Link></div>
+				      		<div><Link href="/">Short Stories</Link></div>
+				      		<div><Link href="/journal">Journal</Link></div>
 			      		</ul>			      	
 			    </div>
 			  </div>
-			  <div><Link style={fontSize} href="/about">About</Link></div>
+			  <div className={styles.linkDiv}><Link href="/about">About</Link></div>
 		
 		</div>
       );
