@@ -14,12 +14,12 @@ class Home extends Component{
 	      const NewComp = (props) => {
 	      	return (
 	      		typeof(props.dataArray) === 'object' && props.dataArray.length && props.dataArray.map((entry, index) => (
-                      <div key={index}>
-                      <div className="entryData-flex">
-                              <div className="entryName">{entry[0][0]}</div><div className="entryDate">Dated: {entry[0][1]}</div>
+              <div className={styles.entryDiv} key={index}>
+                      <div className={styles['entryData-flex']}>
+                              <div className={styles.entryName}>{entry[0][0]}</div><div className={styles.entryDate}>Dated: {entry[0][1]}</div>
                       </div>
-              <div className="entryContent">{entry[1]}</div>
-              <hr/>
+		              <div className={styles.entryContent}>{entry[1]}</div>
+		              <hr/>
                </div>
             ))
 	      	)

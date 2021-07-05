@@ -1,11 +1,3 @@
-.header {
-	font-size: 50px;
-}
-
-.div-class {
-	font-size: 50px;
-}
-
 #homeDiv {
 	padding-top: 4rem;
 	a {
@@ -14,17 +6,45 @@
 		}
 	}
 }
-.entryData-flex {
-	display: flex;
+
+.header {
+	font-size: 50px;
 }
-.entryName {
-	font-weight: bold;
+
+.div-class {
+	font-size: 50px;
 }
+
+.entryDiv {
+	color: white;
+	.entryData-flex {
+		display: flex;
+		.entryName {
+			font-weight: bold;
+		}
+
+	}
+}
+
+
 
 .entryName,
 .entryDate {
+	font-size: 50px;
 	margin: auto;
 }
 .entryContent {
 	margin: 5rem;
+	h1 {
+		font-size: 40px;
+	}
+
+	div {
+		font-size: 30px;
+		margin: 30px;
+		p {
+			text-align: left;
+		}
+	}
+
 }
