@@ -7,30 +7,27 @@ import Navbar from '../components/Navbar.js';
 export default class Poems extends Component{
   constructor(props) {
     super(props);
+    this.myRef = React.createRef();
     this.state = {
-      imgArray: []
+      imgArray: [],
+      currentIndex: 0
     }
   }
   changeSlides(index, isDotChange) {
     function checkSlideLimit(slideIndex, slidesArrayLength) {
-      if ((slideIndex + index) === 0) {
-        return slidesArrayLength;
+      if ((slideIndex + index) === -1) {
+        return slidesArrayLength - 1;
       } else if ((slideIndex + index) > slidesArrayLength) {
-        return 1;
+        return 0;
       } else {
         return slideIndex + index;
       }
       
     }
     this.setState( (state,props) => ({
-      slideIndex: isDotChange ? index : checkSlideLimit(state.slideIndex, state.slidesArray.length)
+      currentIndex: isDotChange ? index : checkSlideLimit(state.currentIndex, state.imgArray.length)
     }), () => {
-      const newSlidesArray = this.createSlidesArray(this.state);
-      this.setState((state, props) => ({
-        slidesArray: newSlidesArray
-      }), () => {
-        this.myRef.current.scrollIntoView(); // ensure scroll to top occurs
-      });
+      this.myRef.current.scrollIntoView(); // ensure scroll to top occurs
     });
   }
   componentDidMount(props) {
@@ -59,30 +56,20 @@ export default class Poems extends Component{
 
                 <div id="slidesDiv">
                 {this.state.imgArray.map((img, index, array) => (
-                        <div className={styles.fade} style={{display: index === 0 ? 'block' : 'none'}}>
+                        <div className={styles.fade} style={{display: index === this.state.currentIndex ? 'block' : 'none'}}>
                           <div className={styles.numbertext}> {index+1}  / {array.length}</div>
                           <Image id="currentImg" src={"/img/poems/" + img }/>
                         </div>
                 ))}
                 </div>
-            <div id={styles.slideshowButtons}>
-              <a className={styles.prev} onClick={this.changeSlides.bind(this, -1, false)}>&#10094;</a>
-              <a className={styles.next} onClick={this.changeSlides.bind(this, 1, false)}>&#10095;</a>
-            </div>
-          </div>  
-        </div>
+              <div id={styles.slideshowButtons}>
+                <a className={styles.prev} onClick={this.changeSlides.bind(this, -1, false)}>&#10094;</a>
+                <a className={styles.next} onClick={this.changeSlides.bind(this, 1, false)}>&#10095;</a>
+              </div>
+            </div>  
+          </div>
         </div>
       );
    }
 
 }
-
-// export default class Poems extends Component{
-//    render(){
-//       return(
-//          <div>
-//             <Image src="/img/poems/black_faces_sm.png"/>
-//     </div>
-//       );
-//    }
-// }
