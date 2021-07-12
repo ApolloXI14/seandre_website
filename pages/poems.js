@@ -51,6 +51,7 @@ export default class Poems extends Component{
          <div>
             <Navbar />
             <div id="slideshowBody">
+
                 <div ref={this.myRef} id="dotsDiv"></div>
                 <div id="slideshow-container" className={styles['slideshow-container']}>
 
@@ -58,7 +59,7 @@ export default class Poems extends Component{
                 {this.state.imgArray.map((img, index, array) => (
                         <div className={styles.fade} style={{display: index === this.state.currentIndex ? 'block' : 'none'}}>
                           <div className={styles.numbertext}> {index+1}  / {array.length}</div>
-                          <Image id="currentImg" src={"/img/poems/" + img }/>
+                          <img id="currentImg" className={styles.currentImg} src={"/img/poems/" + img }/>
                         </div>
                 ))}
                 </div>
@@ -67,6 +68,7 @@ export default class Poems extends Component{
                 <a className={styles.next} onClick={this.changeSlides.bind(this, 1, false)}>&#10095;</a>
               </div>
             </div>  
+
           </div>
         </div>
       );
