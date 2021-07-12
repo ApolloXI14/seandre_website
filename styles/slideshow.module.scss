@@ -1,16 +1,37 @@
 /* TODO: Check if I need below line */
 /** {box-sizing:border-box}*/
 
+#slideshowBody {
+  box-sizing:border-box;
+}
+
+
 /* Improve later */
 #currentImg { 
   width:100%;
   height: auto;
 }
 
+.currentImg { 
+  width:100%;
+  height: auto;
+}
+
 /* Slideshow container */
-.slideshow-container {
+/*.slideshow-container {
   max-width: 1000px;
   position: relative;
+  margin: auto;
+}*/
+
+.slideshow-container {
+    width: 800px;
+  height: 500px;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   margin: auto;
 }
 

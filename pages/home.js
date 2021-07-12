@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from '../styles/home.module.scss';
 import { ImportData } from '../components/ImportData';
 import ReactDOM from 'react-dom';
+import Image from 'next/image';
 
 class Home extends Component{
 	constructor(props) { 
