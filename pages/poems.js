@@ -17,7 +17,7 @@ export default class Poems extends Component{
     function checkSlideLimit(slideIndex, slidesArrayLength) {
       if ((slideIndex + index) === -1) {
         return slidesArrayLength - 1;
-      } else if ((slideIndex + index) > slidesArrayLength) {
+      } else if ((slideIndex + index) > slidesArrayLength - 1) {
         return 0;
       } else {
         return slideIndex + index;
