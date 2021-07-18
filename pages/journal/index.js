@@ -7,6 +7,7 @@ import JournalEntry from '../../components/JournalEntry';
 import ReactDOM from 'react-dom';
 import { ImportData } from '../../components/ImportData';
 import Link from 'next/link';
+import Navbar from '../../components/Navbar';
 
 class Journal extends Component{
   constructor(props) {
@@ -48,14 +49,17 @@ class Journal extends Component{
     }
     render(){
       return (
-        <div id="journalMenuDiv">
-          <ul>
+        <div>
+          <Navbar />
+          <div id="journalMenuDiv">
             <ul>
-              {this.state.fileNameArray.map((entry, index) => (
-                <li key={index++}><Link href={`journal/${index++}`}>{entry[0]}</Link> - <cite>Published {entry[1]}</cite></li>
-                ))}
+              <ul>
+                {this.state.fileNameArray.map((entry, index) => (
+                  <li key={index++}><Link href={`journal/${index++}`}>{entry[0]}</Link> - <cite>Published {entry[1]}</cite></li>
+                  ))}
+              </ul>
             </ul>
-          </ul>
+        </div>
       </div>
       );
    }

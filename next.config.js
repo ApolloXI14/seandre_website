@@ -5,7 +5,7 @@ module.exports = {
 	env: {
 		POEMS_DIR: '../public/img/poems/',
 		HOME_DIR: '../public/txt/home/',
-		JOURNAL_DIR: '../public/txt/journal/'
+		JOURNAL_DIR: '../../public/txt/journal/'
 	},
 	sassOptions: {
 	  includePaths: [path.join(__dirname, 'styles')],
