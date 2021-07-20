@@ -8,6 +8,10 @@ import parse from 'html-react-parser';
 
 function loadJournalEntries() {
 	// const JournalEntryWithData = ImportData(JournalEntry, require.context(JOURNAL_DIR, true, /.txt$/));
+	
+}
+
+export async function getStaticProps() {
 	function getFileMetaData(str) { // TODO: Export to own utility later, to de-duplicate
 	    let strArr = str.split('__');
 	    let fileDate = strArr[0];
@@ -20,17 +24,50 @@ function loadJournalEntries() {
 	  }
 	let entriesArray = [];
 	const req = require.context(process.env.JOURNAL_DIR, true, /.txt$/);
-	req.keys().map((fileName) => {
-      entriesArray.push( [getFileMetaData(fileName), parse(req(fileName))]); 
+	const reqMap = req.keys().map(async (fileName) => {
+	console.log('parse: ', parse(req(fileName)));
+	// TODO: Change the way HTML is rendered, because NextJS build throws error because of "parse(...)" in array
+	//entriesArray.push( [getFileMetaData(fileName), parse(req(fileName))]); 
+    entriesArray.push( [getFileMetaData(fileName)]); 
+      return {
+      	entriesArray
+      }
   	});
   	console.log('entriesArray: ', entriesArray);
+  	//return entriesArray;
+  	return {
+  		props: {
+  			entriesArray: await Promise.all(reqMap)
+  		}
+  	}
+}
+
+export async function getStaticPaths() {
+	const req = require.context(process.env.JOURNAL_DIR, true, /.txt$/);
+	console.log('getStaticPaths test: ', req);
+	const paths = req.keys().map((fileName, index) => {
+      return {params: { id: (index++).toString() }}
+  	});
+  	console.log('getStaticPaths test 2: ', paths);
+  	return { paths, fallback: false }
+  // return {
+  //   paths: [
+  //     { params: { ... } } // See the "paths" section below
+  //   ],
+  //   fallback: false
+  // };
 }
 
 
-const JournalEntry = () => {
-	loadJournalEntries();
+const JournalEntry = ({entriesArray}) => {
+  // const entriesArray = loadJournalEntries();
+  // console.log('test: ', entriesArray);
   const router = useRouter();
   const { id } = router.query;
+  // console.log('test2: ', entriesArray[id - 1]);
+  let testVar = entriesArray[id - 1];
+  console.log('testVar: ', testVar);
+  //console.log('html: ', html);
 
   return <p>JournalEntry: {id}</p>
 }
