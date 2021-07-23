@@ -25,30 +25,29 @@ export async function getStaticProps() {
 	let entriesArray = [];
 	const req = require.context(process.env.JOURNAL_DIR, true, /.txt$/);
 	const reqMap = req.keys().map(async (fileName) => {
-	console.log('parse: ', parse(req(fileName)));
+	//console.log('parse: ', parse(req(fileName)));
 	// TODO: Change the way HTML is rendered, because NextJS build throws error because of "parse(...)" in array
 	//entriesArray.push( [getFileMetaData(fileName), parse(req(fileName))]); 
-    entriesArray.push( [getFileMetaData(fileName)]); 
-      return {
-      	entriesArray
-      }
+    entriesArray.push( [fileName, getFileMetaData(fileName)]); 
+      return entriesArray;
   	});
-  	console.log('entriesArray: ', entriesArray);
+  	//console.log('entriesArray: ', entriesArray);
   	//return entriesArray;
   	return {
   		props: {
-  			entriesArray: await Promise.all(reqMap)
+  			entriesArray: entriesArray
+  			//entriesArray: await Promise.all(reqMap)
   		}
   	}
 }
 
 export async function getStaticPaths() {
 	const req = require.context(process.env.JOURNAL_DIR, true, /.txt$/);
-	console.log('getStaticPaths test: ', req);
+	//console.log('getStaticPaths test: ', req);
 	const paths = req.keys().map((fileName, index) => {
       return {params: { id: (index++).toString() }}
   	});
-  	console.log('getStaticPaths test 2: ', paths);
+  	//console.log('getStaticPaths test 2: ', paths);
   	return { paths, fallback: false }
   // return {
   //   paths: [
@@ -61,12 +60,17 @@ export async function getStaticPaths() {
 
 const JournalEntry = ({entriesArray}) => {
   // const entriesArray = loadJournalEntries();
-  // console.log('test: ', entriesArray);
+  console.log('test: ', entriesArray);
   const router = useRouter();
   const { id } = router.query;
   // console.log('test2: ', entriesArray[id - 1]);
-  let testVar = entriesArray[id - 1];
-  console.log('testVar: ', testVar);
+  console.log('test2: ', entriesArray[id][0]);
+  // console.log('test2: ', entriesArray[id - 1].entriesArray);
+  // let testVar = entriesArray[id - 1][0][0];
+  // console.log('testVar: ', testVar);
+  const req = require.context(process.env.JOURNAL_DIR, true, /.txt$/);
+  // let html = parse(req(entriesArray[id]));
+  // console.log('html: ', html);
   //console.log('html: ', html);
 
   return <p>JournalEntry: {id}</p>
