@@ -55,7 +55,7 @@ class Journal extends Component{
             <ul>
               <ul>
                 {this.state.fileNameArray.map((entry, index) => (
-                  <li key={index++}><Link href={`journal/${index++}`}>{entry[0]}</Link> - <cite>Published {entry[1]}</cite></li>
+                  <li key={index++}><Link href={`journal/${index - 1}`}>{entry[0]}</Link> - <cite>Published {entry[1]}</cite></li>
                   ))}
               </ul>
             </ul>

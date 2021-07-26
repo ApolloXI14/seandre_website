@@ -45,7 +45,7 @@ export async function getStaticPaths() {
 	const req = require.context(process.env.JOURNAL_DIR, true, /.txt$/);
 	//console.log('getStaticPaths test: ', req);
 	const paths = req.keys().map((fileName, index) => {
-      return {params: { id: (index++).toString() }}
+      return {params: { id: (index).toString() }}
   	});
   	//console.log('getStaticPaths test 2: ', paths);
   	return { paths, fallback: false }
@@ -63,17 +63,10 @@ const JournalEntry = ({entriesArray}) => {
   console.log('test: ', entriesArray);
   const router = useRouter();
   const { id } = router.query;
-  // console.log('test2: ', entriesArray[id - 1]);
-  console.log('test2: ', entriesArray[id][0]);
-  // console.log('test2: ', entriesArray[id - 1].entriesArray);
-  // let testVar = entriesArray[id - 1][0][0];
-  // console.log('testVar: ', testVar);
+  let entryFileName = entriesArray[id][0];
   const req = require.context(process.env.JOURNAL_DIR, true, /.txt$/);
-  // let html = parse(req(entriesArray[id]));
-  // console.log('html: ', html);
-  //console.log('html: ', html);
-
-  return <p>JournalEntry: {id}</p>
+  let html = parse(req(entryFileName));
+  return <div id="journalEntryDiv">{html}</div>
 }
 
 export default JournalEntry;
