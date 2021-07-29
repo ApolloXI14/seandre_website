@@ -5,11 +5,7 @@ import { useRouter } from 'next/router';
 import React, { Component } from 'react';
 // import { ImportData } from '../../components/ImportData';
 import parse from 'html-react-parser';
-
-function loadJournalEntries() {
-	// const JournalEntryWithData = ImportData(JournalEntry, require.context(JOURNAL_DIR, true, /.txt$/));
-	
-}
+import Link from 'next/link';
 
 export async function getStaticProps() {
 	function getFileMetaData(str) { // TODO: Export to own utility later, to de-duplicate
@@ -43,30 +39,57 @@ export async function getStaticProps() {
 
 export async function getStaticPaths() {
 	const req = require.context(process.env.JOURNAL_DIR, true, /.txt$/);
-	//console.log('getStaticPaths test: ', req);
 	const paths = req.keys().map((fileName, index) => {
       return {params: { id: (index).toString() }}
   	});
-  	//console.log('getStaticPaths test 2: ', paths);
   	return { paths, fallback: false }
-  // return {
-  //   paths: [
-  //     { params: { ... } } // See the "paths" section below
-  //   ],
-  //   fallback: false
-  // };
 }
 
 
 const JournalEntry = ({entriesArray}) => {
-  // const entriesArray = loadJournalEntries();
-  console.log('test: ', entriesArray);
+  //console.log('test: ', entriesArray);
   const router = useRouter();
   const { id } = router.query;
   let entryFileName = entriesArray[id][0];
+  let currentEntryId = Number(id);
   const req = require.context(process.env.JOURNAL_DIR, true, /.txt$/);
   let html = parse(req(entryFileName));
-  return <div id="journalEntryDiv">{html}</div>
+	// if (this.myRef && this.myRef.current) {
+	// 	this.myRef.current.scrollIntoView();
+	// } else {
+	// 	this.myRef = React.createRef();
+	// }
+
+  //return <div id="journalEntryDiv">{html}</div>
+
+
+  // <div><Link style={{textDecoration: "none"}} href="/journal">&#10094; <br/><p className="btnTxt">(Back)</p></Link></div>
+  // <div><Link style={{textDecoration: "none"}} href="/journal">&#10095; <br/><p className="btnTxt">(End)</p></Link></div>
+
+
+
+  return(
+      	<div  id="journalEntryContainer">
+	      	<div id="journalEntryDiv-flex">
+	      		<div className="previous">
+	      			{(currentEntryId !== 0) ?
+			    		<Link style={{textDecoration: "none"}} href={`/journal/${currentEntryId - 1}`}>&#10094;</Link> :
+			    		<div><Link style={{textDecoration: "none"}} href="/journal">&#10094; </Link></div>
+			    	 }
+	      		</div>
+		         <div id="htmlDiv">
+		      		{html}
+			    </div>
+			    <div className="nextBtn">
+			    	{(currentEntryId !== entriesArray.length - 1) ?
+			    		<div><Link style={{textDecoration: "none"}} href={`/journal/${currentEntryId + 1}`}>&#10095;</Link></div> :
+			    		<div><Link style={{textDecoration: "none"}} href="/journal">&#10095; </Link></div>
+			    	 }
+			    </div>
+		    </div>
+	    </div>
+
+      );
 }
 
 export default JournalEntry;
