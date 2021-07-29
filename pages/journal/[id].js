@@ -1,11 +1,8 @@
-// TODO: USE IMPORTDATA HERE TO GENERATE ARRAY OF WRAPPED COMPONENT JOURNAL ENTRIES
-// THEN USE "ID" PARAM TO GET CORRECT ARRAY INDEX
-
 import { useRouter } from 'next/router';
 import React, { Component } from 'react';
-// import { ImportData } from '../../components/ImportData';
 import parse from 'html-react-parser';
 import Link from 'next/link';
+import styles from '../../styles/journalentry.module.scss';
 
 export async function getStaticProps() {
 	function getFileMetaData(str) { // TODO: Export to own utility later, to de-duplicate
@@ -21,18 +18,12 @@ export async function getStaticProps() {
 	let entriesArray = [];
 	const req = require.context(process.env.JOURNAL_DIR, true, /.txt$/);
 	const reqMap = req.keys().map(async (fileName) => {
-	//console.log('parse: ', parse(req(fileName)));
-	// TODO: Change the way HTML is rendered, because NextJS build throws error because of "parse(...)" in array
-	//entriesArray.push( [getFileMetaData(fileName), parse(req(fileName))]); 
     entriesArray.push( [fileName, getFileMetaData(fileName)]); 
       return entriesArray;
   	});
-  	//console.log('entriesArray: ', entriesArray);
-  	//return entriesArray;
   	return {
   		props: {
   			entriesArray: entriesArray
-  			//entriesArray: await Promise.all(reqMap)
   		}
   	}
 }
@@ -70,20 +61,20 @@ const JournalEntry = ({entriesArray}) => {
 
   return(
       	<div  id="journalEntryContainer">
-	      	<div id="journalEntryDiv-flex">
-	      		<div className="previous">
+	      	<div id={styles['journalEntryDiv-flex']}>
+	      		<div className={styles.previous}>
 	      			{(currentEntryId !== 0) ?
-			    		<Link style={{textDecoration: "none"}} href={`/journal/${currentEntryId - 1}`}>&#10094;</Link> :
-			    		<div><Link style={{textDecoration: "none"}} href="/journal">&#10094; </Link></div>
+			    		<Link href={`/journal/${currentEntryId - 1}`}>&#10094;</Link> :
+			    		<div><Link href="/journal">&#10094; </Link></div>
 			    	 }
 	      		</div>
-		         <div id="htmlDiv">
+		         <div id={styles.htmlDiv}>
 		      		{html}
 			    </div>
-			    <div className="nextBtn">
+			    <div className={styles.nextBtn}>
 			    	{(currentEntryId !== entriesArray.length - 1) ?
-			    		<div><Link style={{textDecoration: "none"}} href={`/journal/${currentEntryId + 1}`}>&#10095;</Link></div> :
-			    		<div><Link style={{textDecoration: "none"}} href="/journal">&#10095; </Link></div>
+			    		<div><Link href={`/journal/${currentEntryId + 1}`}>&#10095;</Link></div> :
+			    		<div><Link href="/journal">&#10095; </Link></div>
 			    	 }
 			    </div>
 		    </div>

@@ -1,11 +1,13 @@
 #journalMenuDiv {
-	padding: 20rem;
-}
-
-.journalMenuDiv {
-	padding: 20rem;
+	text-align: center;
+	padding-top: 1rem;
+	color: white;
 }
 
 #journalMenuDiv a:visited {
 	color: grey;
+}
+
+.listClass {
+	list-style-type:none;
 }

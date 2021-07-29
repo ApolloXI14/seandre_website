@@ -1,13 +1,11 @@
-// TODO: CHANGE IMPORTDATA TO ONLY RETURN "dataArray" FOR JOURNAL, INSTEAD OF A WRAPPED COMPONENT
-
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import JournalMenu from '../../components/JournalMenu';
 import JournalEntry from '../../components/JournalEntry';
 import ReactDOM from 'react-dom';
-import { ImportData } from '../../components/ImportData';
 import Link from 'next/link';
 import Navbar from '../../components/Navbar';
+import styles from '../../styles/journalmenu.module.scss';
 
 class Journal extends Component{
   constructor(props) {
@@ -36,9 +34,6 @@ class Journal extends Component{
       fileNameArray: files
     };
   }
-  componentDidMount(props) {
-
-  }
   componentDidUpdate(prevProps) {
     if (prevProps.match.params !== this.props.match.params) {
       const currentEntryId = this.props.match.params.id ? Number(this.props.match.params.id) -1 : null; // minusShifting for array
@@ -51,9 +46,9 @@ class Journal extends Component{
       return (
         <div>
           <Navbar />
-          <div id="journalMenuDiv">
+          <div id={styles.journalMenuDiv}>
             <ul>
-              <ul>
+              <ul className={styles.listClass}>
                 {this.state.fileNameArray.map((entry, index) => (
                   <li key={index++}><Link href={`journal/${index - 1}`}>{entry[0]}</Link> - <cite>Published {entry[1]}</cite></li>
                   ))}
