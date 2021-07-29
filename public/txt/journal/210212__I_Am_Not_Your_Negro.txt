@@ -2,7 +2,7 @@
 <h4>2/12/21 11:30AM</h4>
 
 
-<img src="/../www/img/baldwin_quote.jpg"/>
+<img src="/../../img/baldwin_quote.jpg"/>
 
 <p>Happy Friday and Happy Black History Month.</p>
 
