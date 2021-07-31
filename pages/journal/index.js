@@ -31,7 +31,7 @@ class Journal extends Component{
     this.state = {
       currentEntryId: null,
       dataArray: [],
-      fileNameArray: files.reverse()
+      fileNameArray: files.reverse() // reversed for descending dates
     };
   }
   componentDidUpdate(prevProps) {

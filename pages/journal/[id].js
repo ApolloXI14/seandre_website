@@ -23,7 +23,7 @@ export async function getStaticProps() {
   	});
   	return {
   		props: {
-  			entriesArray: entriesArray
+  			entriesArray: entriesArray.reverse() // reversed for descending dates
   		}
   	}
 }
