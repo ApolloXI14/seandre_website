@@ -38,7 +38,6 @@ export async function getStaticPaths() {
 
 
 const JournalEntry = ({entriesArray}) => {
-  //console.log('test: ', entriesArray);
   const router = useRouter();
   const { id } = router.query;
   let entryFileName = entriesArray[id][0];
@@ -65,7 +64,7 @@ const JournalEntry = ({entriesArray}) => {
 	      		<div className={styles.previous}>
 	      			{(currentEntryId !== 0) ?
 			    		<Link href={`/journal/${currentEntryId - 1}`}>&#10094;</Link> :
-			    		<div><Link href="/journal">&#10094; </Link></div>
+			    		<div><Link href="/journal">&#10094;</Link></div>
 			    	 }
 	      		</div>
 		         <div id={styles.htmlDiv}>

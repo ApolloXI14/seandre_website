@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import styles from '../styles/about.module.scss';
+import Navbar from '../components/Navbar';
 
 class About extends Component{
    render(){
       return(
-         <div>
-            <h1>About Me</h1>
+        <div id={styles.aboutDiv}>
+          <Navbar />
+          <h1>About Me</h1>
           	<p>I remember building my first site on angelfire as a 90s kid, to share
 my writing. It has been lost to time sadly, but that's why I made this
 one! Using ReactJS/less instead of angelfire, though.  ;)</p>
