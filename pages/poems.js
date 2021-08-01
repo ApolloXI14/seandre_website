@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//import Slideshow from '../components/Slideshow';
 import styles from '../styles/slideshow.module.scss'
 import Image from 'next/image';
 import Navbar from '../components/Navbar.js';
@@ -34,7 +33,6 @@ export default class Poems extends Component{
     function importAll(req) {
         let images = [];
         req.keys().map((item, index) => {
-          console.log('item: ', item);
           images.push(item.replace('./', '')); });
         return images;
     }
@@ -43,7 +41,6 @@ export default class Poems extends Component{
     this.setState((state, props) => ({
       imgArray: array
     }));
-    console.log('imgArray: ', this.state);
   }
 
    render(){

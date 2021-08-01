@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import JournalMenu from '../../components/JournalMenu';
-import JournalEntry from '../../components/JournalEntry';
 import ReactDOM from 'react-dom';
 import Link from 'next/link';
 import Navbar from '../../components/Navbar';
