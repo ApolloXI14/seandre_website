@@ -1,0 +1,50 @@
+#homeDiv {
+	padding-top: 4rem;
+	a {
+		&:visited {
+			color: grey;
+		}
+	}
+}
+
+.header {
+	font-size: 30px;
+}
+
+.div-class {
+	font-size: 30px;
+}
+
+.entryDiv {
+	color: white;
+	.entryData-flex {
+		display: flex;
+		.entryName {
+			font-weight: bold;
+		}
+
+	}
+}
+
+
+
+.entryName,
+.entryDate {
+	font-size: 30px;
+	margin: auto;
+}
+.entryContent {
+	margin: 2rem;
+	h1 {
+		font-size: 40px;
+	}
+
+	div {
+		font-size: 30px;
+		margin: 30px;
+		p {
+			text-align: left;
+		}
+	}
+
+}

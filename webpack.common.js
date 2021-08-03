@@ -1,8 +1,12 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const regeneratorRuntime = require("regenerator-runtime");
+const string = require("regenerator-runtime/path").path;
 
 module.exports = {
-   entry: './main.js',
+   entry: {
+      main: './main.js'
+   },
    module: {
       rules: [
          {
@@ -10,11 +14,15 @@ module.exports = {
             exclude: /node_modules/,
             loader: 'babel-loader',
             options: {
-               presets: ['@babel/preset-env', '@babel/preset-react']
+               presets: [['@babel/preset-env', {
+                targets: {
+                  esmodules: true,
+                },
+              }], '@babel/preset-react']
             }
          },
          {
-           test: /\.less$/,
+           test: /\.(scss|less)$/,
               use: [
                 {
                   loader: 'style-loader',

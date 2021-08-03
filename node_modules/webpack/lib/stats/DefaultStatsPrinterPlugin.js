@@ -7,35 +7,17 @@
 
 /** @typedef {import("../Compiler")} Compiler */
 /** @typedef {import("./StatsPrinter")} StatsPrinter */
-
-/**
- * @typedef {Object} UsualContext
- * @property {string} type
- * @property {Object} compilation
- * @property {Object} chunkGroup
- * @property {Object} asset
- * @property {Object} module
- * @property {Object} chunk
- * @property {Object} moduleReason
- * @property {(str: string) => string} bold
- * @property {(str: string) => string} yellow
- * @property {(str: string) => string} red
- * @property {(str: string) => string} green
- * @property {(str: string) => string} magenta
- * @property {(str: string) => string} cyan
- * @property {(file: string, oversize?: boolean) => string} formatFilename
- * @property {(id: string) => string} formatModuleId
- * @property {(id: string, direction?: "parent"|"child"|"sibling") => string} formatChunkId
- * @property {(size: number) => string} formatSize
- * @property {(dateTime: number) => string} formatDateTime
- * @property {(flag: string) => string} formatFlag
- * @property {(time: number, boldQuantity?: boolean) => string} formatTime
- * @property {string} chunkGroupKind
- */
+/** @typedef {import("./StatsPrinter").StatsPrinterContext} StatsPrinterContext */
 
 const plural = (n, singular, plural) => (n === 1 ? singular : plural);
 
-const printSizes = (sizes, { formatSize }) => {
+/**
+ * @param {Record<string, number>} sizes sizes by source type
+ * @param {Object} options options
+ * @param {(number) => string=} options.formatSize size formatter
+ * @returns {string} text
+ */
+const printSizes = (sizes, { formatSize = n => `${n}` }) => {
 	const keys = Object.keys(sizes);
 	if (keys.length > 1) {
 		return keys.map(key => `${formatSize(sizes[key])} (${key})`).join(" ");
@@ -56,7 +38,7 @@ const isValidId = id => {
 	return typeof id === "number" || id;
 };
 
-/** @type {Record<string, (thing: any, context: UsualContext, printer: StatsPrinter) => string | void>} */
+/** @type {Record<string, (thing: any, context: StatsPrinterContext, printer: StatsPrinter) => string | void>} */
 const SIMPLE_PRINTERS = {
 	"compilation.summary!": (
 		_,
@@ -124,11 +106,30 @@ const SIMPLE_PRINTERS = {
 			versionMessage ||
 			errorsMessage ||
 			warningsMessage ||
+			(errorsCount === 0 && warningsCount === 0) ||
 			timeMessage ||
 			hashMessage
 		)
 			return `${builtAtMessage}${subjectMessage} ${statusMessage}${timeMessage}${hashMessage}`;
 	},
+	"compilation.filteredWarningDetailsCount": count =>
+		count
+			? `${count} ${plural(
+					count,
+					"warning has",
+					"warnings have"
+			  )} detailed information that is not shown.\nUse 'stats.errorDetails: true' resp. '--stats-error-details' to show it.`
+			: undefined,
+	"compilation.filteredErrorDetailsCount": (count, { yellow }) =>
+		count
+			? yellow(
+					`${count} ${plural(
+						count,
+						"error has",
+						"errors have"
+					)} detailed information that is not shown.\nUse 'stats.errorDetails: true' resp. '--stats-error-details' to show it.`
+			  )
+			: undefined,
 	"compilation.env": (env, { bold }) =>
 		env
 			? `Environment (--env): ${bold(JSON.stringify(env, null, 2))}`
@@ -192,7 +193,11 @@ const SIMPLE_PRINTERS = {
 						childWarnings,
 						"WARNING",
 						"WARNINGS"
-					)} in child compilations`
+					)} in child compilations${
+						compilation.children
+							? ""
+							: " (Use 'stats.children: true' resp. '--stats-children' for more details)"
+					}`
 				);
 			}
 		}
@@ -210,7 +215,11 @@ const SIMPLE_PRINTERS = {
 						childErrors,
 						"ERROR",
 						"ERRORS"
-					)} in child compilations`
+					)} in child compilations${
+						compilation.children
+							? ""
+							: " (Use 'stats.children: true' resp. '--stats-children' for more details)"
+					}`
 				);
 			}
 		}
@@ -277,6 +286,8 @@ const SIMPLE_PRINTERS = {
 		return (prefix || "") + bold(resource);
 	},
 	"module.identifier": identifier => undefined,
+	"module.layer": (layer, { formatLayer }) =>
+		layer ? formatLayer(layer) : undefined,
 	"module.sizes": printSizes,
 	"module.chunks[]": (id, { formatChunkId }) => formatChunkId(id),
 	"module.depth": (depth, { formatFlag }) =>
@@ -295,6 +306,8 @@ const SIMPLE_PRINTERS = {
 		built ? yellow(formatFlag("built")) : undefined,
 	"module.codeGenerated": (codeGenerated, { formatFlag, yellow }) =>
 		codeGenerated ? yellow(formatFlag("code generated")) : undefined,
+	"module.buildTimeExecuted": (buildTimeExecuted, { formatFlag, green }) =>
+		buildTimeExecuted ? green(formatFlag("build time executed")) : undefined,
 	"module.cached": (cached, { formatFlag, green }) =>
 		cached ? green(formatFlag("cached")) : undefined,
 	"module.assets": (assets, { formatFlag, magenta }) =>
@@ -337,7 +350,7 @@ const SIMPLE_PRINTERS = {
 					: null;
 				if (
 					providedExportsCount !== null &&
-					providedExportsCount === module.usedExports.length
+					providedExportsCount === usedExports.length
 				) {
 					return cyan(formatFlag("all exports used"));
 				} else {
@@ -500,8 +513,9 @@ const SIMPLE_PRINTERS = {
 			: `${bold(moduleName)}`;
 	},
 	"error.loc": (loc, { green }) => green(loc),
-	"error.message": (message, { bold }) => bold(message),
-	"error.details": details => details,
+	"error.message": (message, { bold, formatError }) =>
+		message.includes("\u001b[") ? message : bold(formatError(message)),
+	"error.details": (details, { formatError }) => formatError(details),
 	"error.stack": stack => stack,
 	"error.moduleTrace": moduleTrace => undefined,
 	"error.separator!": () => "\n",
@@ -629,8 +643,10 @@ const PREFERRED_ORDERS = {
 		"logging",
 		"warnings",
 		"warningsInChildren!",
+		"filteredWarningDetailsCount",
 		"errors",
 		"errorsInChildren!",
+		"filteredErrorDetailsCount",
 		"summary!",
 		"needAdditionalPass"
 	],
@@ -683,6 +699,7 @@ const PREFERRED_ORDERS = {
 		"name",
 		"identifier",
 		"id",
+		"layer",
 		"sizes",
 		"chunks",
 		"depth",
@@ -801,9 +818,8 @@ const SIMPLE_ITEMS_JOINER = {
 	"asset.chunkNames": itemsJoinCommaBracketsWithName("name"),
 	"asset.auxiliaryChunkNames": itemsJoinCommaBracketsWithName("auxiliary name"),
 	"asset.chunkIdHints": itemsJoinCommaBracketsWithName("id hint"),
-	"asset.auxiliaryChunkIdHints": itemsJoinCommaBracketsWithName(
-		"auxiliary id hint"
-	),
+	"asset.auxiliaryChunkIdHints":
+		itemsJoinCommaBracketsWithName("auxiliary id hint"),
 	"module.chunks": itemsJoinOneLine,
 	"module.issuerPath": items =>
 		items
@@ -895,13 +911,15 @@ const joinExplicitNewLine = (items, indenter) => {
 		.trim();
 };
 
-const joinError = error => (items, { red, yellow }) =>
-	`${error ? red("ERROR") : yellow("WARNING")} in ${joinExplicitNewLine(
-		items,
-		""
-	)}`;
+const joinError =
+	error =>
+	(items, { red, yellow }) =>
+		`${error ? red("ERROR") : yellow("WARNING")} in ${joinExplicitNewLine(
+			items,
+			""
+		)}`;
 
-/** @type {Record<string, (items: ({ element: string, content: string })[], context: UsualContext) => string>} */
+/** @type {Record<string, (items: ({ element: string, content: string })[], context: StatsPrinterContext) => string>} */
 const SIMPLE_ELEMENT_JOINERS = {
 	compilation: items => {
 		const result = [];
@@ -910,7 +928,9 @@ const SIMPLE_ELEMENT_JOINERS = {
 			if (!item.content) continue;
 			const needMoreSpace =
 				item.element === "warnings" ||
+				item.element === "filteredWarningDetailsCount" ||
 				item.element === "errors" ||
+				item.element === "filteredErrorDetailsCount" ||
 				item.element === "logging";
 			if (result.length !== 0) {
 				result.push(needMoreSpace || lastNeedMore ? "\n\n" : "\n");
@@ -1057,6 +1077,7 @@ const AVAILABLE_FORMATS = {
 	formatFilename: (filename, { green, yellow }, oversize) =>
 		(oversize ? yellow : green)(filename),
 	formatFlag: flag => `[${flag}]`,
+	formatLayer: layer => `(in ${layer})`,
 	formatSize: require("../SizeFormatHelpers").formatSize,
 	formatDateTime: (dateTime, { bold }) => {
 		const d = new Date(dateTime);
@@ -1086,6 +1107,41 @@ const AVAILABLE_FORMATS = {
 		} else {
 			return `${boldQuantity ? bold(time) : time}${unit}`;
 		}
+	},
+	formatError: (message, { green, yellow, red }) => {
+		if (message.includes("\u001b[")) return message;
+		const highlights = [
+			{ regExp: /(Did you mean .+)/g, format: green },
+			{
+				regExp: /(Set 'mode' option to 'development' or 'production')/g,
+				format: green
+			},
+			{ regExp: /(\(module has no exports\))/g, format: red },
+			{ regExp: /\(possible exports: (.+)\)/g, format: green },
+			{ regExp: /\s*(.+ doesn't exist)/g, format: red },
+			{ regExp: /('\w+' option has not been set)/g, format: red },
+			{
+				regExp: /(Emitted value instead of an instance of Error)/g,
+				format: yellow
+			},
+			{ regExp: /(Used? .+ instead)/gi, format: yellow },
+			{ regExp: /\b(deprecated|must|required)\b/g, format: yellow },
+			{
+				regExp: /\b(BREAKING CHANGE)\b/gi,
+				format: red
+			},
+			{
+				regExp:
+					/\b(error|failed|unexpected|invalid|not found|not supported|not available|not possible|not implemented|doesn't support|conflict|conflicting|not existing|duplicate)\b/gi,
+				format: red
+			}
+		];
+		for (const { regExp, format } of highlights) {
+			message = message.replace(regExp, (match, content) => {
+				return match.replace(content, format(content));
+			});
+		}
+		return message;
 	}
 };
 
@@ -1142,7 +1198,15 @@ class DefaultStatsPrinterPlugin {
 									}
 								}
 								if (start) {
-									context[color] = str => `${start}${str}\u001b[39m\u001b[22m`;
+									context[color] = str =>
+										`${start}${
+											typeof str === "string"
+												? str.replace(
+														/((\u001b\[39m|\u001b\[22m|\u001b\[0m)+)/g,
+														`$1${start}`
+												  )
+												: str
+										}\u001b[39m\u001b[22m`;
 								} else {
 									context[color] = str => str;
 								}

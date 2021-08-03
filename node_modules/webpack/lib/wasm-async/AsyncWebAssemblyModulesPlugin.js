@@ -11,7 +11,7 @@ const Generator = require("../Generator");
 const { tryRunOrWebpackError } = require("../HookWebpackError");
 const WebAssemblyImportDependency = require("../dependencies/WebAssemblyImportDependency");
 const { compareModulesByIdentifier } = require("../util/comparators");
-const memorize = require("../util/memorize");
+const memoize = require("../util/memoize");
 
 /** @typedef {import("webpack-sources").Source} Source */
 /** @typedef {import("../Chunk")} Chunk */
@@ -25,13 +25,13 @@ const memorize = require("../util/memorize");
 /** @typedef {import("../Template").RenderManifestEntry} RenderManifestEntry */
 /** @typedef {import("../Template").RenderManifestOptions} RenderManifestOptions */
 
-const getAsyncWebAssemblyGenerator = memorize(() =>
+const getAsyncWebAssemblyGenerator = memoize(() =>
 	require("./AsyncWebAssemblyGenerator")
 );
-const getAsyncWebAssemblyJavascriptGenerator = memorize(() =>
+const getAsyncWebAssemblyJavascriptGenerator = memoize(() =>
 	require("./AsyncWebAssemblyJavascriptGenerator")
 );
-const getAsyncWebAssemblyParser = memorize(() =>
+const getAsyncWebAssemblyParser = memoize(() =>
 	require("./AsyncWebAssemblyParser")
 );
 
@@ -91,9 +91,8 @@ class AsyncWebAssemblyModulesPlugin {
 		compiler.hooks.compilation.tap(
 			"AsyncWebAssemblyModulesPlugin",
 			(compilation, { normalModuleFactory }) => {
-				const hooks = AsyncWebAssemblyModulesPlugin.getCompilationHooks(
-					compilation
-				);
+				const hooks =
+					AsyncWebAssemblyModulesPlugin.getCompilationHooks(compilation);
 				compilation.dependencyFactories.set(
 					WebAssemblyImportDependency,
 					normalModuleFactory
@@ -109,7 +108,8 @@ class AsyncWebAssemblyModulesPlugin {
 				normalModuleFactory.hooks.createGenerator
 					.for("webassembly/async")
 					.tap("AsyncWebAssemblyModulesPlugin", () => {
-						const AsyncWebAssemblyJavascriptGenerator = getAsyncWebAssemblyJavascriptGenerator();
+						const AsyncWebAssemblyJavascriptGenerator =
+							getAsyncWebAssemblyJavascriptGenerator();
 						const AsyncWebAssemblyGenerator = getAsyncWebAssemblyGenerator();
 
 						return Generator.byType({

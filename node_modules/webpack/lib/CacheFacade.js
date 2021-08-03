@@ -36,6 +36,7 @@ class MultiItemCache {
 	 */
 	constructor(items) {
 		this._items = items;
+		if (items.length === 1) return /** @type {any} */ (items[0]);
 	}
 
 	/**
@@ -89,9 +90,9 @@ class MultiItemCache {
 	 * @returns {Promise<void>} promise signals when the value is stored
 	 */
 	storePromise(data) {
-		return Promise.all(
-			this._items.map(item => item.storePromise(data))
-		).then(() => {});
+		return Promise.all(this._items.map(item => item.storePromise(data))).then(
+			() => {}
+		);
 	}
 }
 

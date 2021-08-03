@@ -1,0 +1,17 @@
+#journalMenuDiv {
+	text-align: center;
+	padding-top: 1rem;
+	color: white;
+	ul {
+		padding-inline-start: 0;
+	}
+}
+
+#journalMenuDiv a:visited {
+	color: grey;
+}
+
+.listClass {
+	padding-inline-start: 0;
+	list-style-type:none;
+}
