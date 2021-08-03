@@ -1,0 +1,1 @@
+_N_E=(window.webpackJsonp_N_E=window.webpackJsonp_N_E||[]).push([[11],{ZrB0:function(n,_,w){(window.__NEXT_P=window.__NEXT_P||[]).push(["/journal",function(){return w("8+QG")}])}},[["ZrB0",0,1,2,3,4]]]);

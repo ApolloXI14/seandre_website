@@ -1,0 +1,1 @@
+{"ast":null,"code":"import '../styles.css'; // This default export is required in a new `pages/_app.js` file.\n\nexport default function MyApp(_ref) {\n  var {\n    Component,\n    pageProps\n  } = _ref;\n  return /*#__PURE__*/React.createElement(Component, pageProps);\n}","map":null,"metadata":{},"sourceType":"module"}
