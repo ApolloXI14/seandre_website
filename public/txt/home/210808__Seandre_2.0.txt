@@ -1,0 +1,4 @@
+<div>
+<h1>Major site refactor!</h1>
+   <div>Almost six months later, I have finally finished a major site update, implementing NextJS server-side rendering and converting all my styling from less to SCSS. The look and feel should be the same, but now I can share content and expand on this site with full flexibility...starting with directing you to <a href="/journal/0">my latest journal entry</a>. Enjoy!</div>
+</div>
