@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 import Link from 'next/link';
 import Navbar from '../../components/Navbar';
@@ -17,29 +16,16 @@ class Journal extends Component{
       fileName = fileName.replace(/_/g, ' ');
       return [fileName, fileDate];
     }
-
-
     super(props);
     const reqVar = require.context(process.env.JOURNAL_DIR, true, /.txt$/);
     let files = [];
     reqVar.keys().map((item, index) => {
       files.push(getFileMetaData(item.replace('./', ''))); 
     });
-
     this.state = {
-      currentEntryId: null,
-      dataArray: [],
       fileNameArray: files.reverse() // reversed for descending dates
     };
   }
-  componentDidUpdate(prevProps) {
-    if (prevProps.match.params !== this.props.match.params) {
-      const currentEntryId = this.props.match.params.id ? Number(this.props.match.params.id) -1 : null; // minusShifting for array
-        this.setState((state, props) => ({
-          currentEntryId: currentEntryId
-        }));
-      }
-    }
     render(){
       return (
         <div>

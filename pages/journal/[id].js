@@ -44,11 +44,6 @@ const JournalEntry = ({entriesArray}) => {
   let currentEntryId = Number(id);
   const req = require.context(process.env.JOURNAL_DIR, true, /.txt$/);
   let html = parse(req(entryFileName));
-	// if (this.myRef && this.myRef.current) {
-	// 	this.myRef.current.scrollIntoView();
-	// } else {
-	// 	this.myRef = React.createRef();
-	// }
 
   //return <div id="journalEntryDiv">{html}</div>
 

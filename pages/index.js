@@ -4,7 +4,6 @@ import Home from './home';
 import Poems from './poems';
 import Journal from './journal';
 import About from './about';
-import { Route, Switch, withRouter } from 'react-router-dom';
 
 
 
