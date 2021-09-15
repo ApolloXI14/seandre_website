@@ -12,6 +12,9 @@ export default class Poems extends Component{
       currentIndex: 0
     }
   }
+  currentSlide(index) {
+    this.changeSlides(index, true);
+  }
   changeSlides(index, isDotChange) {
     function checkSlideLimit(slideIndex, slidesArrayLength) {
       if ((slideIndex + index) === -1) {
@@ -49,7 +52,13 @@ export default class Poems extends Component{
             <Navbar />
             <div id="slideshowBody">
 
-                <div ref={this.myRef} id="dotsDiv"></div>
+                <div ref={this.myRef} id={styles.dotsDiv}>
+
+                {this.state.imgArray.map((img, index, array) => (
+                    <span className={styles.dot} onClick={this.currentSlide.bind(this, index, true)}></span>
+                ))}
+
+                </div>
                 <div id="slideshow-container" className={styles['slideshow-container']}>
 
                 <div id="slidesDiv">

@@ -1,1 +1,0 @@
-_N_E=(window.webpackJsonp_N_E=window.webpackJsonp_N_E||[]).push([[12],{"SZ+l":function(n,_,w){(window.__NEXT_P=window.__NEXT_P||[]).push(["/journal",function(){return w("5veM")}])}},[["SZ+l",0,1,2,4,5]]]);

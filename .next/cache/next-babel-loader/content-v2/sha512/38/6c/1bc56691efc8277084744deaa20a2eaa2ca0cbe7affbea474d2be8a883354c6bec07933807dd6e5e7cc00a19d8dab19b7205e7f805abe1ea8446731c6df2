@@ -1,1 +1,0 @@
-{"ast":null,"code":"import React from 'react';\n\nfunction HomePage() {\n  return /*#__PURE__*/React.createElement(\"div\", null, \"Welcome to Next.js!\");\n}\n\nexport default HomePage;","map":null,"metadata":{},"sourceType":"module"}
