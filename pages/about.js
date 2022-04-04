@@ -45,7 +45,6 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
         <li>Favorite movie: Good Will Hunting</li>
       </ul>
 
-
 		</div>
       );
    }
