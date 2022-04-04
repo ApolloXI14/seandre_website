@@ -5,8 +5,6 @@ import Poems from './poems';
 import Journal from './journal';
 import About from './about';
 
-
-
 class App extends Component{
    render(){
       return(
