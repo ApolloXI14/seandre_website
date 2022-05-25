@@ -1,4 +1,4 @@
 <div>
 <h1>Alive, like Daft Punk</h1>
-   <div>It's been too long since I've updated, but I've still been writing when I can, and have some things backlogged. It's been a physically/emotionally taxing week, so I decided to vent the best way I know how, which is writing. Check out my new journal entry, because <a href="/journal/0">it slaps</a>.</div>
+   <div>It's been too long since I've updated, but I've still been writing when I can, and have some things backlogged. It's been a physically/emotionally taxing week, so I decided to vent the best way I know how, which is writing. Check out my new journal entry, because <a href="/journal/1">it slaps</a>.</div>
 </div>
