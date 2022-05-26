@@ -33,8 +33,8 @@ class Journal extends Component{
           <div id={styles.journalMenuDiv}>
             <ul>
               <ul className={styles.listClass}>
-                {this.state.fileNameArray.map((entry, index) => (
-                  <li key={index++}><Link href={`journal/${index - 1}`}>{entry[0]}</Link> - <cite>Published {entry[1]}</cite></li>
+                {this.state.fileNameArray.map((entry, index, array) => (
+                  <li key={index++}><Link href={`journal/${array.length - index}`}>{entry[0]}</Link> - <cite>Published {entry[1]}</cite></li>
                   ))}
               </ul>
             </ul>

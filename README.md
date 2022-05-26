@@ -5,13 +5,13 @@
 1. Run `npm install` to install all packages
 
 ### Dev env instructions
-1. Run `npm run start` to both build and run dev server (port 8000 by
-   default)
-2. If need be, run `npm run build` to perform prod build
+1. Run `npm run dev` to both build and run dev server (port 3000 by
+   default). Hot refresh will be enabled, making changes reflect
+   instantly upon save.
 
 ### Prod env instructions
-1. Run `npm run start` to run prod server (port 8080 by default). 
-2. If needed, run `npm run build` to run prod build. (CSS will be minified; ensure less styles still work.)
+1. Run `npm run build` for prod build.
+2. Run `npm run start` to run prod server (port 8000 by default). 
 
 ### Component naming convention
 * Single nouns are base/container components (e.g. "Journal")
