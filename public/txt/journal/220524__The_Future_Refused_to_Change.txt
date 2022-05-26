@@ -35,6 +35,12 @@ mattered. It really felt like I had personally failed to avert a
 foreseeable disaster, and I watched our "pale blue dot" as Carl Sagan
 called it, the only home we've all ever known, be destroyed.</p>
 
+<figure>
+<img src="../../img/me_after_chrono_trigger_game_over.jpg"
+	alt="Me after Chrono Trigger Game Over" />
+	<figcaption>Real, unedited photos of myself after the Chrono Trigger Game Over</figcaption>
+</figure>
+
 <p>This image has stuck with me as I've gotten older, and the more
 terrible events that I see in the world--especially recurring, predictable, preventable events--the more I think this image
 is us.</p>

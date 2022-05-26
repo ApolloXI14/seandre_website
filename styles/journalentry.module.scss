@@ -5,8 +5,11 @@
 	p {
 		text-align: justify;
 	}
-	h1, h4 {
+	h1, h4, figcaption {
 		text-align: center;
+	}
+	figcaption {
+		font-style: italic;
 	}
 	img {
 		display: block;

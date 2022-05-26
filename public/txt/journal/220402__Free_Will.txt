@@ -103,8 +103,10 @@ of us as a people, and we need to stop slapping ourselves, ignoring
 it, and calling it "love". That is essentially mass-scale
 self-abuse.</p>
 
-<img src="/../../img/Ouroboros.jpg"/ title="Ouroboros snake eating its
-own tail" alt="Ouroboros snake eating its own tail">
+<figure>
+<img src="/../../img/Ouroboros.jpg"/ title="Ouroboros" alt="Ouroboros snake eating its own tail"/>
+	<figcaption>Ouroboros snake eating its own tail</figcaption>
+</figure>
 
 <p>Many will strawman this as "respectability" or "seeking white
 acceptance" or whatever, and call me a "Tom" or a traitor. That is
