@@ -1,5 +1,5 @@
 <div>
 <p>I know you're just dying to know what they are, right? The only way
-to find out it to check my new "Journal" entry. I also justified text on all entries to improve
+to find out it to check <a href="/journal/4">my new "Journal" entry</a>. I also justified text on all entries to improve
 formatting. Happy Saturday.</p>
 </div>
