@@ -45,7 +45,26 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
         <li>Favorite movie: Good Will Hunting</li>
       </ul>
 
-		</div>
+        <form id={styles.contactForm}>
+            <input type="hidden" name="contact_number" value={Math.random() * 100000 | 0}/>
+            <div id="name-input">
+              <label>Name: </label>
+              <input type="text" name="user_name"/>
+            </div>
+            <div id="email-input">
+              <label>Email: </label>
+              <input type="email" name="user_email"/>
+            </div>
+            <div id="message-input">
+              <label>Message: </label>
+              <textarea name="message" rows="4" cols="50"></textarea>
+            </div>
+            <div id="button-div">
+              <input type="submit" value="Send" onClick={this.sendMail.bind()}/>
+              <button type="button" onClick={this.sendMail.bind()}>Send Button</button>
+            </div>
+        </form>
+  		</div>
       );
    }
 }
