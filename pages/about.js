@@ -59,8 +59,10 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
               <label>Message: </label>
               <textarea name="message" rows="4" cols="50"></textarea>
             </div>
-            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-            <div id={styles.recaptcha} className="g-recaptcha" data-sitekey="6LfJ_HMgAAAAALHgR6Ng1BJ8MYqm7oZ1BM0yxsM2"></div>
+            <div class={styles.recaptchaDiv}>
+              <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+              <div id="recaptcha" className="g-recaptcha" data-sitekey="6LfJ_HMgAAAAALHgR6Ng1BJ8MYqm7oZ1BM0yxsM2"></div>
+            </div>
             <div id="button-div">
               <input type="submit" value="Send" onClick={this.sendMail.bind()}/>
               <button type="button" onClick={this.sendMail.bind()}>Send Button</button>

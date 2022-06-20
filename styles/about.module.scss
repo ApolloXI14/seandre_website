@@ -1,4 +1,4 @@
-#aboutDiv, #recaptcha, .contactDiv {
+#aboutDiv, .contactDiv {
 	color: white;
 	div, h1, h2 {
 		text-align: center;
@@ -7,4 +7,9 @@
 		text-align: center;
 		list-style-type:none;
 	}
+}
+
+.recaptchaDiv {
+	margin: auto;
+	display: table;
 }
