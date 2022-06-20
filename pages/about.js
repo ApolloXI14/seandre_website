@@ -14,7 +14,7 @@ class About extends Component{
     // generate a five digit number for the contact_number variable
     //this.contact_number.value = Math.random() * 100000 | 0;
     // these IDs from the previous steps
-    emailjs.sendForm('contact_service', 'template_9yh8twt', document.getElementById('contact-form'), 'user_AoX7PJ11jTjaXT3oOuQVB')
+    emailjs.sendForm('service_6swa1a2', 'template_9yh8twt', document.getElementById('contact-form'), 'user_AoX7PJ11jTjaXT3oOuQVB')
         .then(() => {
             console.log('SUCCESS!');
         }, function(error) {
@@ -45,10 +45,10 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
         <li>Favorite movie: Good Will Hunting</li>
       </ul>
 
-        <form id={styles.contactForm}>
+        <form id="contact-form" class={styles.contactForm}>
             <input type="hidden" name="contact_number" value={Math.random() * 100000 | 0}/>
             <div id="name-input">
-              <label>Name: </label>
+              <label for="">Name: </label>
               <input type="text" name="user_name"/>
             </div>
             <div id="email-input">
@@ -59,6 +59,8 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
               <label>Message: </label>
               <textarea name="message" rows="4" cols="50"></textarea>
             </div>
+            <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+            <div id={styles.recaptcha} className="g-recaptcha" data-sitekey="6LfJ_HMgAAAAALHgR6Ng1BJ8MYqm7oZ1BM0yxsM2"></div>
             <div id="button-div">
               <input type="submit" value="Send" onClick={this.sendMail.bind()}/>
               <button type="button" onClick={this.sendMail.bind()}>Send Button</button>
