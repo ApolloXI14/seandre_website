@@ -23,7 +23,6 @@ class About extends Component{
     });
   }
   sendMail(e) {
-    console.log('sendMail: ', e.target);
     event.preventDefault();
     // generate a five digit number for the contact_number variable
     //this.contact_number.value = Math.random() * 100000 | 0;
@@ -74,15 +73,15 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
               <input type="hidden" name="contact_number" value={Math.random() * 100000 | 0}/>
               <div id="name-input">
                 <label for="">Name: </label>
-                <input type="text" name="user_name"/>
+                <input type="text" id="user_name" name="user_name"/>
               </div>
               <div id="email-input">
                 <label>Email: </label>
-                <input type="email" name="user_email"/>
+                <input type="email" id="user_email" name="user_email"/>
               </div>
               <div id="message-input">
                 <label>Message: </label>
-                <textarea name="message" rows="4" cols="50"></textarea>
+                <textarea id="message" name="message" rows="4" cols="50"></textarea>
               </div>
               {errorState &&
                 <div>
