@@ -1,10 +1,23 @@
-#aboutDiv {
+#aboutDiv, .contactDiv {
 	color: white;
-	h1, h2 {
+	div, h1, h2 {
 		text-align: center;
 	}
 	ul {
 		text-align: center;
 		list-style-type:none;
 	}
+}
+
+#errorDiv {
+	color: red;
+}
+
+#successDiv {
+	text-align: center;
+}
+
+.recaptchaDiv {
+	margin: auto;
+	display: table;
 }

@@ -5,8 +5,22 @@ import emailjs from "emailjs-com";
 import{ init } from '@emailjs/browser';
 
 class About extends Component{
+  constructor(props) {
+    super(props);
+    this.sendMail = this.sendMail.bind(this);
+    this.state = {
+      errorState: false,
+      isSubmitted: false
+    };
+  }
   componentDidMount(props) {
     init('user_AoX7PJ11jTjaXT3oOuQVB');
+  }
+  toggleError(props) {
+    console.log('toggleError: ', props);
+    this.setState({
+      errorState: true
+    });
   }
   sendMail(e) {
     console.log('sendMail: ', e.target);
@@ -14,14 +28,21 @@ class About extends Component{
     // generate a five digit number for the contact_number variable
     //this.contact_number.value = Math.random() * 100000 | 0;
     // these IDs from the previous steps
-    emailjs.sendForm('contact_service', 'template_9yh8twt', document.getElementById('contact-form'), 'user_AoX7PJ11jTjaXT3oOuQVB')
+    emailjs.sendForm('service_6swa1a2', 'template_9yh8twt', document.getElementById('contact-form'), 'user_AoX7PJ11jTjaXT3oOuQVB')
         .then(() => {
-            console.log('SUCCESS!');
-        }, function(error) {
-            console.log('FAILED...', error);
-        });
+            this.setState({
+              isSubmitted: true,
+              errorState: false
+            });
+        }, (error) => {
+          this.setState({
+            errorState: error.status
+          });
+        }).bind(this);
   }
   render(){
+      var isSubmitted = this.state.isSubmitted;
+      var errorState = this.state.errorState;
       return(
         <div id={styles.aboutDiv}>
           <Navbar />
@@ -45,7 +66,40 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
         <li>Favorite movie: Good Will Hunting</li>
       </ul>
 
-		</div>
+        <form id="contact-form" className={styles.contactForm}>
+            {isSubmitted ?
+              <h4 id={styles.successDiv}>Thank you for your message!</h4>            
+            :
+            <div id="formBody">
+              <input type="hidden" name="contact_number" value={Math.random() * 100000 | 0}/>
+              <div id="name-input">
+                <label for="">Name: </label>
+                <input type="text" name="user_name"/>
+              </div>
+              <div id="email-input">
+                <label>Email: </label>
+                <input type="email" name="user_email"/>
+              </div>
+              <div id="message-input">
+                <label>Message: </label>
+                <textarea name="message" rows="4" cols="50"></textarea>
+              </div>
+              {errorState &&
+                <div>
+                  <h4 id={styles.errorDiv}>Error: Please check the captcha checkbox</h4>
+                </div>
+              }
+              <div className={styles.recaptchaDiv}>
+                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                <div id="recaptcha" className="g-recaptcha" data-sitekey="6LfJ_HMgAAAAALHgR6Ng1BJ8MYqm7oZ1BM0yxsM2"></div>
+              </div>
+              <div id="button-div">
+                <input type="submit" value='Send' onClick={this.sendMail.bind()}/>
+              </div>
+            </div>
+          }
+        </form>
+  		</div>
       );
    }
 }
