@@ -91,7 +91,7 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
               }
               <div className={styles.recaptchaDiv}>
                 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-                <div id="recaptcha" className="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+                <div id="recaptcha" className="g-recaptcha" data-sitekey="6LfJ_HMgAAAAALHgR6Ng1BJ8MYqm7oZ1BM0yxsM2"></div>
               </div>
               <div id="button-div">
                 <input type="submit" value='Send' onClick={this.sendMail.bind()}/>
