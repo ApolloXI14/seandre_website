@@ -67,36 +67,37 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
       </ul>
 
         <form id="contact-form" className={styles.contactForm}>
-            <input type="hidden" name="contact_number" value={Math.random() * 100000 | 0}/>
-            <div id="name-input">
-              <label for="">Name: </label>
-              <input type="text" name="user_name"/>
-            </div>
-            <div id="email-input">
-              <label>Email: </label>
-              <input type="email" name="user_email"/>
-            </div>
-            <div id="message-input">
-              <label>Message: </label>
-              <textarea name="message" rows="4" cols="50"></textarea>
-            </div>
-            {errorState &&
-              <div>
-                <h4 id={styles.errorDiv}>Error: Please check the captcha checkbox</h4>
+            {isSubmitted ?
+              <h4 id={styles.successDiv}>Thank you for your message!</h4>            
+            :
+            <div id="formBody">
+              <input type="hidden" name="contact_number" value={Math.random() * 100000 | 0}/>
+              <div id="name-input">
+                <label for="">Name: </label>
+                <input type="text" name="user_name"/>
               </div>
-            }
-            <div className={styles.recaptchaDiv}>
-              <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-              <div id="recaptcha" className="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
-            </div>
-            <div id="button-div">
-              {isSubmitted ?
-                <input type="submit" value='Submitted' disabled/>
-                :
-                <input type="submit" value='Send' onClick={this.sendMail.bind()}/>
+              <div id="email-input">
+                <label>Email: </label>
+                <input type="email" name="user_email"/>
+              </div>
+              <div id="message-input">
+                <label>Message: </label>
+                <textarea name="message" rows="4" cols="50"></textarea>
+              </div>
+              {errorState &&
+                <div>
+                  <h4 id={styles.errorDiv}>Error: Please check the captcha checkbox</h4>
+                </div>
               }
-
+              <div className={styles.recaptchaDiv}>
+                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                <div id="recaptcha" className="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+              </div>
+              <div id="button-div">
+                <input type="submit" value='Send' onClick={this.sendMail.bind()}/>
+              </div>
             </div>
+          }
         </form>
   		</div>
       );
