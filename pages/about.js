@@ -53,9 +53,7 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
             <p>Whatever brought you here, thank you. I'm but a humble
       daytime programmer from NYC who has always loved writing and music, and wants
       to share it. I am striving for weekend updates, so please check back
-      every weekend if you're interested. If you want to give me some writing/site
-      feedback or just say hello, feel free to email me at
-      seandre.mc@gmail.com</p>
+      every weekend if you're interested.</p>
       <h2>Some random facts about me</h2>
       <ul>
         <li>Favorite authors: J.D. Salinger, James Baldwin</li>
@@ -64,7 +62,8 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
         <li>Favorite flavor: Chocolate</li>
         <li>Favorite movie: Good Will Hunting</li>
       </ul>
-
+      <p id={styles.formDescription}>Want to give me some writing/site
+      feedback or just say hello? Fill out the form below and I'll respond if/when I can. I read and appreciate all messages!</p>
         <form id="contact-form" className={styles.contactForm}>
             {isSubmitted ?
               <h4 id={styles.successDiv}>Thank you for your message!</h4>            
