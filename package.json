@@ -1,6 +1,6 @@
 {
   "name": "seandre_website",
-  "version": "1.0.2",
+  "version": "2.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -86,6 +86,7 @@
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.35.1",
     "schema-utils": "^2.6.5",
+    "sharp": "^0.33.4",
     "source-map": "^0.7.3",
     "source-map-support": "^0.5.19",
     "style-loader": "^2.0.0",
