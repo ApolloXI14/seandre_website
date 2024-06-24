@@ -6,6 +6,9 @@
         targets: {
           esmodules: true,
         },
+        "useBuiltIns": "entry",
+        "corejs": "3.22",
+        debug: true
       },
     ],
   ],

@@ -55,7 +55,7 @@ export default class Poems extends Component{
                 <div ref={this.myRef} id={styles.dotsDiv}>
 
                 {this.state.imgArray.map((img, index, array) => (
-                    <span className={styles.dot} onClick={this.currentSlide.bind(this, index, true)}></span>
+                    <span key={index} className={styles.dot} onClick={this.currentSlide.bind(this, index, true)}></span>
                 ))}
 
                 </div>
@@ -63,9 +63,9 @@ export default class Poems extends Component{
 
                 <div id="slidesDiv">
                 {this.state.imgArray.map((img, index, array) => (
-                        <div className={styles.fade} style={{display: index === this.state.currentIndex ? 'block' : 'none'}}>
+                        <div key={index} className={styles.fade} style={{display: index === this.state.currentIndex ? 'block' : 'none'}}>
                           <div className={styles.numbertext}> {index+1}  / {array.length}</div>
-                          <img id="currentImg" className={styles.currentImg} src={"/img/poems/" + img }/>
+                          <Image key={index} id="currentImg" className={styles.currentImg} src={"/img/poems/" + img }/>
                         </div>
                 ))}
                 </div>

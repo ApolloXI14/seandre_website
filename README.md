@@ -17,3 +17,7 @@
 * Single nouns are base/container components (e.g. "Journal")
 * Adjective-noun pairs are sub-components (e.g. "JournalMenu")
 * Camel case all words (e.g. "Journalmenu" is invalid)
+
+## Solution to "ERR_OSSL_EVP_UNSUPPORTED" error when running "npm run build"
+** https://stackoverflow.com/questions/69394632/webpack-build-failing-with-err-ossl-evp-unsupported
+** export NODE_OPTIONS=--openssl-legacy-provider

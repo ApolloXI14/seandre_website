@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styles from '../styles/home.module.scss';
 import { ImportData } from '../components/ImportData';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import Image from 'next/image';
 
 class Home extends Component{
@@ -26,8 +27,10 @@ class Home extends Component{
 	      	)
 	      };
 	      const HomeWithData = ImportData(NewComp, this.state.req);
-	      ReactDOM.render(
-	      		<HomeWithData req={this.state.req} />, document.getElementById('homeDiv')
+	      const domNode = document.getElementById('homeDiv');
+	      const root = createRoot(domNode);
+	      root.render(
+	      		<HomeWithData req={this.state.req} />, {domNode}
 	      		)
 	}
    render(){
