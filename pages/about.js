@@ -14,10 +14,11 @@ class About extends Component{
     };
   }
   componentDidMount(props) {
-    init('user_AoX7PJ11jTjaXT3oOuQVB');
+    init({
+      publicKey: '68UreaEbAYt26Ojdg'
+    });
   }
   toggleError(props) {
-    console.log('toggleError: ', props);
     this.setState({
       errorState: true
     });
@@ -27,17 +28,17 @@ class About extends Component{
     // generate a five digit number for the contact_number variable
     //this.contact_number.value = Math.random() * 100000 | 0;
     // these IDs from the previous steps
-    emailjs.sendForm('service_6swa1a2', 'template_9yh8twt', document.getElementById('contact-form'), 'user_AoX7PJ11jTjaXT3oOuQVB')
+    emailjs.sendForm('service_zs0nuqa', 'template_9yh8twt', document.getElementById('contact-form'), '68UreaEbAYt26Ojdg')
         .then(() => {
             this.setState({
               isSubmitted: true,
               errorState: false
             });
-        }, (error) => {
+        }, (error) => { // TODO: Enhance error handling
           this.setState({
             errorState: error.status
           });
-        }).bind(this);
+        });
   }
   render(){
       var isSubmitted = this.state.isSubmitted;
@@ -62,7 +63,7 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
       </ul>
       <p id={styles.formDescription}>Want to give me some writing/site
       feedback or just say hello? Fill out the form below and I&apos;ll respond if/when I can. I read and appreciate all messages!</p>
-        <form id="contact-form" className={styles.contactForm}>
+        <form id="contact-form" className={styles.contactForm} method="post">
             {isSubmitted ?
               <h4 id={styles.successDiv}>Thank you for your message!</h4>            
             :
@@ -90,7 +91,7 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
                 <div id="recaptcha" className="g-recaptcha" data-sitekey="6LfJ_HMgAAAAALHgR6Ng1BJ8MYqm7oZ1BM0yxsM2"></div>
               </div>
               <div id="button-div">
-                <input type="submit" value='Send' onClick={this.sendMail.bind()}/>
+                <input type="submit" value='Send' onClick={this.sendMail.bind(this)} />
               </div>
             </div>
           }
