@@ -4,8 +4,8 @@ import styles from '../styles/about.module.scss';
 function Recaptcha() {
 	const [isClient, setIsClient] = useState(false);
 	  useEffect(() => {
-	    setIsClient(true)
-	  }, [process.env.NEXT_PROD_FLAG === false])
+	    setIsClient(!process.env.NEXT_PROD_FLAG)
+	  })
 	return ( 
 		<div>
 			<div className={styles.recaptchaDiv}>
