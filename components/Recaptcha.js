@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from '../styles/about.module.scss';
 
-function reCaptcha() {
+function Recaptcha() {
 	const [isClient, setIsClient] = useState(false);
 	  useEffect(() => {
 	    setIsClient(true)
@@ -18,4 +18,4 @@ function reCaptcha() {
 	    </div>
 	)
 }
-export default reCaptcha;
+export default Recaptcha;
