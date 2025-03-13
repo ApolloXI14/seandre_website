@@ -3,6 +3,7 @@ import styles from '../styles/about.module.scss';
 import Navbar from '../components/Navbar';
 import emailjs from "emailjs-com";
 import{ init } from '@emailjs/browser';
+import Recaptcha from '../components/Recaptcha';
 
 class About extends Component{
   constructor(props) {
@@ -86,10 +87,7 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
                   <h4 id={styles.errorDiv}>Error: Please check the captcha checkbox</h4>
                 </div>
               }
-              <div className={styles.recaptchaDiv}>
-                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-                <div id="recaptcha" className="g-recaptcha" data-sitekey="6LfJ_HMgAAAAALHgR6Ng1BJ8MYqm7oZ1BM0yxsM2"></div>
-              </div>
+              <Recaptcha />
               <div id="button-div">
                 <input type="submit" value='Send' onClick={this.sendMail.bind(this)} />
               </div>
