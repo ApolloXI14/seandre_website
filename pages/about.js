@@ -87,7 +87,11 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
                   <h4 id={styles.errorDiv}>Error: Please check the captcha checkbox</h4>
                 </div>
               }
-              <Recaptcha />
+              <Recaptcha
+                  recaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_V2_PUBLIC_KEY}
+                  isClient={process.env.NEXT_PROD_FLAG}
+                  suppressHydrationWarning
+              />
               <div id="button-div">
                 <input type="submit" value='Send' onClick={this.sendMail.bind(this)} />
               </div>
