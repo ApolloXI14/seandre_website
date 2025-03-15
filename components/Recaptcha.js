@@ -19,8 +19,8 @@ function Recaptcha({recaptchaKey}) {
 	return ( 
 		<div>
 			<div className={styles.recaptchaDiv}>
-				{isClient ? 'Never prerendered' :
-					<div id="recaptcha" className="g-recaptcha" data-sitekey={recaptchaKey}></div>
+				{isClient ? <div id="recaptcha" className="g-recaptcha" data-sitekey={recaptchaKey}></div>  :
+					'Never prerendered'
 				}
 	    	</div>
 			 
