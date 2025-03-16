@@ -1,51 +1,37 @@
-import React, { Component } from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from '../styles/about.module.scss';
 import Navbar from '../components/Navbar';
 import emailjs from "emailjs-com";
 import{ init } from '@emailjs/browser';
 import Recaptcha from '../components/Recaptcha';
 
-class About extends Component{
-  constructor(props) {
-    super(props);
-    this.sendMail = this.sendMail.bind(this);
-    this.state = {
-      errorState: false,
-      isSubmitted: false
-    };
-  }
-  componentDidMount(props) {
-    init({
-      publicKey: '68UreaEbAYt26Ojdg'
-    });
-  }
-  toggleError(props) {
-    this.setState({
-      errorState: true
-    });
-  }
-  sendMail(e) {
-    event.preventDefault();
-    // generate a five digit number for the contact_number variable
-    //this.contact_number.value = Math.random() * 100000 | 0;
-    // these IDs from the previous steps
-    emailjs.sendForm('service_zs0nuqa', 'template_9yh8twt', document.getElementById('contact-form'), '68UreaEbAYt26Ojdg')
-        .then(() => {
-            this.setState({
-              isSubmitted: true,
-              errorState: false
+export default function About() {
+    const [errorState, setError] = useState(false);
+    const [isSubmitted, submitForm] = useState(false);
+    const toggleError = () => {
+        setError(true);
+    }
+    const sendMail = (e) => {
+        event.preventDefault();
+        // generate a five digit number for the contact_number variable
+        //this.contact_number.value = Math.random() * 100000 | 0;
+        // these IDs from the previous steps
+        emailjs.sendForm('service_zs0nuqa', 'template_9yh8twt', document.getElementById('contact-form'), '68UreaEbAYt26Ojdg')
+            .then(() => {
+                submitForm(true);
+                setError(false);
+            }, (error) => { // TODO: Enhance error handling
+                setError(error.status)
             });
-        }, (error) => { // TODO: Enhance error handling
-          this.setState({
-            errorState: error.status
-          });
+    }
+    useEffect( () => {
+        init({
+            publicKey: '68UreaEbAYt26Ojdg'
         });
-  }
-  render(){
-      var isSubmitted = this.state.isSubmitted;
-      var errorState = this.state.errorState;
-      return(
-        <div id={styles.aboutDiv}>
+    }, [])
+
+    return(
+         <div id={styles.aboutDiv}>
           <Navbar />
           <h1>About Me</h1>
           	<p>I remember building my first site on angelfire as a 90s kid, to share my writing. It has been lost to time sadly, but that&apos;s why I made this
@@ -66,7 +52,7 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
       feedback or just say hello? Fill out the form below and I&apos;ll respond if/when I can. I read and appreciate all messages!</p>
         <form id="contact-form" className={styles.contactForm} method="post">
             {isSubmitted ?
-              <h4 id={styles.successDiv}>Thank you for your message!</h4>            
+              <h4 id={styles.successDiv}>Thank you for your message!</h4>
             :
             <div id="formBody">
               <input type="hidden" name="contact_number" value={Math.random() * 100000 | 0}/>
@@ -93,13 +79,11 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
                   suppressHydrationWarning
               />
               <div id="button-div">
-                <input type="submit" value='Send' onClick={this.sendMail.bind(this)} />
+                <input type="submit" value='Send' onClick={sendMail.bind(this)} />
               </div>
             </div>
           }
         </form>
   		</div>
-      );
-   }
+    )
 }
-export default About;
