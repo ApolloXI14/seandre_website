@@ -106,28 +106,19 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
             :
             <div id="formBody">
               <input type="hidden" name="contact_number" value={Math.random() * 100000 | 0}/>
-              {/* TODO: Make the form/error fields a loop */}
-              <div id="name-input" className={styles.tooltip}>
-              {!isValidObj.name.isValid && <span className={styles.tooltiptext}>{isValidObj.name.errorMessage}</span>}
-                <label for="" id={!isValidObj.name.isValid && styles.errorDiv}>Name: </label>
-                <input type="text" id="name" name="user_name" value={form.name}
-                  onChange={ (e) => setFormValue({...form, name: e.target.value})}
-                  onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}/>
-              </div>
-              <div id="email-input" className={styles.tooltip}>
-              {!isValidObj.email.isValid && <span className={styles.tooltiptext}>{isValidObj.email.errorMessage}</span>}
-                <label id={!isValidObj.email.isValid && styles.errorDiv}>Email: </label>
-                <input type="email" id="email" name="email" value={form.email}
-                  onChange={ (e) => setFormValue({...form, email: e.target.value})}
-                  onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}/>
-              </div>
-              <div id="message-input" className={styles.tooltip}>
-                {!isValidObj.message.isValid && <span className={styles.tooltiptext}>{isValidObj.message.errorMessage}</span>}
-                <label id={!isValidObj.message.isValid && styles.errorDiv}>Message: </label>
-                <textarea id="message" name="message" rows="4" cols="50" value={form.message}
-                onChange={ (e) => setFormValue({...form, message: e.target.value})}
-                onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}></textarea>
-              </div>
+              {Object.keys(form || []).map( (key, index) => (
+                         <div index={index} id={key + '-input'} className={styles.tooltip}>
+                        {!isValidObj[key].isValid && <span className={styles.tooltiptext}>{isValidObj[key].errorMessage}</span>}
+                          <label for="" id={!isValidObj[key].isValid && styles.errorDiv}>{key.toUpperCase()}: </label>
+                          <input type="text" id={key} name={key} value={form[key]}
+                            onChange={ (e) => setFormValue({...form, [key]: e.target.value})}
+                            onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}/>
+                        </div>
+
+                      ))
+
+                    }
+
               {errorState &&
                 <div>
                   <h4 id={styles.errorDiv}>Error: Please check the captcha checkbox</h4>
