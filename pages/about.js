@@ -17,15 +17,28 @@ export default function About() {
       const value = action.value;
       switch (action.type) {
         case 'name': {
-          return value === value.match(/\w+'?\w+\s?/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), '');
+          return {
+            ...state,
+            name: value === value.match(/\w+'?\w+\s?/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), '')
+          }
         } case 'email': {
-          return  value.match(/[\w+.]+@\w+.[a-z]{3}/) && value === value.match(/[\w+.]+@\w+.[a-z]{3}/)[0];
+          return {
+            ...state,
+            email: value.match(/[\w+.]+@\w+.[a-z]{3}/) && value === value.match(/[\w+.]+@\w+.[a-z]{3}/)[0]
+          }
         }
         case 'message': {
-          return value === value.match(/\w+.?\s?|\$\d+\s+.+|\(/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), '');
+          return {
+            ...state,
+            message: value === value.match(/\w+.?\s?|\$\d+\s+.+|\(/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), '')
+          }
         }
       }
-    }, false);
+    }, {
+      name: false,
+      email: false,
+      message: false
+    });
 
     const toggleError = () => {
         setError(true);
