@@ -1,3 +1,4 @@
+// Tooltip from https://www.w3schools.com/howto/howto_css_tooltip.asp
 #aboutDiv, .contactDiv {
 	color: white;
 	div, h1, h2, p {
@@ -24,8 +25,8 @@
 
 .tooltip {
   position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  //display: inline-block;
+  //border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
 }
 
 /* Tooltip text */
@@ -63,7 +64,13 @@
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
-.tooltip .tooltiptext {
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+// Also show tooltip when keyboard focused on a field
+input:focus .tooltiptext {
   visibility: visible;
   opacity: 1;
 }

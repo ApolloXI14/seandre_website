@@ -13,31 +13,49 @@ export default function About() {
       email: '',
       message: ''
     });
-    const [isValid, validateField] = useReducer((state, action) => {
+    const [isValidObj, validateField] = useReducer((state, action) => {
       const value = action.value;
       switch (action.type) {
         case 'name': {
           return {
             ...state,
-            name: value === value.match(/\w+'?\w+\s?/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), '')
+            name: {
+              isValid: value === value.match(/\w+'?\w+\s?/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), ''),
+              errorMessage: 'Please correct the name'
+            }
           }
         } case 'email': {
           return {
             ...state,
-            email: value.match(/[\w+.]+@\w+.[a-z]{3}/) && value === value.match(/[\w+.]+@\w+.[a-z]{3}/)[0]
+            email: {
+              isValid: value.match(/[\w+.]+@\w+.[a-z]{3}/) && value === value.match(/[\w+.]+@\w+.[a-z]{3}/)[0],
+              errorMessage: 'Please format the email correctly'
+            }
           }
         }
         case 'message': {
           return {
             ...state,
-            message: value === value.match(/\w+.?\s?|\$\d+\s+.+|\(/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), '')
+            message: {
+              isValid: value === value.match(/\w+.?\s?|\$\d+\s+.+|\(/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), ''),
+              errorMessage: 'Please remove invalid characters from the message.'
+            }
           }
         }
       }
     }, { // true by default to prevent error styling from rendering on load
-      name: true,
-      email: true,
-      message: true
+      name: {
+        isValid: true,
+        errorMessage: ''
+      },
+      email: {
+        isValid: true,
+        errorMessage: ''
+      },
+      message: {
+        isValid: true,
+        errorMessage: ''
+      }
     });
 
     const toggleError = () => {
@@ -88,21 +106,24 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
             :
             <div id="formBody">
               <input type="hidden" name="contact_number" value={Math.random() * 100000 | 0}/>
+              {/* TODO: Make the form/error fields a loop */}
               <div id="name-input" className={styles.tooltip}>
-              {!isValid.name && <span className={styles.tooltiptext}>Please correct the name field</span>}
-                <label for="" id={!isValid.name && styles.errorDiv}>Name: </label>
+              {!isValidObj.name.isValid && <span className={styles.tooltiptext}>{isValidObj.name.errorMessage}</span>}
+                <label for="" id={!isValidObj.name.isValid && styles.errorDiv}>Name: </label>
                 <input type="text" id="name" name="user_name" value={form.name}
                   onChange={ (e) => setFormValue({...form, name: e.target.value})}
                   onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}/>
               </div>
-              <div id="email-input">
-                <label id={!isValid.email && styles.errorDiv}>Email: </label>
+              <div id="email-input" className={styles.tooltip}>
+              {!isValidObj.email.isValid && <span className={styles.tooltiptext}>{isValidObj.email.errorMessage}</span>}
+                <label id={!isValidObj.email.isValid && styles.errorDiv}>Email: </label>
                 <input type="email" id="email" name="email" value={form.email}
                   onChange={ (e) => setFormValue({...form, email: e.target.value})}
                   onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}/>
               </div>
-              <div id="message-input">
-                <label id={!isValid.message && styles.errorDiv}>Message: </label>
+              <div id="message-input" className={styles.tooltip}>
+                {!isValidObj.message.isValid && <span className={styles.tooltiptext}>{isValidObj.message.errorMessage}</span>}
+                <label id={!isValidObj.message.isValid && styles.errorDiv}>Message: </label>
                 <textarea id="message" name="message" rows="4" cols="50" value={form.message}
                 onChange={ (e) => setFormValue({...form, message: e.target.value})}
                 onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}></textarea>
