@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useReducer} from 'react';
 import styles from '../styles/about.module.scss';
 import Navbar from '../components/Navbar';
 import emailjs from "emailjs-com";
@@ -8,6 +8,25 @@ import Recaptcha from '../components/Recaptcha';
 export default function About() {
     const [errorState, setError] = useState(false);
     const [isSubmitted, submitForm] = useState(false);
+    const [form, setFormValue] = useState({
+      name: '',
+      email: '',
+      message: ''
+    });
+    const [isValid, validateField] = useReducer((state, action) => {
+      const value = action.value;
+      switch (action.type) {
+        case 'name': {
+          return value === value.match(/\w+'?\w+\s?/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), '');
+        } case 'email': {
+          return  value.match(/[\w+.]+@\w+.[a-z]{3}/) && value === value.match(/[\w+.]+@\w+.[a-z]{3}/)[0];
+        }
+        case 'message': {
+          return value === value.match(/\w+.?\s?|\$\d+\s+.+|\(/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), '');
+        }
+      }
+    }, false);
+
     const toggleError = () => {
         setError(true);
     }
@@ -56,17 +75,23 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
             :
             <div id="formBody">
               <input type="hidden" name="contact_number" value={Math.random() * 100000 | 0}/>
-              <div id="name-input">
+              <div id="name-input" class="{styles.errorDiv}">
                 <label for="">Name: </label>
-                <input type="text" id="user_name" name="user_name"/>
+                <input type="text" id="name" name="user_name" value={form.name}
+                  onChange={ (e) => setFormValue({...form, name: e.target.value})}
+                  onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}/>
               </div>
               <div id="email-input">
                 <label>Email: </label>
-                <input type="email" id="user_email" name="user_email"/>
+                <input type="email" id="email" name="email" value={form.email}
+                  onChange={ (e) => setFormValue({...form, email: e.target.value})}
+                  onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}/>
               </div>
               <div id="message-input">
                 <label>Message: </label>
-                <textarea id="message" name="message" rows="4" cols="50"></textarea>
+                <textarea id="message" name="message" rows="4" cols="50" value={form.message}
+                onChange={ (e) => setFormValue({...form, message: e.target.value})}
+                onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}></textarea>
               </div>
               {errorState &&
                 <div>
