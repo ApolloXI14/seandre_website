@@ -34,10 +34,10 @@ export default function About() {
           }
         }
       }
-    }, {
-      name: false,
-      email: false,
-      message: false
+    }, { // true by default to prevent error styling from rendering on load
+      name: true,
+      email: true,
+      message: true
     });
 
     const toggleError = () => {
@@ -88,20 +88,21 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
             :
             <div id="formBody">
               <input type="hidden" name="contact_number" value={Math.random() * 100000 | 0}/>
-              <div id="name-input" class="{styles.errorDiv}">
-                <label for="">Name: </label>
+              <div id="name-input" className={styles.tooltip}>
+              {!isValid.name && <span className={styles.tooltiptext}>Please correct the name field</span>}
+                <label for="" id={!isValid.name && styles.errorDiv}>Name: </label>
                 <input type="text" id="name" name="user_name" value={form.name}
                   onChange={ (e) => setFormValue({...form, name: e.target.value})}
                   onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}/>
               </div>
               <div id="email-input">
-                <label>Email: </label>
+                <label id={!isValid.email && styles.errorDiv}>Email: </label>
                 <input type="email" id="email" name="email" value={form.email}
                   onChange={ (e) => setFormValue({...form, email: e.target.value})}
                   onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}/>
               </div>
               <div id="message-input">
-                <label>Message: </label>
+                <label id={!isValid.message && styles.errorDiv}>Message: </label>
                 <textarea id="message" name="message" rows="4" cols="50" value={form.message}
                 onChange={ (e) => setFormValue({...form, message: e.target.value})}
                 onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}></textarea>
