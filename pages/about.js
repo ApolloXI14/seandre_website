@@ -107,7 +107,7 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
             <div id="formBody">
               <input type="hidden" name="contact_number" value={Math.random() * 100000 | 0}/>
               {Object.keys(form || []).map( (key, index) => (
-                         <div index={index} id={key + '-input'} className={styles.tooltip}>
+                         <div key={index} index={index} id={key + '-input'} className={styles.tooltip}>
                         {!isValidObj[key].isValid && <span className={styles.tooltiptext}>{isValidObj[key].errorMessage}</span>}
                           <label for="" id={!isValidObj[key].isValid && styles.errorDiv}>{key.toUpperCase()}: </label>
                           {key === 'message' &&
