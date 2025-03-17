@@ -110,9 +110,16 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
                          <div index={index} id={key + '-input'} className={styles.tooltip}>
                         {!isValidObj[key].isValid && <span className={styles.tooltiptext}>{isValidObj[key].errorMessage}</span>}
                           <label for="" id={!isValidObj[key].isValid && styles.errorDiv}>{key.toUpperCase()}: </label>
-                          <input type="text" id={key} name={key} value={form[key]}
-                            onChange={ (e) => setFormValue({...form, [key]: e.target.value})}
-                            onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}/>
+                          {key === 'message' &&
+                            <textarea id={key} name={key} rows="4" cols="50" value={form[key]}
+                              onChange={ (e) => setFormValue({...form, [key]: e.target.value})}
+                              onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}/>
+                          }
+                          {key !== 'message' && (
+                              <input type="text" id={key} name={key} value={form[key]}
+                                onChange={ (e) => setFormValue({...form, [key]: e.target.value})}
+                                onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}/>
+                          )}
                         </div>
 
                       ))
