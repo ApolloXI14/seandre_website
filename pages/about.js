@@ -14,39 +14,43 @@ export default function About() {
       email: '',
       message: ''
     });
+
     const [isValidObj, validateField] = useReducer((state, action) => {
       setError("");
+      const formValidationMap = {
+        name: {
+          isValid: (value) => value === value.match(/\w+'?\w+\s?/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), ''),
+          errorMessage: 'Please correct the name'
+        },
+        email: {
+          isValid: (value) => value === value.match(/\w+'?\w+\s?/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), ''),
+          errorMessage: 'Please correct the name'
+        },
+        message: {
+          isValid: (value) => value.match(/[\w+.]+@\w+.[a-z]{3}/) && value === value.match(/[\w+.]+@\w+.[a-z]{3}/)[0],
+          errorMessage: 'Please format the email correctly'
+        }
+      }
       const value = action.value;
-      switch (action.type) {
-        case 'name': {
-          return {
-            ...state,
-            name: {
-              isValid: value === value.match(/\w+'?\w+\s?/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), ''),
-              errorMessage: 'Please correct the name',
-              value: value
-            }
-          }
-        } case 'email': {
-          return {
-            ...state,
-            email: {
-              isValid: value.match(/[\w+.]+@\w+.[a-z]{3}/) && value === value.match(/[\w+.]+@\w+.[a-z]{3}/)[0],
-              errorMessage: 'Please format the email correctly',
-              value: value
-            }
+      const type = action.type;
+      if (value === "") {
+        return {
+          ...state,
+          [type]: {
+            isValid: value !== "",
+            errorMessage: 'Please fill in the field',
+            value: value
           }
         }
-        case 'message': {
+      } else {
           return {
             ...state,
-            message: {
-              isValid: value === value.match(/\w+.?\s?|\$\d+\s+.+|\(/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), ''),
-              errorMessage: 'Please remove invalid characters from the message.',
+            [type]: {
+              isValid: formValidationMap[type].isValid(action.value),
+              errorMessage: formValidationMap[type].errorMessage,
               value: value
             }
           }
-        }
       }
     }, { // true by default to prevent error styling from rendering on load
       name: {
@@ -131,9 +135,7 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
               <h4 id={styles.successDiv}>Thank you for your message!</h4>
             :
             <div id="formBody">
-            {/* generate a five digit number for the contact_number variable
-                this.contact_number.value = Math.random() * 100000 | 0;
-                these IDs from the previous steps */}
+            {/* Use Math.random() to generate a five digit number for the contact_number variable */}
               <input type="hidden" name="contact_number" value={Math.random() * 100000 | 0}/>
               {Object.keys(form || []).map( (key, index) => (
                          <div key={index} index={index} id={key + '-input'} className={styles.tooltip}>
