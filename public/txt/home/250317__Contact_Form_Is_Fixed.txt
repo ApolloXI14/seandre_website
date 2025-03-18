@@ -1,0 +1,6 @@
+<div>
+<h1>The contact form is fixed</h1>
+
+<div>I have fixed and improved the <a href="/about"> contact form</a>. Go tell me how much you love and miss
+me, or how much you don't.</div>
+</div>
