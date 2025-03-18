@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useReducer} from 'react';
 import styles from '../styles/about.module.scss';
 import Navbar from '../components/Navbar';
 import emailjs from "emailjs-com";
@@ -6,23 +6,96 @@ import{ init } from '@emailjs/browser';
 import Recaptcha from '../components/Recaptcha';
 
 export default function About() {
-    const [errorState, setError] = useState(false);
+    const [errorMessage, setError] = useState('');
     const [isSubmitted, submitForm] = useState(false);
+    const [form, setFormValue] = useState({
+      name: '',
+      email: '',
+      message: ''
+    });
+    const [isValidObj, validateField] = useReducer((state, action) => {
+      setError("");
+      const value = action.value;
+      switch (action.type) {
+        case 'name': {
+          return {
+            ...state,
+            name: {
+              isValid: value === value.match(/\w+'?\w+\s?/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), ''),
+              errorMessage: 'Please correct the name',
+              value: value
+            }
+          }
+        } case 'email': {
+          return {
+            ...state,
+            email: {
+              isValid: value.match(/[\w+.]+@\w+.[a-z]{3}/) && value === value.match(/[\w+.]+@\w+.[a-z]{3}/)[0],
+              errorMessage: 'Please format the email correctly',
+              value: value
+            }
+          }
+        }
+        case 'message': {
+          return {
+            ...state,
+            message: {
+              isValid: value === value.match(/\w+.?\s?|\$\d+\s+.+|\(/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), ''),
+              errorMessage: 'Please remove invalid characters from the message.',
+              value: value
+            }
+          }
+        }
+      }
+    }, { // true by default to prevent error styling from rendering on load
+      name: {
+        isValid: true,
+        errorMessage: '',
+        value: ''
+      },
+      email: {
+        isValid: true,
+        errorMessage: '',
+        value: ''
+      },
+      message: {
+        isValid: true,
+        errorMessage: '',
+        value: ''
+      }
+    });
+
     const toggleError = () => {
         setError(true);
     }
     const sendMail = (e) => {
-        event.preventDefault();
-        // generate a five digit number for the contact_number variable
-        //this.contact_number.value = Math.random() * 100000 | 0;
-        // these IDs from the previous steps
-        emailjs.sendForm('service_zs0nuqa', 'template_9yh8twt', document.getElementById('contact-form'), '68UreaEbAYt26Ojdg')
+        event.preventDefault(); // prevent form from submitting traditionally
+
+
+
+      const isFormValid =
+          // Map an array of regex search results on all fields for any character (.), to ensure nothing is empty
+          Object.values(isValidObj).map( (obj) => { return obj.value.match(/./) } ).find( (array) => {
+              return array === null;
+          }) === undefined &&
+          // Map an array of all "isValid" bools, and if they are all "true", form is valid
+          Object.values(isValidObj).map( (obj) => { return obj.isValid } ).reduce( (a,b) => { return a === b && b === true } );
+        if (isFormValid) {
+          emailjs.sendForm('service_zs0nuqa', 'template_9yh8twt', document.getElementById('contact-form'), '68UreaEbAYt26Ojdg')
             .then(() => {
                 submitForm(true);
-                setError(false);
+                setError('false');
             }, (error) => { // TODO: Enhance error handling
-                setError(error.status)
+                if (error.status === 400) {
+                  setError('Please check the captcha checkbox');
+                } else {
+                  setError('Captcha has thrown an error: ', error.status);
+                }
             });
+        } else {
+            setError('Please complete and correct all fields before sending')
+        }
+
     }
     useEffect( () => {
         init({
@@ -55,22 +128,33 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
               <h4 id={styles.successDiv}>Thank you for your message!</h4>
             :
             <div id="formBody">
+            {/* generate a five digit number for the contact_number variable
+                this.contact_number.value = Math.random() * 100000 | 0;
+                these IDs from the previous steps */}
               <input type="hidden" name="contact_number" value={Math.random() * 100000 | 0}/>
-              <div id="name-input">
-                <label for="">Name: </label>
-                <input type="text" id="user_name" name="user_name"/>
-              </div>
-              <div id="email-input">
-                <label>Email: </label>
-                <input type="email" id="user_email" name="user_email"/>
-              </div>
-              <div id="message-input">
-                <label>Message: </label>
-                <textarea id="message" name="message" rows="4" cols="50"></textarea>
-              </div>
-              {errorState &&
+              {Object.keys(form || []).map( (key, index) => (
+                         <div key={index} index={index} id={key + '-input'} className={styles.tooltip}>
+                        {!isValidObj[key].isValid && <span className={styles.tooltiptext}>{isValidObj[key].errorMessage}</span>}
+                          <label for="" id={!isValidObj[key].isValid && styles.errorDiv}>{key.toUpperCase()}: </label>
+                          {key === 'message' &&
+                            <textarea id={key} name={key} rows="4" cols="50" value={form[key]}
+                              onChange={ (e) => setFormValue({...form, [key]: e.target.value})}
+                              onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}/>
+                          }
+                          {key !== 'message' && (
+                              <input type="text" id={key} name={key} value={form[key]}
+                                onChange={ (e) => setFormValue({...form, [key]: e.target.value})}
+                                onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}/>
+                          )}
+                        </div>
+
+                      ))
+
+                    }
+
+              {errorMessage &&
                 <div>
-                  <h4 id={styles.errorDiv}>Error: Please check the captcha checkbox</h4>
+                  <h4 id={styles.errorDiv}>Error: {errorMessage}</h4>
                 </div>
               }
               <Recaptcha
