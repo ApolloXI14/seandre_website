@@ -23,12 +23,12 @@ export default function About() {
           errorMessage: 'Please correct the name'
         },
         email: {
-          isValid: (value) => value === value.match(/\w+'?\w+\s?/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), ''),
-          errorMessage: 'Please correct the name'
-        },
-        message: {
           isValid: (value) => value.match(/[\w+.]+@\w+.[a-z]{3}/) && value === value.match(/[\w+.]+@\w+.[a-z]{3}/)[0],
           errorMessage: 'Please format the email correctly'
+        },
+        message: {
+          isValid: (value) => value === value.match(/\w+.?\s?|\$\d+\s+.+|\(/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), ''),
+          errorMessage: 'Please remove invalid characters from the message.'
         }
       }
       const value = action.value;
