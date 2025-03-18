@@ -8,6 +8,7 @@ import Recaptcha from '../components/Recaptcha';
 export default function About() {
     const [errorMessage, setError] = useState('');
     const [isSubmitted, submitForm] = useState(false);
+    // "form" states are id/name attributes, which must match EmailJS template
     const [form, setFormValue] = useState({
       name: '',
       email: '',
@@ -65,9 +66,6 @@ export default function About() {
       }
     });
 
-    const toggleError = () => {
-        setError(true);
-    }
     const sendMail = (e) => {
         event.preventDefault(); // prevent form from submitting traditionally
 
@@ -98,10 +96,15 @@ export default function About() {
 
     }
     useEffect( () => {
+        setFormValue({
+          name: '',
+          email: '',
+          message: ''
+        });
         init({
             publicKey: '68UreaEbAYt26Ojdg'
         });
-    }, [])
+    }, []);
 
     return(
          <div id={styles.aboutDiv}>
@@ -142,7 +145,7 @@ one! Using ReactJS/less instead of angelfire, though.  ;)</p>
                               onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}/>
                           }
                           {key !== 'message' && (
-                              <input type="text" id={key} name={key} value={form[key]}
+                              <input type="text" className={styles.tooltip} id={key} name={key} value={form[key]}
                                 onChange={ (e) => setFormValue({...form, [key]: e.target.value})}
                                 onBlur={(e) => validateField({type:e.target.id,value:e.target.value})}/>
                           )}
