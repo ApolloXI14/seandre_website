@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import React, { Component } from 'react';
 import parse from 'html-react-parser';
 import Link from 'next/link';
+import Navbar from '../../components/Navbar';
 import styles from '../../styles/journalentry.module.scss';
 
 export async function getStaticProps() {
@@ -55,6 +56,7 @@ const JournalEntry = ({entriesArray}) => {
 
   return(
       	<div  id="journalEntryContainer">
+			<Navbar/>
 	      	<div id={styles['journalEntryDiv-flex']}>
 	      		<div className={styles.previous}>
 	      			{(currentEntryId !== 0) ?
