@@ -23,13 +23,14 @@ export default function Journal() {
 
     useEffect( ()=> {
 
-        axios.get("http://localhost:5000/journals")
-          .then(response => {
-            setNewArray(response.data)
-          })
-          .catch(error => console.error(error));
+        // axios.get("http://localhost:5000/journals")
+        //   .then(response => {
+        //     console.log('TEST: ', response.data);
+        //     setNewArray(response.data)
+        //   })
+        //   .catch(error => console.error(error));
 
-        console.log(newFileArray);
+        // console.log(newFileArray);
 
         const reqVar = require.context(process.env.JOURNAL_DIR, true, /.txt$/);
         let files = [];
@@ -37,6 +38,7 @@ export default function Journal() {
             files.push(getFileMetaData(item.replace('./', '')));
         });
         setArray(files.reverse())
+        console.log('OLD: ', fileNameArray);
     }, []);
 
     return (

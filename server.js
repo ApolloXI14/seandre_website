@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const Journal = require('./models/Journal');
+const Home = require('./models/Home');
 
 
 const app = express();
@@ -25,12 +25,10 @@ app.get('/', (req, res) => {
     res.send('Hello from Express');
 });
 
-app.get('/journals', async (req, res) => {
+app.get('/homes', async (req, res) => {
     try {
-        console.log('JOURNAL: ', Journal);
-        const journals = await Journal.find();
-        res.json(journals);
-        console.log(journals);
+        const home = await Home.find();
+        res.json(home);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
