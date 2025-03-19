@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Link from 'next/link';
 import Navbar from '../../components/Navbar';
 import styles from '../../styles/journalmenu.module.scss';
+import axios from "axios";
 
 export default function Journal() {
     const getFileMetaData = (str)=> {
@@ -18,7 +19,18 @@ export default function Journal() {
 
     const [fileNameArray, setArray] = useState([]);
 
+    const [newFileArray, setNewArray] = useState([]);
+
     useEffect( ()=> {
+
+        axios.get("http://localhost:5000/journals")
+          .then(response => {
+            setNewArray(response.data)
+          })
+          .catch(error => console.error(error));
+
+        console.log(newFileArray);
+
         const reqVar = require.context(process.env.JOURNAL_DIR, true, /.txt$/);
         let files = [];
         reqVar.keys().map((item, index) => {
