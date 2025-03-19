@@ -1,44 +1,32 @@
-import React, { Component } from 'react';
+import React, {  useEffect, useState } from 'react';
 import styles from '../styles/home.module.scss';
-import { ImportData } from '../components/ImportData';
 import ReactDOM from 'react-dom/client';
 import { createRoot } from 'react-dom/client';
 import Image from 'next/image';
+import axios from "axios";
+import parse from 'html-react-parser';
 
-class Home extends Component{
-	constructor(props) { 
-		super(props);
-		this.state = {
-			req: require.context(process.env.HOME_DIR, true, /.txt$/)
-		};
-	}
-	componentDidMount(props) { 
-	      const NewComp = (props) => {
-	      	return (
-	      		typeof(props.dataArray) === 'object' && props.dataArray.length && props.dataArray.map((entry, index) => (
-              <div className={styles.entryDiv} key={index}>
-                      <div className={styles['entryData-flex']}>
-                              <div className={styles.entryName}>{entry[0][0]}</div><div className={styles.entryDate}>Dated: {entry[0][1]}</div>
-                      </div>
-		              <div className={styles.entryContent}>{entry[1]}</div>
-		              <hr/>
-               </div>
-            ))
-	      	)
-	      };
-	      const HomeWithData = ImportData(NewComp, this.state.req);
-	      const domNode = document.getElementById('homeDiv');
-	      const root = createRoot(domNode);
-	      root.render(
-	      		<HomeWithData req={this.state.req} />, {domNode}
-	      		)
-	}
-   render(){
-      return(
-         <div id="homeDiv">
-          	
+export default function Home() {
+	const [homeArray, setHomeArray] = useState([]);
+	useEffect( () => {
+		 axios.get("http://localhost:5000/homes")
+          .then(response => {
+            setHomeArray(response.data);
+          })
+          .catch(error => console.error(error));
+	}, []);
+
+	return (
+		<div id="homeDiv">
+			{homeArray.map( (entry, index) => (
+				<div className={styles.entryDiv} key={index}>
+				<div className={styles['entryData-flex']}>
+						<div className={styles.entryName}>{entry.title}</div><div className={styles.entryDate}>Dated: {entry.date}</div>
+				</div>
+				<div className={styles.entryContent}>{parse(entry.content)}</div>
+				<hr/>
+			</div>
+			))}
 		</div>
-      );
-   }
+	)
 }
-export default Home;
