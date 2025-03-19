@@ -1,5 +1,0 @@
-<div>
-<h1>Happy Friday and Black History Month!</h1>
-<div>I have <a href="/journal/3">a new journal entry</a>, with my very first image also
-included! Please check it out, and have a beautiful, black weekend.</div>
-</div>
