@@ -4,24 +4,14 @@ import parse from 'html-react-parser';
 import Link from 'next/link';
 import Navbar from '../../components/Navbar';
 import styles from '../../styles/journalentry.module.scss';
+import axios from "axios";
 
 export async function getStaticProps() {
-	function getFileMetaData(str) { // TODO: Export to own utility later, to de-duplicate
-	    let strArr = str.split('__');
-	    let fileDate = strArr[0];
-	    fileDate = fileDate.replace('./', '');
-	    fileDate =  fileDate.slice(2,4) + '/' + fileDate.slice(4,6) + '/' + fileDate.slice(0,2);
-	    let fileName = strArr[1];
-	    fileName = fileName.replace('.txt', '');
-	    fileName = fileName.replace(/_/g, ' ');
-	    return [fileName, fileDate];
-	  }
 	let entriesArray = [];
-	const req = require.context(process.env.JOURNAL_DIR, true, /.txt$/);
-	const reqMap = req.keys().map(async (fileName) => {
-    entriesArray.push( [fileName, getFileMetaData(fileName)]); 
-      return entriesArray;
-  	});
+	await axios.get("http://localhost:5000/journals")
+		.then(response => {
+			entriesArray = response.data;
+		}).catch(error => console.error(error));
   	return {
   		props: {
   			entriesArray: entriesArray
@@ -30,10 +20,14 @@ export async function getStaticProps() {
 }
 
 export async function getStaticPaths() {
-	const req = require.context(process.env.JOURNAL_DIR, true, /.txt$/);
-	const paths = req.keys().map((fileName, index) => {
-      return {params: { id: (index).toString() }}
-  	});
+	let paths = [];
+	await axios.get("http://localhost:5000/journals")
+		.then(response => {
+			paths = response.data.map((journal, index) => {
+				return {params: { id: (index).toString() }}
+			});
+		}).catch(error => console.error(error));
+
   	return { paths, fallback: false }
 }
 
@@ -41,18 +35,13 @@ export async function getStaticPaths() {
 const JournalEntry = ({entriesArray}) => {
   const router = useRouter();
   const { id } = router.query;
-  let entryFileName = entriesArray[id][0];
   let currentEntryId = Number(id);
-  const req = require.context(process.env.JOURNAL_DIR, true, /.txt$/);
-  let html = parse(req(entryFileName));
+  let html = entriesArray[currentEntryId].content;
 
   //return <div id="journalEntryDiv">{html}</div>
 
-
   // <div><Link style={{textDecoration: "none"}} href="/journal">&#10094; <br/><p className="btnTxt">(Back)</p></Link></div>
   // <div><Link style={{textDecoration: "none"}} href="/journal">&#10095; <br/><p className="btnTxt">(End)</p></Link></div>
-
-
 
   return(
       	<div  id="journalEntryContainer">
@@ -65,7 +54,7 @@ const JournalEntry = ({entriesArray}) => {
 			    	 }
 	      		</div>
 		         <div id={styles.htmlDiv}>
-		      		{html}
+		      		{parse(html)}
 			    </div>
 			    <div className={styles.nextBtn}>
 			    	{(currentEntryId !== entriesArray.length - 1) ?
