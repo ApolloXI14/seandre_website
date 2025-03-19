@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const Home = require('./models/Home');
+const Journal = require('./models/Journal');
 
 
 const app = express();
@@ -20,7 +21,7 @@ const db = mongoose.connection;
 db.on('error', (error) => console.error(error))
 db.once('open', ()=> console.log('Connected to MongoDB'));
 
-// Routes
+// API Routes
 app.get('/', (req, res) => {
     res.send('Hello from Express');
 });
@@ -29,6 +30,15 @@ app.get('/homes', async (req, res) => {
     try {
         const home = await Home.find();
         res.json(home);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
+app.get('/journals', async (req, res) => {
+    try {
+        const journal = await Journal.find();
+        res.json(journal);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
