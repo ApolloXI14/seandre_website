@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next dev",
     "mongo": "mongod --config mongodb.conf --auth",
-    "build": "( node server.js ) & next build",
+    "mongo-connect": "node server.js",
+    "build": "next build",
     "db": "node --permission --allow-fs-read=* server.js",
     "start": "next start",
     "lint": "next lint"
