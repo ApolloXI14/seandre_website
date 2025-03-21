@@ -8,9 +8,11 @@ import axios from "axios";
 
 export async function getStaticProps() {
 	let entriesArray = [];
-	await axios.get("http://localhost:5000/journals")
+	// TODO: Make "dateSort" param actually work
+	await axios.get("http://localhost:5000/journals", {dateSort: 1})
 		.then(response => {
-			entriesArray = response.data;
+			// TODO: Reversing as temporary workaround to make DESCENDING date journal/index list API call match pre-rendered pages (journal list should make DESCENDING date call but [id] should be ASCENDING)
+			entriesArray = response.data.reverse();
 		}).catch(error => console.error(error));
   	return {
   		props: {

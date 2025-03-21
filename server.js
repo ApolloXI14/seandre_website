@@ -50,7 +50,8 @@ app.get('/homes', async (req, res) => {
 
 app.get('/journals', async (req, res) => {
     try {
-        const journal = await Journal.find();
+        const dateSort = req?.dateSort || -1; // sort DESC date by default
+        const journal = await Journal.find().sort({date: dateSort});
         res.json(journal);
     } catch (err) {
         res.status(500).json({ message: err.message });
