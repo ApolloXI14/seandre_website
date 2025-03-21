@@ -5,9 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next dev",
-    "mongo": "sudo mongod --config mongodb.conf --auth",
-    "build": "mongod --config mongodb.conf --auth && ( node server.js ) & next build",
-    "db": "node --permission --allow-fs-read=* --allow-fs-write=* server.js",
+    "mongo": "mongod --config mongodb.conf --auth",
+    "build": "( node server.js ) & next build",
+    "db": "node --permission --allow-fs-read=* server.js",
     "start": "next start",
     "lint": "next lint"
   },
@@ -79,7 +79,6 @@
     "mime-types": "^2.1.27",
     "mini-css-extract-plugin": "^1.3.2",
     "mkdirp": "^1.0.4",
-    "mongod": "^2.0.0",
     "mongodb": "^6.15.0",
     "mongoose": "^8.12.1",
     "next": "^14.2.4",
