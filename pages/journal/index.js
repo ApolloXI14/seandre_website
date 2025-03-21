@@ -10,7 +10,6 @@ export default function Journal() {
     useEffect( ()=> {
         axios.get("http://localhost:5000/journals")
           .then(response => {
-            console.log('TEST: ', response.data);
             setArray(response.data.sort( (a,b) => {
                 return a.date < b.date;
             }));

@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next dev",
-    "build": "next build",
+    "build": "( node server.js ) & next build",
+    "db": "node server.js",
     "start": "next start",
     "lint": "next lint"
   },
