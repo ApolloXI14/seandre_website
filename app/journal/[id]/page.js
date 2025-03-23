@@ -2,7 +2,7 @@ import React from "react";
 import JournalEntryComp from "../../../components/JournalEntry";
 import Navbar from "../../../components/Navbar";
 
-async function getJournalArray() {
+export async function getJournalArray() {
     const res = await fetch("http://localhost:5000/journals")
 		//.then(response => response.json()).catch(error => console.error(error));
 
@@ -13,7 +13,7 @@ async function getJournalArray() {
 
 export async function generateStaticParams() {
     const journalArray = await getJournalArray();
-  return (journalArray || []).map( (journal, index) => {
+  return (journalArray).map( (journal, index) => {
       return { id: (index).toString() }
     })
 }
