@@ -6,15 +6,21 @@ import Image from 'next/image';
 import axios from "axios";
 import parse from 'html-react-parser';
 
-export default function Home() {
-	const [homeArray, setHomeArray] = useState([]);
-	useEffect( () => {
-		 axios.get("http://localhost:5000/homes")
-          .then(response => {
-            setHomeArray(response.data);
+
+export default async function Home() {
+	// const [homeArray, setHomeArray] = useState([]);
+	// useEffect( () => {
+	// 	 axios.get("http://localhost:5000/homes")
+ //          .then(response => {
+ //            setHomeArray(response.data);
+ //          })
+ //          .catch(error => console.error(error));
+	// }, []);
+
+    const homeArray = await fetch("http://localhost:5000/homes").then(response => {
+            homeArray = response;
           })
           .catch(error => console.error(error));
-	}, []);
 
 	return (
 		<div id="homeDiv">

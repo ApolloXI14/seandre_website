@@ -1,3 +1,5 @@
+'use client'
+
 import React, { Component } from 'react';
 import styles from '../styles/navbar.module.scss';
 import Link from 'next/link';

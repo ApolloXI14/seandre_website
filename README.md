@@ -1,11 +1,15 @@
 # seandre_website
 
+This is a ReactJS app, with NextJS for SSR, ExpressJS, and MongoDB for content.
+
 ## Instructions to build locally
 
 1. Run `npm install` to install all packages
 
 ### Dev env instructions
-1. Run `npm run dev` to both build and run dev server (port 3000 by
+1. Run `sudo npm run mongo` to start mongoDB server
+2. Run `npm run mongo-connect` to connect web app to mongoDB server
+3. Run `npm run dev` to both build and run dev server (port 3000 by
    default). Hot refresh will be enabled, making changes reflect
    instantly upon save.
 
