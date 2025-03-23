@@ -16,7 +16,7 @@ export default function JournalEntry({currentEntryId, html, journalArrayLength})
 			    	 }
 	      		</div>
 		         <div id={styles.htmlDiv}>
-		      		{parse(html || '')}
+		      		{parse(html)}
 			    </div>
 			    <div className={styles.nextBtn}>
 			    	{(currentEntryId !== journalArrayLength) ?
