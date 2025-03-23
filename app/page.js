@@ -3,9 +3,6 @@ import Navbar from '../components/Navbar';
 import styles from '../styles/home.module.scss';
 import Home from '../components/Home'
 
-// import Poems from './poems';
-// import Journal from './journal';
-// import About from './about';
 
 export const metadata = {
   title: "Seandre's Site"
@@ -16,10 +13,6 @@ async function getHomeArray() {
     const data = await res.json();
     return data;
 
-  // const homeArray = await fetch("http://localhost:5000/homes").then(response => {
-  //           homeArray = response;
-  //         })
-  //         .catch(error => console.error(error));
 }
 
 export default async function App() {
@@ -35,11 +28,3 @@ export default async function App() {
 	)
 }
 
-// function App() {
-//    return (
-//       <div className="navbar">
-//          	<Navbar />
-//             <Home />
-//          </div>
-//    )
-// }
