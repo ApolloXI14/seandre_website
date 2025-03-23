@@ -19,14 +19,15 @@ export async function generateStaticParams() {
 }
 
 export default async function JournalEntry({params}) {
+    const { id } = await params;
     const journalArray = await getJournalArray();
-    const journalEntry = journalArray[params?.id];
+    const journalEntry = journalArray[Number(id)];
     const journalArrayLength = journalArray?.length-1;
     const html = journalEntry?.content;
     return(
       	<div  id="journalEntryContainer">
 	      	<JournalEntryComp
-                currentEntryId={Number(params.id)}
+                currentEntryId={Number(id)}
                 html={html}
                 journalArrayLength={journalArrayLength}
 	      	/>
