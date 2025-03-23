@@ -6,16 +6,18 @@ export async function getJournalArray() {
     const res = await fetch("http://localhost:5000/journals")
 		//.then(response => response.json()).catch(error => console.error(error));
 
-    const journalArray = await res.json();
-    return  journalArray.reverse(); // TODO: Remove reverse later by having DB query do this instead
+    let journalArray = await res?.json();
+    return  journalArray?.reverse(); // TODO: Remove reverse later by having DB query do this instead
 }
 
 
 export async function generateStaticParams() {
-    const journalArray = await getJournalArray();
-  return (journalArray).map( (journal, index) => {
+    return await getJournalArray().then( (res) => {
+      return (res).map( (journal, index) => {
       return { id: (index).toString() }
     })
+    } )
+
 }
 
 export default async function JournalEntry({params}) {
