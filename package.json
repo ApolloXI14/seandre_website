@@ -7,8 +7,9 @@
     "dev": "next dev",
     "mongo": "mongod --config mongodb.conf --auth",
     "mongo-connect": "node --permission --allow-fs-read=* server.js",
-    "build": "fuser -k 27017/tcp && npm run mongo && ( node server.js ) & next build",
+    "build": "next build",
     "db": "node --permission --allow-fs-read=* server.js",
+    "kill-servers": "fuser -k 27017/tcp 5000/tcp",
     "start": "next start",
     "lint": "next lint"
   },
