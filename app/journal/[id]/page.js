@@ -14,14 +14,10 @@ export async function getJournalArray() {
 
 
 export async function generateStaticParams() {
-    return await getJournalArray().then( (res) => {
-        return (res).map( (journal, index) => {
-        { id: index }
-      })
-    } )
-
-
-
+  const res = await getJournalArray();
+  return res.map( (journal, index) => {
+    { id: index }
+  })
 }
 
 export default async function JournalEntry({params}) {
