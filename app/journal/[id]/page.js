@@ -14,14 +14,13 @@ export async function getJournalArray() {
 
 
 export async function generateStaticParams() {
-    const res = await fetch("http://localhost:5000/journals")
-		.then(response => {
-          if (response.status === 200) {
-            return response.json()
-          }}).catch(error => console.error(error));
-    return (res).map( (journal, index) => {
-      return { id: (index).toString() }
-    })
+    return await getJournalArray().then( (res) => {
+        return (res).map( (journal, index) => {
+        { id: index }
+      })
+    } )
+
+
 
 }
 
