@@ -4,14 +4,21 @@ import Navbar from "../../../components/Navbar";
 
 export async function getJournalArray() {
     const res = await fetch("http://localhost:5000/journals")
-		.then(response => response.json()).catch(error => console.error(error));
+		.then(response => {
+          if (response.status === 200) {
+            return response.json()
+          }
+        }).catch(error => console.error(error));
     return  res?.reverse(); // TODO: Remove reverse later by having DB query do this instead
 }
 
 
 export async function generateStaticParams() {
     const res = await fetch("http://localhost:5000/journals")
-		.then(response => response.json()).catch(error => console.error(error));
+		.then(response => {
+          if (response.status === 200) {
+            return response.json()
+          }}).catch(error => console.error(error));
     return (res).map( (journal, index) => {
       return { id: (index).toString() }
     })
