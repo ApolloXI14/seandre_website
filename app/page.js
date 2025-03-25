@@ -9,7 +9,7 @@ export const metadata = {
 }
 
 async function getHomeArray() {
-    const res = await fetch("http://localhost:5000/homes");
+    const res = await fetch("http://localhost:5000/homes", { next: {revalidate: 3600}});
     const data = await res.json();
     return data;
 
@@ -22,7 +22,7 @@ export default async function App() {
         <div>
           <Navbar />
           <div id="homeDiv">
-              <Home homeArray={homeArray}/>
+              <Home homeArray={homeArray || []}/>
           </div>
 		</div>
 	)
