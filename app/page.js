@@ -8,16 +8,13 @@ export const metadata = {
   title: "Seandre's Site"
 }
 
-async function getHomeArray() {
-    const res = await fetch("http://localhost:5000/homes", { next: {revalidate: 3600}});
-    const data = await res.json();
-    return data;
-
-}
-
 export default async function App() {
-    const homeArray = await getHomeArray();
-
+    const homeArray = await fetch(`http://localhost:5000/homes`, { next: { revalidate: 3600 }})
+		.then(response => {
+          if (response.status === 200) {
+            return response.json()
+          }
+        }).catch(error => console.error(error));
 	return (
         <div>
           <Navbar />
