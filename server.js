@@ -58,6 +58,17 @@ app.get('/journals', async (req, res) => {
     }
 });
 
+app.get('/journals/:title', async (req, res) => {
+    try {
+        const dateSort = req?.dateSort || -1; // sort DESC date by default
+        const title = req?.params?.title; // if title is in request, find just that title, otherwise return all
+        const journal = await Journal.find( title ? {$text: {$search: title} } : {}).sort({date: dateSort});
+        res.json(journal);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
+
 
 app.listen(PORT, ()=> {
    console.log(`Server running on port ${PORT}`);

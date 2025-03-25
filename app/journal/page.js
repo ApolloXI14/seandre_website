@@ -14,7 +14,7 @@ export default async function Journal({journal}) {
                   <ul>
                     <ul className={styles.listClass}>
                       {journals.map((entry, index, array) => (
-                        <li key={index++}><Link href={`journal/${array.length - index}`}>
+                        <li key={index++}><Link href={`journal/${entry.title.replaceAll(" ", "-").toLowerCase()}`}>
                           {entry.title}</Link> - <cite>Published {entry.date.toString().slice(2,4) + '/' + entry.date.toString().slice(4,6) + '/' + entry.date.toString().slice(0,2)}</cite></li>
                         ))}
                     </ul>
