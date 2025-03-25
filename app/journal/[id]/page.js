@@ -2,8 +2,6 @@ import React from "react";
 import JournalEntryComp from "../../../components/JournalEntry";
 import Navbar from "../../../components/Navbar";
 
-export const dynamic = "force-static";
-
 async function getJournalEntry() {
     const res = await fetch('http://localhost:5000/journals', { next: { revalidate: 3600 }})
 		.then(response => {
@@ -16,14 +14,14 @@ async function getJournalEntry() {
 
 export async function generateStaticParams() {
   const res = await getJournalEntry();
-  return (res).map( (journal, index) => {
+  return (res || []).map( (journal, index) => {
     { id: journal.title.replaceAll(" ", "-").toLowerCase() }
-  }) || [];
+  })
 }
 
 export default async function JournalEntry({params}) {
     const { id } = await params;
-    const journalArray = await getJournalEntry(id);
+    const journalArray = await getJournalEntry();
     const journalEntry = journalArray.find ( entry => {return entry.title.replaceAll(" ", "-").toLowerCase() === id } );
     const currentIndex = journalArray.findIndex ( entry => {return entry.title.replaceAll(" ", "-").toLowerCase() === id } );
     const prevEntryTitle = journalArray.find ( (entry, index) => {return index === currentIndex - 1 } )?.title.replaceAll(" ", "-").toLowerCase() || '';

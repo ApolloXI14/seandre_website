@@ -4,10 +4,8 @@ import Link from 'next/link';
 import Navbar from '../../components/Navbar';
 import styles from '../../styles/journalmenu.module.scss';
 
-export const dynamic = "force-static";
-
 export default async function Journal({journal}) {
-    const journals = await fetch("http://localhost:5000/journals", {cache: "no-store"})
+    const journals = await fetch("http://localhost:5000/journals", { next: { revalidate: 3600 }})
 		.then(response => {if (response.status === 200) {
             return response.json()
           }}).catch(error => console.error(error));
