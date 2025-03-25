@@ -16,7 +16,7 @@ async function getJournalEntry(params = '') {
 export async function generateStaticParams({params}) {
   const { id } = await params;
   const res = await getJournalEntry(id);
-  return (res || []).map( (journal, index) => {
+  return res.map( (journal, index) => {
     { id: journal.title.replaceAll(" ", "-").toLowerCase() }
   })
 }
