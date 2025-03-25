@@ -5,7 +5,7 @@ import Navbar from "../../../components/Navbar";
 export const dynamic = "force-static";
 
 async function getJournalEntry(params = '') {
-    const res = await fetch(`http://localhost:5000/journals`, { next: { revalidate: 3600 }})
+    const res = await fetch('http://localhost:5000/journals', {{ next: { revalidate: 3600 }}})
 		.then(response => {
           if (response.status === 200) {
             return response.json()
