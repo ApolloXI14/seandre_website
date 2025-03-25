@@ -57,7 +57,7 @@ export default function Poems() {
                 {imgArray.map((img, index, array) => (
                         <div key={index} className={styles.fade} style={{display: index === currentIndex ? 'block' : 'none'}}>
                           <div className={styles.numbertext}> {index+1}  / {array.length}</div>
-                          <Image key={index} id="currentImg" className={styles.currentImg} src={"/img/poems/" + img } width="500" height="500"/>
+                          <Image key={index} id={img} className={styles.currentImg} src={"/img/poems/" + img } alt={img} width="500" height="500"/>
                         </div>
                 ))}
                 </div>
