@@ -2,7 +2,7 @@ import React from "react";
 import JournalEntryComp from "../../../components/JournalEntry";
 import Navbar from "../../../components/Navbar";
 
-export const dynamic = "error";
+export const dynamic = "force-static";
 
 async function getJournalEntry(params = '') {
     const res = await fetch(`http://localhost:5000/journals`, { next: { revalidate: 3600 }})
