@@ -11,7 +11,7 @@
     "build": "next build",
     "db": "node --permission --allow-fs-read=* server.js",
     "kill-servers": "fuser -k 27017/tcp 5000/tcp",
-    "start": "fuser -k 5000/tcp && ( node server.js ) & next start",
+    "start": "next start",
     "lint": "next lint"
   },
   "keywords": [],
