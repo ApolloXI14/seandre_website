@@ -4,7 +4,7 @@ import Navbar from "../../../components/Navbar";
 
 export const dynamic = "force-static";
 
-async function getJournalEntry(params = '') {
+async function getJournalEntry() {
     const res = await fetch('http://localhost:5000/journals', { next: { revalidate: 3600 }})
 		.then(response => {
           if (response.status === 200) {
@@ -14,8 +14,7 @@ async function getJournalEntry(params = '') {
     return  res?.reverse(); // TODO: Remove reverse later by having DB query do this instead
 }
 
-export async function generateStaticParams({params}) {
-  const { id } = await params;
+export async function generateStaticParams() {
   const res = await getJournalEntry(id);
   return (res || []).map( (journal, index) => {
     { id: journal.title.replaceAll(" ", "-").toLowerCase() }

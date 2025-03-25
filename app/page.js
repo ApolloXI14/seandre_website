@@ -21,7 +21,7 @@ export default async function App() {
         <div>
           <Navbar />
           <div id="homeDiv">
-              <Home homeArray={homeArray || []}/>
+              <Home homeArray={homeArray}/>
           </div>
 		</div>
 	)

@@ -7,7 +7,7 @@ import styles from '../../styles/journalmenu.module.scss';
 export const dynamic = "force-static";
 
 export default async function Journal({journal}) {
-    const journals = await fetch("http://localhost:5000/journals", { next: { revalidate: 3600 }})
+    const journals = await fetch("http://localhost:5000/journals", {cache: "no-store"})
 		.then(response => {if (response.status === 200) {
             return response.json()
           }}).catch(error => console.error(error));
