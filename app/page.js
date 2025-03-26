@@ -11,7 +11,9 @@ export const metadata = {
 export default async function App() {
     const homeArray = await fetch("http://localhost:5000/homes", { next: { revalidate: 3600 }})
 		.then(response => {
-            return response.json();
+          if (response.status === 200) {
+            return response.json()
+          }
         }).catch(error => console.error(error));
 	return (
         <div>
