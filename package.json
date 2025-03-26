@@ -8,9 +8,9 @@
     "mongo": "mongod --config mongodb.conf --auth",
     "mongo-connect": "node --permission --allow-fs-read=* server.js",
     "start-servers": "npm run mongo & npm run mongo-connect",
-    "build": "( fuser -k 27017/tcp 5000/tcp & npm run mongo & node server.js ) & next build",
+    "build": "( npx run kill-servers & npm run start-servers ) & next build",
     "db": "node --permission --allow-fs-read=* server.js",
-    "kill-servers": "fuser -k 27017/tcp 5000/tcp",
+    "kill-servers": "npx kill-port 5000 && npx kill-port 27017",
     "start": "next start",
     "lint": "next lint"
   },
