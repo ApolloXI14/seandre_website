@@ -8,7 +8,7 @@
     "mongo": "mongod --config mongodb.conf --auth",
     "mongo-connect": "node --permission --allow-fs-read=* server.js",
     "start-servers": "npm run mongo & npm run mongo-connect",
-    "build": "next build",
+    "build": "( node server.js ) & next build",
     "db": "node --permission --allow-fs-read=* server.js",
     "kill-servers": "fuser -k 27017/tcp 5000/tcp",
     "start": "next start",
