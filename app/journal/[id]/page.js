@@ -4,11 +4,7 @@ import Navbar from "../../../components/Navbar";
 
 async function getJournalEntry() {
     const res = await fetch('http://localhost:5000/journals', { next: { revalidate: 3600 }})
-		.then(response => {
-
-            return response.json()
-
-        }).catch(error => console.error(error));
+		.then(response => response.json()).catch(error => console.error(error));
     return  res?.reverse(); // TODO: Remove reverse later by having DB query do this instead
 }
 

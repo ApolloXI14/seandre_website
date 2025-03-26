@@ -6,9 +6,7 @@ import styles from '../../styles/journalmenu.module.scss';
 
 export default async function Journal({journal}) {
     const journals = await fetch("http://localhost:5000/journals", { next: { revalidate: 3600 }})
-		.then(response => {if (response.status === 200) {
-            return response.json()
-          }}).catch(error => console.error(error));
+		.then(response => response.json()).catch(error => console.error(error));
     return (
             <div>
                 <Navbar />
