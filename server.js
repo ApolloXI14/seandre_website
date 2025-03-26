@@ -73,3 +73,11 @@ app.get('/journals/:title', async (req, res) => {
 app.listen(PORT, ()=> {
    console.log(`Server running on port ${PORT}`);
 });
+
+// https://expressjs.com/en/advanced/healthcheck-graceful-shutdown.html
+process.on('SIGTERM', () => {
+  debug('SIGTERM signal received: closing HTTP server')
+  app.close(() => {
+    debug('HTTP server closed')
+  })
+})
