@@ -1,3 +1,4 @@
+//const envConfig = require('./envConfig');
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -6,7 +7,7 @@ const Journal = require('./models/Journal');
 
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.DB_PORT;
 
 // Middleware
 app.use(cors());
@@ -75,7 +76,7 @@ app.listen(PORT, ()=> {
 });
 
 // https://expressjs.com/en/advanced/healthcheck-graceful-shutdown.html
-process.on('SIGTERM', () => {
+app.on('SIGTERM', () => {
   debug('SIGTERM signal received: closing HTTP server')
   app.close(() => {
     debug('HTTP server closed')
