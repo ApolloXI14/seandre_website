@@ -7,7 +7,7 @@ const Journal = require('./models/Journal');
 
 
 const app = express();
-const PORT = process.env.DB_PORT;
+const PORT = 5000;
 
 // Middleware
 app.use(cors());

@@ -11,6 +11,7 @@
     "build": "next build",
     "db": "node --permission --allow-fs-read=* server.js",
     "kill-servers": "npx kill-port 5000 && npx kill-port 27017",
+    "kill-servers2": "fuser -k 27017/tcp 5000/tcp",
     "start": "next start",
     "lint": "next lint"
   },
