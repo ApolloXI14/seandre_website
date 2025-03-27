@@ -7,7 +7,16 @@ const Journal = require('./models/Journal');
 
 
 const app = express();
-const PORT = 5000;
+
+
+// Find port in command; if not supplied, default to 5000
+const portArg = (
+    process.argv.find( (arg, index, args) => {return Number(arg) && args[index-1] === '--port'} )
+);
+
+!portArg && console.log('Port was not supplied to server.js; defaulting to port 5000');
+
+const PORT = portArg || 5000;
 
 // Middleware
 app.use(cors());
@@ -76,7 +85,7 @@ app.listen(PORT, ()=> {
 });
 
 // https://expressjs.com/en/advanced/healthcheck-graceful-shutdown.html
-app.on('SIGTERM', () => {
+process.on('SIGTERM', () => {
   debug('SIGTERM signal received: closing HTTP server')
   app.close(() => {
     debug('HTTP server closed')
