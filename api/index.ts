@@ -14,9 +14,18 @@ app.use(express.json());
 
 
 
-mongoose.connect('mongodb://sean:1219C15799417EA8E5902F13F313721FBA4836C1498739B582389C94F70F7905@localhost:27017/journal?replicaSet=rs0');
+mongoose.connect('mongodb://sean:1219C15799417EA8E5902F13F313721FBA4836C1498739B582389C94F70F7905@127.0.0.1:27017/journal?replicaSet=rs0').
+    catch( error => { console.log('Connection error: ', error); } );
 
 //mongoose.connect('mongodb+srv://myUserAdmin:D1fficultP%40ssw0rd@mongodb0.example.com/?authSource=admin&replicaSet=myRepl');
+
+mongoose.connection.on('error', err => {
+  console.log('mongoDB server error: ', err);
+});
+
+mongoose.connection.on('disconnected', res => {
+  console.log('mongoDB server disconnected: ', res);
+});
 
 const db = mongoose.connection;
 

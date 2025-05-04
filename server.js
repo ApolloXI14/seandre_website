@@ -35,7 +35,7 @@ app.use(express.json());
 // const DB_HOST = process.env.DB_HOST;
 // mongoose.connect('mongodb://' + DB_USER + ':' + DB_PASSWORD + '@' + DB_HOST + ':27017/journal?replicaSet=rs0');
 
-mongoose.connect('mongodb://sean:1219C15799417EA8E5902F13F313721FBA4836C1498739B582389C94F70F7905@localhost:27017/journal?replicaSet=rs0');
+mongoose.connect('mongodb://sean:1219C15799417EA8E5902F13F313721FBA4836C1498739B582389C94F70F7905@127.0.0.1:27017/journal?replicaSet=rs0');
 
 //mongoose.connect('mongodb+srv://myUserAdmin:D1fficultP%40ssw0rd@mongodb0.example.com/?authSource=admin&replicaSet=myRepl');
 
