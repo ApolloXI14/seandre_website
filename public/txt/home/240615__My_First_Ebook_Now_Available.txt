@@ -1,4 +1,0 @@
-<div>
-<h1>I have published my first book!</h1>
-   <div>Click <a href="/journal/10">here</a> to make history.</div>
-</div>
