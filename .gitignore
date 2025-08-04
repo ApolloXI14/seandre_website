@@ -1,5 +1,8 @@
+db/journal/WiredTigerLog*
+db/diagnostic.data/
 node_modules/
 bundle/
 prod/
 .env*
 mongodb.*
+.vercel

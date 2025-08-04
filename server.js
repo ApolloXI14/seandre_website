@@ -8,13 +8,25 @@ const Journal = require('./models/Journal');
 
 const app = express();
 
-
 // Find port in command; if not supplied, default to 5000
 const portArg = (
     process.argv.find( (arg, index, args) => {return Number(arg) && args[index-1] === '--port'} )
 );
 
+const SEANDRE_DB_USER = (
+    process.argv.find( (arg, index, args) => {return arg && args[index-1] === '--user'} )
+);
+
+const SEANDRE_DB_PW = (
+    process.argv.find( (arg, index, args) => {return arg && args[index-1] === '--password'} )
+);
+
+const SEANDRE_DB_HOST = (
+    process.argv.find( (arg, index, args) => {return Number(arg) && args[index-1] === '--host'} )
+) || '127.0.0.1';
+
 !portArg && console.log('Port was not supplied to server.js; defaulting to port 5000');
+(!SEANDRE_DB_USER || !SEANDRE_DB_PW) && console.log('Username and/or password was not supplied; unable to authenticate');
 
 const PORT = portArg || 5000;
 
@@ -24,20 +36,10 @@ app.use(express.json());
 
 // mongoDB connection
 // TODO: Change DB name from "journal"
-//mongoose.connect('mongodb://localhost:27017/journal');
 
 
-// mongoose.connect('mongodb://[ADMIN]:[ADMIN_PASSWORD]@localhost:27017/journal?authSource=admin&replicaSet=rs0'); // WORKS but DO NOT connect as admin on PROD
-
-// TODO: Set up NextJS env vars for this later: https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables#bundling-environment-variables-for-the-browser
-// const DB_USER = process.env.DB_USER;
-// const DB_PASSWORD = process.env_DB_PASSWORD;
-// const DB_HOST = process.env.DB_HOST;
-// mongoose.connect('mongodb://' + DB_USER + ':' + DB_PASSWORD + '@' + DB_HOST + ':27017/journal?replicaSet=rs0');
-
-mongoose.connect('mongodb://sean:1219C15799417EA8E5902F13F313721FBA4836C1498739B582389C94F70F7905@127.0.0.1:27017/journal?replicaSet=rs0');
-
-//mongoose.connect('mongodb+srv://myUserAdmin:D1fficultP%40ssw0rd@mongodb0.example.com/?authSource=admin&replicaSet=myRepl');
+// SEANDRE_DB_* environment variables must be set in system/OS; do NOT hardcode here
+mongoose.connect('mongodb://' + SEANDRE_DB_USER + ':' + SEANDRE_DB_PW + '@' + SEANDRE_DB_HOST + ':27017/journal?replicaSet=rs0');
 
 const db = mongoose.connection;
 

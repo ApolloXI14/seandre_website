@@ -68,9 +68,6 @@ export default function About() {
 
     const sendMail = (e) => {
         event.preventDefault(); // prevent form from submitting traditionally
-
-
-
       const isFormValid =
           // Map an array of regex search results on all fields for any character (.), to ensure nothing is empty
           Object.values(isValidObj).map( (obj) => { return obj.value.match(/./) } ).find( (array) => {
