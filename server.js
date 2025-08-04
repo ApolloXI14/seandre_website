@@ -22,7 +22,7 @@ const SEANDRE_DB_PW = (
 );
 
 const SEANDRE_DB_HOST = (
-    process.argv.find( (arg, index, args) => {return Number(arg) && args[index-1] === '--host'} )
+    process.argv.find( (arg, index, args) => {return arg && args[index-1] === '--host'} )
 ) || '127.0.0.1';
 
 !portArg && console.log('Port was not supplied to server.js; defaulting to port 5000');
