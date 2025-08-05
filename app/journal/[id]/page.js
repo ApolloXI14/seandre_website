@@ -3,7 +3,7 @@ import JournalEntryComp from "../../../components/JournalEntry";
 import Navbar from "../../../components/Navbar";
 
 async function getJournalEntry() {
-    const res = await fetch('0.0.0.0' + process.env.DB_PORT + 'journals', { next: { revalidate: 3600 }})
+    const res = await fetch('http://0.0.0.0' + process.env.DB_PORT + 'journals', { next: { revalidate: 3600 }})
 		.then(response => {
           if (response.status === 200) {
             return response.json()
