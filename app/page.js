@@ -10,7 +10,7 @@ export const metadata = {
 }
 
 export default async function App() {
-    const homeArray = await fetch('http://' + process.env.DB_HOST + ':' + process.env.DB_PORT  + "/homes", {next: {revalidate: 3600}})
+    const homeArray = await fetch(process.env.DB_HOST + ':' + process.env.DB_PORT  + "/homes", {next: {revalidate: 3600}})
 		.then(response => {
           if (response.status === 200) {
             return response.json()

@@ -7,7 +7,7 @@ import styles from '../../styles/journalmenu.module.scss';
 export const dynamic = 'force-dynamic';
 
 export default async function Journal({journal}) {
-    const journals = await fetch('http://' + process.env.DB_HOST + ':' + process.env.DB_PORT + "/journals", { next: { revalidate: 3600 }})
+    const journals = await fetch(process.env.DB_HOST + ':' + process.env.DB_PORT + "/journals", { next: { revalidate: 3600 }})
 		.then(response => {
           if (response.status === 200) {
             return response.json()
