@@ -52,40 +52,42 @@ app.use(express.json());
 
 
 //const uri = 'mongodb://' + SEANDRE_DB_USER + ':' + SEANDRE_DB_PW + '@' + SEANDRE_DB_HOST + ':27017/journal?replicaSet=rs0';
-mongoose.connect(MONGODB_URI);
-var journal = mongoose.connection;
 
-// ATLAS CLUSTER CONNECTION
+// LOCAL CONNECTION
+// mongoose.connect(MONGODB_URI);
+// var journal = mongoose.connection;
 
-// const { MongoClient, ServerApiVersion } = require('mongodb');
-//
-//
-//
-// const uri = MONGODB_URI;
-//
-// // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-// const client = new MongoClient(uri, {
-//   serverApi: {
-//     version: ServerApiVersion.v1,
-//     strict: true,
-//     deprecationErrors: true,
-//   }
-// });
-// var journal;
-// async function run() {
-//   try {
-//     // Connect the client to the server	(optional starting in v4.7)
-//     await client.connect();
-//     // Send a ping to confirm a successful connection
-//     await client.db("admin").command({ ping: 1 });
-//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-//     journal = client.db("journal");
-//   } finally {
-//     // Ensures that the client will close when you finish/error
-//     await client.close();
-//   }
-// }
-// run().catch(console.dir);
+//ATLAS CLUSTER CONNECTION
+
+const { MongoClient, ServerApiVersion } = require('mongodb');
+
+
+
+const uri = MONGODB_URI;
+
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+var journal;
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    journal = client.db("journal");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
 
 
 
@@ -100,7 +102,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/homes', async (req, res) => {
-  //await client.connect(); // if using remote mongoDB cluster, connection must be established or any fetching will fail
+  await client.connect(); // if using remote mongoDB cluster, connection must be established or any fetching will fail
   const journalCollection = journal.collection("homes");
   async function getHome() {
           return await journalCollection.find({}, {"title": true, "date": true, "content": true}).toArray();
@@ -114,7 +116,7 @@ app.get('/homes', async (req, res) => {
 });
 
 app.get('/journals', async (req, res) => {
-  //await client.connect();
+  await client.connect();
   const dateSort = req?.dateSort || -1;
   async function getJournals(dateSort = -1) {
     return await journal.collection("journals").find({}).sort({date: dateSort}).toArray();
@@ -128,7 +130,7 @@ app.get('/journals', async (req, res) => {
 });
 
 app.get('/journals/:title', async (req, res) => {
-  //await client.connect();
+  await client.connect();
   async function getJournalEntry(query) {
       return await journal.collection("journals").findOne(query, {title: 1, date: 1, content: 1});
   }
