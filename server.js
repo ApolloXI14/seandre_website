@@ -36,19 +36,20 @@ app.use(express.json());
 
 // mongoDB connection
 // TODO: Change DB name from "journal"
+// TODO: Make conditional to switch mongoDB connection between localhost and Atlas cluster
 
 
 // SEANDRE_DB_* environment variables must be set in system/OS; do NOT hardcode here
-mongoose.connect('mongodb://' + SEANDRE_DB_USER + ':' + SEANDRE_DB_PW + '@' + SEANDRE_DB_HOST + ':27017/journal?replicaSet=rs0');
+//mongoose.connect('mongodb://' + SEANDRE_DB_USER + ':' + SEANDRE_DB_PW + '@' + SEANDRE_DB_HOST + ':27017/journal?replicaSet=rs0');
 
 // mongoose.connect('mongodb+srv://' + SEANDRE_DB_USER + ':' + SEANDRE_DB_PW + '@' + SEANDRE_DB_HOST + '/?retryWrites=true&w=majority&appName=Cluster0');
-var journal = mongoose.connection;
+// var journal = mongoose.connection;
 
 // const db = mongoose.connection;
 
 
 // ATLAS CLUSTER CONNECTION
-/*
+
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = 'mongodb+srv://' + SEANDRE_DB_USER + ':' + SEANDRE_DB_PW + '@' + SEANDRE_DB_HOST + '/?retryWrites=true&w=majority&appName=Cluster0';
 
@@ -75,7 +76,7 @@ async function run() {
   }
 }
 run().catch(console.dir);
-*/
+
 
 
 const db = mongoose.connection;
@@ -89,7 +90,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/homes', async (req, res) => {
-  //await client.connect(); // if using remote mongoDB cluster, connection must be established or any fetching will fail
+  await client.connect(); // if using remote mongoDB cluster, connection must be established or any fetching will fail
   const journalCollection = journal.collection("homes");
   async function getHome() {
           return await journalCollection.find({}, {"title": true, "date": true, "content": true}).toArray();
@@ -103,7 +104,7 @@ app.get('/homes', async (req, res) => {
 });
 
 app.get('/journals', async (req, res) => {
-  //await client.connect();
+  await client.connect();
   const dateSort = req?.dateSort || -1;
   async function getJournals(dateSort = -1) {
     return await journal.collection("journals").find({}).sort({date: dateSort}).toArray();
@@ -117,7 +118,7 @@ app.get('/journals', async (req, res) => {
 });
 
 app.get('/journals/:title', async (req, res) => {
-  //await client.connect();
+  await client.connect();
   async function getJournalEntry(query) {
       return await journal.collection("journals").findOne(query, {title: 1, date: 1, content: 1});
   }
