@@ -43,58 +43,45 @@ mongoose.connect('mongodb://' + SEANDRE_DB_USER + ':' + SEANDRE_DB_PW + '@' + SE
 
 // mongoose.connect('mongodb+srv://' + SEANDRE_DB_USER + ':' + SEANDRE_DB_PW + '@' + SEANDRE_DB_HOST + '/?retryWrites=true&w=majority&appName=Cluster0');
 var journal = mongoose.connection;
- // const db = mongoose.connection;
+
+// const db = mongoose.connection;
 
 
-
-// const { MongoClient, ServerApiVersion } = require('mongodb');
-//
-// const uri = 'mongodb+srv://' + SEANDRE_DB_USER + ':' + SEANDRE_DB_PW + '@' + SEANDRE_DB_HOST + '/?retryWrites=true&w=majority&appName=Cluster0';
-
-
+// ATLAS CLUSTER CONNECTION
+/*
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = 'mongodb+srv://' + SEANDRE_DB_USER + ':' + SEANDRE_DB_PW + '@' + SEANDRE_DB_HOST + '/?retryWrites=true&w=majority&appName=Cluster0';
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-// const client = new MongoClient(uri, {
-//   serverApi: {
-//     version: ServerApiVersion.v1,
-//     strict: true,
-//     deprecationErrors: true,
-//   }
-// });
-// var journal;
-// async function run() {
-//   try {
-//     // Connect the client to the server	(optional starting in v4.7)
-//     await client.connect();
-//     // Send a ping to confirm a successful connection
-//     await client.db("admin").command({ ping: 1 });
-//     console.log("Pinged your deployment. You successfully connected to MongoDB!");
-//
-//     journal = client.db("journal");
-//     // console.log('journal: ', journal)
-//     // const test = journal.listCollections();
-//     // for await (const doc of test) {
-//     //   console.log(doc)
-//     // }
-//   // const collection = journal.collection("journals").find({});
-//   // console.log("collection: ", collection);
-//   // for await (const item of collection) {
-//   //     console.log(item)
-//   //   }
-//
-//   } finally {
-//     // Ensures that the client will close when you finish/error
-//     await client.close();
-//   }
-// }
-// run().catch(console.dir);
-/*
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+var journal;
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    journal = client.db("journal");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
+*/
 
 
 const db = mongoose.connection;
 
 db.on('error', (error) => console.error(error))
-db.once('open', ()=> console.log('Connected to MongoDB'));*/
+db.once('open', ()=> console.log('Connected to MongoDB'));
 
 // API Routes
 app.get('/', (req, res) => {
@@ -102,87 +89,48 @@ app.get('/', (req, res) => {
 });
 
 app.get('/homes', async (req, res) => {
+  //await client.connect(); // if using remote mongoDB cluster, connection must be established or any fetching will fail
   const journalCollection = journal.collection("homes");
   async function getHome() {
           return await journalCollection.find({}, {"title": true, "date": true, "content": true}).toArray();
         }
   try {
-
-        // console.log('journalCollection: ', journalCollection);
-
-        // var home = await getHome().then( (response) => {
-        //       return response;
-        //     });
-
         var home = await getHome();
-
-        console.log('home: ', home);
-        // console.log('home: ', home);
-  //       for (const doc of home) {
-  //   console.log(doc);
-  // }
-//         var test = JSON.stringify(home, (key, value) => {
-//     if (typeof value === 'object' && value !== null) {
-//         if (value instanceof Array) {
-//             return value.map(
-//                 (item, index) =>
-//                 (index === value.length - 1 ?
-//                     'circular reference' : item));
-//         }
-//         return { ...value, circular: 'circular reference' };
-//     }
-//
-//     return value;
-// });
-
         return res.json(home);
     } catch (err) {
         res.status(500).json({ msg: err.message });
     }
-
-
-    // try {
-    //     const home = await Home.find();
-    //     res.json(home);
-    // } catch (err) {
-    //     res.status(500).json({ message: err.message });
-    // }
 });
 
 app.get('/journals', async (req, res) => {
-  console.log('/journals');
+  //await client.connect();
   const dateSort = req?.dateSort || -1;
+  async function getJournals(dateSort = -1) {
+    return await journal.collection("journals").find({}).sort({date: dateSort}).toArray();
+  }
   try {
-        async function getJournals(dateSort = -1) {
-          return await journal.collection("journals").find({}).sort({date: dateSort}).toArray();
-        }
-        //await client.connect();
         const journals = await getJournals();
-        console.log('/journals response: ', journals);
-        res.send(journals);
+        return res.json(journals);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 });
 
 app.get('/journals/:title', async (req, res) => {
-  // console.log('/journals/:title: ', req, res);
-  // console.log('journals/:title title: ', req?.params)
-  console.log('journals/:title title2: ', req?.params.title)
   //await client.connect();
+  async function getJournalEntry(query) {
+      return await journal.collection("journals").findOne(query, {title: 1, date: 1, content: 1});
+  }
   try {
-      const title = req?.params?.title.replaceAll('-', " "); // if title is in request, find just that title, otherwise return all
-      const dateSort = req?.dateSort || -1; // sort DESC date by default
-      const query = {title: new RegExp(title, 'i')} ;
-      //{title: {$regex: /lovin' me/i}}
-      console.log('final query: ', query);
+      const isParamId = /^\d+$/.test(req?.params?.title);
+      const searchQuery = !isParamId && req?.params?.title.replaceAll('-', " ") || Number(req?.params?.title); // if title is in request, find just
+      //const title = req?.params?.title.replaceAll('-', " "); // if title is in request, find just that title, otherwise return all
+      //const dateSort = req?.dateSort || -1; // sort DESC date by default
+      const query = isParamId ? { _id: searchQuery } : {title: new RegExp(searchQuery, 'i')} ;
       const options = {sort: {date: -1}};
-      const journalEntry = await journal.collection("journals").findOne(query, {title: 1, date: 1, content: 1});
-      // const journalEntry = journal.collection("journals").find({$text: {$search: title} }).sort({date: dateSort});
-      console.log('final journalEntry: ', journalEntry);
-      res.json(journalEntry);
+      const journalEntry = await getJournalEntry(query);
+      return res.json(journalEntry);
     } catch (err) {
-        console.log('journals/:title error: ', err);
         res.status(500).json({ message: err.message });
     }
 });
