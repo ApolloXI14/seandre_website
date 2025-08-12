@@ -13,20 +13,23 @@ const portArg = (
     process.argv.find( (arg, index, args) => {return Number(arg) && args[index-1] === '--port'} )
 );
 
-const SEANDRE_DB_USER = (
-    process.argv.find( (arg, index, args) => {return arg && args[index-1] === '--user'} )
+const MONGODB_URI = (
+    process.argv.find( (arg, index, args) => {return arg && args[index-1] === '--uri'} )
 );
 
-const SEANDRE_DB_PW = (
-    process.argv.find( (arg, index, args) => {return arg && args[index-1] === '--password'} )
-);
-
-const SEANDRE_DB_HOST = (
-    process.argv.find( (arg, index, args) => {return arg && args[index-1] === '--host'} )
-) || '127.0.0.1';
+// const SEANDRE_DB_USER = (
+//     process.argv.find( (arg, index, args) => {return arg && args[index-1] === '--user'} )
+// );
+//
+// const SEANDRE_DB_PW = (
+//     process.argv.find( (arg, index, args) => {return arg && args[index-1] === '--password'} )
+// );
+//
+// const SEANDRE_DB_HOST = (
+//     process.argv.find( (arg, index, args) => {return arg && args[index-1] === '--host'} )
+// ) || '127.0.0.1';
 
 !portArg && console.log('Port was not supplied to server.js; defaulting to port 5000');
-(!SEANDRE_DB_USER || !SEANDRE_DB_PW) && console.log('Username and/or password was not supplied; unable to authenticate');
 
 const PORT = portArg || 5000;
 
@@ -51,7 +54,10 @@ app.use(express.json());
 // ATLAS CLUSTER CONNECTION
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = 'mongodb+srv://' + SEANDRE_DB_USER + ':' + SEANDRE_DB_PW + '@' + SEANDRE_DB_HOST + '/?retryWrites=true&w=majority&appName=Cluster0';
+
+
+
+const uri = MONGODB_URI;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {

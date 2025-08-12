@@ -6,3 +6,4 @@ prod/
 .env*
 mongodb.*
 .vercel
+.env*.local
