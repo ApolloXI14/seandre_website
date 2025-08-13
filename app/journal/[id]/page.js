@@ -2,8 +2,6 @@ import React from "react";
 import JournalEntryComp from "../../../components/JournalEntry";
 import Navbar from "../../../components/Navbar";
 
-export const dynamic = 'force-dynamic';
-
 async function getJournalEntry( title ) {
    return await fetch(process.env.DB_HOST + ':' + process.env.DB_PORT + '/' + (title ?  'journals/' + title : 'journals'), { next: { revalidate: 3600 }})
 // const res = await fetch(process.env.DB_HOST + ':' + process.env.DB_PORT + '/' + 'journals', { next: { revalidate: 3600 }})

@@ -3,8 +3,6 @@ import Navbar from '../components/Navbar';
 import styles from '../styles/home.module.scss';
 import Home from '../components/Home'
 
-export const dynamic = 'force-dynamic';
-
 export const metadata = {
   title: "Seandre's Site"
 }
