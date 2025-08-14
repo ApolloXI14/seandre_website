@@ -9,7 +9,9 @@ export async function GET(req) {
         const journals = await getJournals();
         return Response.json(journals);
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        return new Response('Webhook error: ', err.message, {
+          status: 500
+        });
     }
 }
 

@@ -4,13 +4,15 @@ import  db  from '../../../server2.mjs'
 export async function GET() {
   const journalCollection = db.collection("homes");
   async function getHome() {
-          return await journalCollection.find({}, {"title": true, "date": true, "content": true}).toArray();
+          return await journalCollection.find({}, {"title": true, "date": true, "content": true}).sort({date: -1}).toArray();
         }
   try {
         var home = await getHome();
         return Response.json(home);
     } catch (err) {
-        res.status(500).json({ msg: err.message });
+        return new Response('Webhook error: ', err.message, {
+          status: 500
+        });
     }
 
 }
