@@ -6,8 +6,7 @@ import styles from '../../styles/journalmenu.module.scss';
 //import db from '../../server.js';
 
 export default async function Journal({journal}) {
-  //console.log('db export test: ', db);
-    const journals = await fetch(process.env.DB_HOST + ':' + process.env.DB_PORT + "/journals", { next: { revalidate: 3600 }})
+    const journals = await fetch(process.env.DB_HOST + ':' + process.env.DB_PORT + "/api/journals", { next: { revalidate: 3600 }})
 		.then(response => {
           if (response.status === 200) {
             return response.json()
