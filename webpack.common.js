@@ -44,10 +44,6 @@ module.exports = {
               ],
          },
          {
-           test: /\.txt$/,
-           use: 'file-rawtxt-loader'
-         },
-         {
            test: /.*\.(gif|png|jpe?g|svg)$/i,
            use: [
              {

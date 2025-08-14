@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useReducer} from 'react';
 import styles from '../styles/about.module.scss';
 import Navbar from '../components/Navbar';
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import{ init } from '@emailjs/browser';
 import Recaptcha from '../components/Recaptcha';
 
