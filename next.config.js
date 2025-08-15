@@ -2,23 +2,30 @@ const path = require('path');
 
 
 module.exports = {
+	turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              icon: true,
+            },
+          },
+        ],
+        as: '*.js',
+      },
+    },
+  },
 	env: {
-		POEMS_DIR: '../public/img/poems/',
-		HOME_DIR: '../public/txt/home/',
-		JOURNAL_DIR: '../../public/txt/journal/'
+		POEMS_DIR: '../public/img/poems/'
 	},
 	sassOptions: {
 	  includePaths: [path.join(__dirname, 'styles')],
 	},
 	webpack: (config, options) => {
 	    config.module.rules.push({
-	      test: /\.txt$/,
-	      use: [
-	        options.defaultLoaders.babel,
-	        {
-	          loader: 'file-rawtxt-loader'
-	        },
-	      ],
+	      test: /\.txt$/
 	    })
         return config;
 	}

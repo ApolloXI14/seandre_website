@@ -1,6 +1,8 @@
 //import { app } from '../server.js';
 require('dotenv').config()
 import  db  from '../../../server2.mjs'
+
+export const dynamic = 'force-static';
 export async function GET() {
   const journalCollection = db.collection("homes");
   async function getHome() {

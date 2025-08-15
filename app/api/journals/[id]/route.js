@@ -1,7 +1,10 @@
 require('dotenv').config()
 import  db  from '../../../../server2.mjs'
+
+export const dynamic = 'force-static';
 export async function GET(req, {params}) {
     const { id } = await params;
+    console.log('title test: ', id);
 async function getJournalEntry(query) {
       return await db.collection("journals").findOne(query, {title: 1, date: 1, content: 1});
   }

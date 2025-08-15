@@ -1,1 +1,1 @@
-{ "framework": "nextjs", "installCommand": "npm install", "rewrites": [{ "source": "/(.*)", "destination": "/api" }] }
+{ "framework": "nextjs", "rewrites": [{ "source": "/(.*)", "destination": "/api" }] }

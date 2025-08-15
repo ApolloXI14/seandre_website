@@ -91,9 +91,7 @@ module.exports = {
          hash: true
       }),
       new webpack.DefinePlugin({
-        POEMS_DIR: JSON.stringify('../www/img/poems/'),
-        JOURNAL_DIR: JSON.stringify('../www/txt/journal/'),
-        HOME_DIR: JSON.stringify('../www/txt/home/')
+        POEMS_DIR: JSON.stringify('../www/img/poems/')
       })
    ]
 }
