@@ -23,15 +23,19 @@ export async function generateStaticParams() {
 
 export default async function JournalEntry({params}) {
     const { id } = await params;
+    let previousEntryObj;
+    let nextEntryObj;
     const journalObj = await getJournalEntry( id ).then( (currentEntry) => {
         return currentEntry;
     });
-    const previousEntryObj = await getJournalEntry( journalObj._id - 1 ).then( (prevEntry) => {
+    if (journalObj) {
+      previousEntryObj = await getJournalEntry( journalObj._id - 1 ).then( (prevEntry) => {
         return prevEntry;
     });
-    const nextEntryObj = await getJournalEntry( journalObj._id + 1 ).then( (nextEntry) => {
-        return nextEntry;
-    });
+      nextEntryObj = await getJournalEntry( journalObj._id + 1 ).then( (nextEntry) => {
+          return nextEntry;
+      });
+    }
     // return Promise.allSettled([getJournalEntry( journalObj._id - 1 ), getJournalEntry( journalObj._id + 1 )]).then( (res) => {
     //       //console.log('allSettled res: ', res);
     //       previousEntryObj = res[0]?.value;
@@ -39,7 +43,9 @@ export default async function JournalEntry({params}) {
     //     })
     const prevEntryTitle = previousEntryObj?.title?.replaceAll(" ", "-").toLowerCase() || '';
     const nextEntryTitle = nextEntryObj?.title?.replaceAll(" ", "-").toLowerCase() || '';
-    const html = journalObj?.content;
+    const html = journalObj?.content || '';
+    console.log('prevEntryTitle: ', prevEntryTitle);
+    console.log('nextEntryTitle: ', nextEntryTitle);
     return(
       	<div  id="journalEntryContainer">
 	      	<JournalEntryComp
