@@ -2,6 +2,7 @@ const path = require('path');
 
 
 module.exports = {
+    serverExternalPackages: ['webpack', 'mongodb', 'mongoose', 'express', 'eslint'],
 	turbopack: {
     rules: {
       '*.svg': {

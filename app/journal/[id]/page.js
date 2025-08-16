@@ -14,15 +14,15 @@ async function getJournalEntry( title ) {
         }).catch(error => console.error(error));
 }
 
-export async function generateStaticParams() {
-  const res = await getJournalEntry();
-  return (res || []).map( (journal, index) => {
+export async function generateStaticParams({params}) {
+  return (Array.isArray(params) && params || []).map( (journal, index) => {
     { id: journal.title?.replaceAll(" ", "-").toLowerCase() }
   })
 }
 
 export default async function JournalEntry({params}) {
     const { id } = await params;
+
     let previousEntryObj;
     let nextEntryObj;
     const journalObj = await getJournalEntry( id ).then( (currentEntry) => {
@@ -43,9 +43,7 @@ export default async function JournalEntry({params}) {
     //     })
     const prevEntryTitle = previousEntryObj?.title?.replaceAll(" ", "-").toLowerCase() || '';
     const nextEntryTitle = nextEntryObj?.title?.replaceAll(" ", "-").toLowerCase() || '';
-    const html = journalObj?.content || '';
-    console.log('prevEntryTitle: ', prevEntryTitle);
-    console.log('nextEntryTitle: ', nextEntryTitle);
+    const html = journalObj?.content;
     return(
       	<div  id="journalEntryContainer">
 	      	<JournalEntryComp

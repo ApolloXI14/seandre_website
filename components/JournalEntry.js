@@ -6,7 +6,7 @@ import styles from "../styles/journalentry.module.scss";
 import Link from "next/link";
 import parse from "html-react-parser";
 
-export default function JournalEntry({prevEntryTitle, nextEntryTitle, currentEntryId, html, journalArrayLength}) {
+export default function JournalEntry({prevEntryTitle, nextEntryTitle, currentEntryId, html}) {
     return(
       	<div  id="journalEntryContainer">
 			<Navbar/>
