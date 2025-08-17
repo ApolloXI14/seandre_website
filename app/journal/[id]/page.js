@@ -7,7 +7,7 @@ import { getJournals, getJournalEntry } from '../../../serverFunctions.js';
 
 
 // export const dynamic = 'force-static'
-// const dynamicParams = false;
+const dynamicParams = false;
 
 export async function generateStaticParams() {
   const res = await getJournals();

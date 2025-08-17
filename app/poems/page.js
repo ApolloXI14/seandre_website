@@ -1,7 +1,9 @@
+'use client';
+
 import React, {useEffect, useState, useRef} from 'react';
-import styles from '../styles/slideshow.module.scss'
+import styles from '../../styles/slideshow.module.scss'
 import Image from 'next/image';
-import Navbar from '../components/Navbar.js';
+import Navbar from '../../components/Navbar.js';
 
 export default function Poems() {
     const scrollToTopRef = useRef(null);
@@ -72,3 +74,4 @@ export default function Poems() {
     )
 
 }
+

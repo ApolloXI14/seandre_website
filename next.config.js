@@ -19,7 +19,7 @@ module.exports = {
     },
   },
 	env: {
-		POEMS_DIR: '../public/img/poems/'
+		POEMS_DIR: '../../public/img/poems/'
 	},
 	sassOptions: {
 	  includePaths: [path.join(__dirname, 'styles')],
