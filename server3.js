@@ -47,9 +47,9 @@ run().catch(console.dir);*/
 
 //let db = conn.db("journal");
 
-module.exports.makeMongoDBConnection = makeMongoDBConnection;
+// module.exports.makeMongoDBConnection = makeMongoDBConnection;
 
-// export default makeMongoDBConnection;
+export default makeMongoDBConnection;
 
 // module.exports = (async function(){
 //  //some async initiallizers

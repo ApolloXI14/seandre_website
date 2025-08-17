@@ -4,11 +4,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "dev-debug": "NODE_OPTIONS='--inspect' next dev --turbopack",
     "mongo": "mongod --config mongodb.conf --auth",
     "mongo-connect": "node --permission --allow-fs-read=* server.js --uri $MONGODB_URI",
-    "build": "next build --turbopack",
+    "build": "next build",
     "db": "node --dns-result-order=ipv6first server2.mjs",
     "kill-servers": "npx kill-port 5000 && npx kill-port 27017",
     "kill-servers2": "fuser -k 27017/tcp 5000/tcp",
