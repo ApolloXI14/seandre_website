@@ -1,3 +1,5 @@
+'use server'
+
 import React from "react";
 import JournalEntryComp from "../../../components/JournalEntry";
 import Navbar from "../../../components/Navbar";
@@ -22,7 +24,6 @@ export async function generateStaticParams({params}) {
 
 export default async function JournalEntry({params}) {
     const { id } = await params;
-
     let previousEntryObj;
     let nextEntryObj;
     const journalObj = await getJournalEntry( id ).then( (currentEntry) => {
