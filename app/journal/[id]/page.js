@@ -44,7 +44,7 @@ export default async function JournalEntry({params}) {
     //     })
     const prevEntryTitle = previousEntryObj?.title?.replaceAll(" ", "-").toLowerCase() || '';
     const nextEntryTitle = nextEntryObj?.title?.replaceAll(" ", "-").toLowerCase() || '';
-    const html = journalObj?.content;
+    const html = journalObj?.content || '';
     return(
       	<div  id="journalEntryContainer">
 	      	<JournalEntryComp
