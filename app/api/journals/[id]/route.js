@@ -1,8 +1,10 @@
+'use server';
+
 require('dotenv').config()
 // import  db  from '../../../../server2.mjs'
 import  {makeMongoDBConnection}  from '../../../../server3.js'
 
-export const dynamic = 'force-static';
+const dynamic = 'force-static';
 export async function GET(req, {params}) {
     const db = await makeMongoDBConnection();
 

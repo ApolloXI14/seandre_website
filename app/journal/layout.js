@@ -1,6 +1,8 @@
+'use server';
+
 import React from "react";
 
-export const fetchCache = 'default-cache'
+const fetchCache = 'default-cache'
 
 
 async function getJournalEntry() {
