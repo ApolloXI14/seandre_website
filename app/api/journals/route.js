@@ -2,18 +2,14 @@
 
 require('dotenv').config()
 // import  db  from '../../../server2.mjs'
-import  {makeMongoDBConnection}  from '../../../server3.js'
+import  { getJournals }  from '../../../serverFunctions.js'
 
 const dynamic = 'force-static';
-const db = await makeMongoDBConnection();
 
 export async function GET(req) {
   const dateSort = req?.dateSort || -1;
-  async function getJournals(dateSort = -1) {
-    return await db.collection("journals").find({}).sort({date: dateSort}).toArray();
-  }
   try {
-        const journals = await getJournals();
+        const journals = await getJournals(dateSort);
         // console.log('JOURNALS: ', journals);
         return Response.json(journals);
     } catch (err) {
