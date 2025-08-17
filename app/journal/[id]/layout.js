@@ -14,5 +14,6 @@ export async function generateStaticParams() {
 }
 
 export default async function JournalEntryLayout({children, params}) {
+    const { id } = await params;
     return <section> {children} </section>
 }
