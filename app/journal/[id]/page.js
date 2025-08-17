@@ -16,6 +16,7 @@ import { getJournalEntry } from '../../../serverFunctions.js';
 //         }).catch(error => console.error(error));
 // }
 
+// TODO: Move DB call back into "generateStaticParams" if this does not work
 const dynamic = 'force-static'
 
 export async function generateStaticParams({params}) {
