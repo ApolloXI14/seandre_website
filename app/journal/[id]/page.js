@@ -16,6 +16,8 @@ import { getJournalEntry } from '../../../serverFunctions.js';
 //         }).catch(error => console.error(error));
 // }
 
+const dynamic = 'force-static'
+
 export async function generateStaticParams({params}) {
   return (Array.isArray(params) && params || []).map( (journal, index) => {
     { id: journal.title?.replaceAll(" ", "-").toLowerCase() }
