@@ -1,4 +1,4 @@
-'use server';
+//'use server'
 
 import React from "react";
 import JournalEntryComp from "../../../components/JournalEntry";
@@ -6,7 +6,7 @@ import Navbar from "../../../components/Navbar";
 import { getJournalEntry } from '../../../serverFunctions.js';
 
 
-// const dynamic = 'force-static'
+export const dynamic = 'force-static'
 // const dynamicParams = false;
 
 export async function generateStaticParams() {
