@@ -6,8 +6,8 @@ import Navbar from "../../../components/Navbar";
 import { getJournalEntry } from '../../../serverFunctions.js';
 
 
-const dynamic = 'force-static'
-const dynamicParams = false;
+// const dynamic = 'force-static'
+// const dynamicParams = false;
 
 export async function generateStaticParams() {
   const res = await getJournalEntry();
