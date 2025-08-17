@@ -3,20 +3,9 @@ import ReactDOM from 'react-dom';
 import Link from 'next/link';
 import Navbar from '../../components/Navbar';
 import styles from '../../styles/journalmenu.module.scss';
-//import db from '../../server.js';
 import { getJournals } from '../../serverFunctions.js';
 
 export default async function Journal({params}) {
-  // console.log('{journal} test: ', await params)
-  // const test = await params;
-
-  //   const journals = await fetch(process.env.DB_HOST + ':' + process.env.DB_PORT + "/api/journals", { next: { revalidate: 3600 }})
-		// .then(response => {
-  //         if (response.status === 200) {
-  //           return response.json()
-  //         }
-  //       }).catch(error => console.error(error));
-
   const journals = await getJournals();
     return (
             <div>
