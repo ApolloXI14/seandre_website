@@ -1,13 +1,13 @@
 'use server';
 
 import React from "react";
-import { getJournalEntry } from '../../../serverFunctions.js';
+import { getJournals } from '../../../serverFunctions.js';
 
 // const dynamic = 'force-static'
 // const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const res = await getJournalEntry();
+  const res = await getJournals();
   return (Array.isArray(res) && res || []).map( (journal, index) => {
     { id: journal.title?.replaceAll(" ", "-").toLowerCase() }
   })
