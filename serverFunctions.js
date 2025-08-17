@@ -11,7 +11,7 @@ export async function getHomes() {
 
 export async function getJournals(dateSort = -1) {
     const journalsCollection = db.collection("journals");
-    return await journalsCollection.find({}).sort({date: dateSort}).toArray();
+    return await journalsCollection.find({ "_id": { "$type": "number" } }, {title: 1, date: 1, content: 1}).sort({date: dateSort}).toArray();
 }
 
 export async function getJournalEntry(id) {
