@@ -1,7 +1,12 @@
-require('dotenv').config()
-import  db  from '../../../server2.mjs'
+'use server';
 
-export const dynamic = 'force-static';
+require('dotenv').config()
+// import  db  from '../../../server2.mjs'
+import  {makeMongoDBConnection}  from '../../../server3.js'
+
+const dynamic = 'force-static';
+const db = await makeMongoDBConnection();
+
 export async function GET(req) {
   const dateSort = req?.dateSort || -1;
   async function getJournals(dateSort = -1) {
