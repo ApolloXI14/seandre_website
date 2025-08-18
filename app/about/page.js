@@ -113,8 +113,9 @@ export default function About() {
          <div id={styles.aboutDiv}>
           <Navbar />
           <h1>About Me</h1>
+            <p>This is my portfolio website made completely from scratch using ReactJS, NextJS, ExpressJS and MongoDB.</p>
           	<p>I remember building my first site on angelfire as a 90s kid, to share my writing. It has been lost to time sadly, but that&apos;s why I made this
-one! Using ReactJS/less instead of angelfire, though.  ;)</p>
+one!</p>
             <p>Whatever brought you here, thank you. I&apos;m but a humble
       daytime programmer from NYC who has always loved writing and music, and wants
       to share it. I am striving for weekend updates, so please check back
