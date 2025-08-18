@@ -11,7 +11,7 @@ import { getJournals, getJournalEntry } from '../../../serverFunctions.js';
 export async function generateStaticParams() {
   const res = await getJournals();
   return (Array.isArray(res) && res || []).map( (journal, index) => {
-    { id: journal.title?.replaceAll(" ", "-").toLowerCase() }
+    return { id: journal.title?.replaceAll(" ", "-").toLowerCase() }
   })
 }
 
