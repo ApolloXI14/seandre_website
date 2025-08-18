@@ -1,5 +1,5 @@
 
-import React from "react";
+import { Suspense } from "react";
 import JournalEntryComp from "../../../components/JournalEntry";
 import Navbar from "../../../components/Navbar";
 import { getJournals, getJournalEntry } from '../../../serverFunctions.js';
@@ -13,6 +13,10 @@ export async function generateStaticParams() {
   return (Array.isArray(res) && res || []).map( (journal, index) => {
     { id: journal.title?.replaceAll(" ", "-").toLowerCase() }
   })
+}
+
+function Loading() {
+  return <h2>🌀 Loading...</h2>;
 }
 
 export default async function JournalEntry({params}) {
@@ -40,12 +44,14 @@ export default async function JournalEntry({params}) {
     const html = journalObj?.content || '';
     return(
       	<div  id="journalEntryContainer">
+            <Suspense fallback="{<Loading/>}">
 	      	<JournalEntryComp
                 prevEntryTitle={prevEntryTitle}
                 nextEntryTitle={nextEntryTitle}
                 currentEntryId={id}
                 html={html}
 	      	/>
+	      	</Suspense>
 	    </div>
       );
 }
