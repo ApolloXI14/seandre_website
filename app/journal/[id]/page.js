@@ -44,7 +44,7 @@ export default async function JournalEntry({params}) {
     const html = journalObj?.content || '';
     return(
       	<div  id="journalEntryContainer">
-            <Suspense fallback="{<Loading/>}">
+            <Suspense fallback="{<Loading />}">
 	      	<JournalEntryComp
                 prevEntryTitle={prevEntryTitle}
                 nextEntryTitle={nextEntryTitle}
