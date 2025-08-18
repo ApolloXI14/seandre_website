@@ -1,4 +1,3 @@
-'use server'
 
 import React from "react";
 import JournalEntryComp from "../../../components/JournalEntry";
@@ -7,7 +6,7 @@ import { getJournals, getJournalEntry } from '../../../serverFunctions.js';
 
 
 // export const dynamic = 'force-static'
-const dynamicParams = false;
+// export const dynamicParams = false;
 
 export async function generateStaticParams() {
   const res = await getJournals();
