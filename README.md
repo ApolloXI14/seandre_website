@@ -10,14 +10,26 @@ This is a ReactJS app, with NextJS for SSR, ExpressJS, and MongoDB for content.
 NextJS "fetch" API caches data locally
 (https://nextjs.org/docs/app/building-your-application/caching), so if cache exists, the
 MongoDB server does not need to be ran and dev (npm run dev) or prod
-(npm run start) can be ran directly. If cache is empty, then the
-server must be started.
+(npm run start) can be ran directly. If the cache is empty, then a server connection must be made.
+
+### MongoDB connection instructions
+The "MONGODB_URI" environment variable must be set in ".env.local" in the project root. Do *NOT* commit or push .env.local.
+"MONGODB_URI" is the connection string to connect to the mongoDB server.
+      `mongodb+srv://<db_username>:<db_password>@<db_host>/?retryWrites=true&w=majority`
+      optionally `&appName=<appName>`
+The connection string must have a valid username, password, and host.
+If working in dev for a database bug or feature:
+1. Connect to a localhost copy of the DB instead of the remote. If one doesn't exist run `mongodump` to create one.
+      `mongodump --host="<db_host>" --username <db_username> --password <db_password>`
+2. Run `npm run mongo` to start the mongo server.
+   - Ensure the mongodb.conf "dbPath" matches where `mongodump` dumped the DB
+   - Run `chmod 400` on the "keyFile" if a "permissions are too open" error occurs when attempting to start
+2. Make the needed changes in the DB.
+3. Run `mongorestore` to "restore" the remote DB with the new local DB.
+      `mongorestore --uri mongodb+srv://<db_username>:<db_password>@<db_host>`
 
 ### Dev env instructions
-
-1. Run `sudo npm run mongo` to start mongoDB server
-2. Run `npm run mongo-connect` to connect web app to mongoDB server; environment variables must be set in the system (USER and PW, optionally HOST) that matches a valid user/pw in the DB otherwise authentication will fail and build/run may be impacted
-3. Run `npm run dev` to both build and run dev server (port 3000 by
+1. Run `npm run dev` to both build and run dev server (port 3000 by
    default). Hot refresh will be enabled, making changes reflect
    instantly upon save.
 
