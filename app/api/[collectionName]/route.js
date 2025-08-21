@@ -1,7 +1,7 @@
 //import { app } from '../server.js';
 require('dotenv').config()
 // import  db  from '../../../server2.mjs'
-import  { getHomes }  from '../../../serverFunctions.js'
+import  { getDocuments }  from '../../../serverFunctions.js'
 
 // (async function(){
 //
@@ -11,14 +11,16 @@ import  { getHomes }  from '../../../serverFunctions.js'
 
 
 export const dynamic = 'force-static';
-export async function GET() {
+export async function GET(req, {params}) {
+  const {collectionName} = await params;
   try {
-        var home = await getHomes();
+        const home = await getDocuments(collectionName);
         return Response.json(home);
     } catch (err) {
-        return new Response('Webhook error: ', err.message, {
+        return new Response(`Webhook error: , ${err.message}`, {
           status: 500
         });
     }
 
 }
+
