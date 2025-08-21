@@ -8,7 +8,7 @@ const db = await makeMongoDBConnection();
 export async function getDocuments(collectionName, dateSort = -1) {
     try {
         const dbCollection = db.collection(collectionName);
-        return await dbCollection.find({}, {title: 1, date: 1, content: 1}).sort({date: dateSort}).toArray();
+        return await dbCollection.find({ "_id": { "$type": "number" }}, {title: 1, date: 1, content: 1}).sort({date: dateSort}).toArray();
     } catch(err) {
         throw new Error(`Failed to get documents from ${collectionName}: ${err}`);
     }
