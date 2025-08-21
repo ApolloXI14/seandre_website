@@ -21,7 +21,7 @@ export default function Navbar() {
 		    			<ul className={styles['ul-class']}>
 				      		<div><Link href="/poems">Poems</Link></div>
 				      		<div><Link href="/">Short Stories</Link></div>
-				      		<div><Link href="/journal">Journal</Link></div>
+				      		<div><Link href="/journals">Journal</Link></div>
 			      		</ul>
 			    </div>
 			  </div>
