@@ -60,7 +60,7 @@
     "find-cache-dir": "^3.3.1",
     "findup-sync": "^5.0.0",
     "global-modules": "^2.0.0",
-    "html-react-parser": "^1.0.0",
+    "html-react-parser": "^5.2.6",
     "html-webpack-plugin": "^4.5.0",
     "image-webpack-loader": "^8.1.0",
     "img-loader": "4.0.0",
