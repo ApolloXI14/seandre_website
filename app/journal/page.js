@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import Link from 'next/link';
 import Navbar from '../../components/Navbar';
 import styles from '../../styles/journalmenu.module.scss';
-import { getJournals } from '../../serverFunctions.js';
+import { getDocuments } from '../../serverFunctions.js';
 
 export default async function Journal({params}) {
-  const journals = await getJournals();
+  const journals = await getDocuments("journals");
     return (
             <div>
                 <Navbar />

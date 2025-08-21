@@ -2,14 +2,14 @@
 import { Suspense } from "react";
 import JournalEntryComp from "../../../components/JournalEntry";
 import Navbar from "../../../components/Navbar";
-import { getJournals, getJournalEntry } from '../../../serverFunctions.js';
+import { getDocuments, getDocument } from '../../../serverFunctions.js';
 
 
 export const dynamic = 'force-static'
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
-  const res = await getJournals();
+  const res = await getDocuments("journals");
   return (Array.isArray(res) && res || []).map( (journal, index) => {
     return { id: journal.title?.replaceAll(" ", "-").toLowerCase() }
   })
@@ -23,14 +23,14 @@ export default async function JournalEntry({params}) {
     const { id } = await params;
     let previousEntryObj;
     let nextEntryObj;
-    const journalObj = await getJournalEntry( id ).then( (currentEntry) => {
+    const journalObj = await getDocument("journals", id ).then( (currentEntry) => {
         return currentEntry;
     });
     if (journalObj) {
-      previousEntryObj = await getJournalEntry( journalObj._id - 1 ).then( (prevEntry) => {
+      previousEntryObj = await getDocument("journals", journalObj._id - 1 ).then( (prevEntry) => {
         return prevEntry;
     });
-      nextEntryObj = await getJournalEntry( journalObj._id + 1 ).then( (nextEntry) => {
+      nextEntryObj = await getDocument("journals", journalObj._id + 1 ).then( (nextEntry) => {
           return nextEntry;
       });
     }
