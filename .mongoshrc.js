@@ -6,4 +6,4 @@ db = connect(process.env.MONGODB_URI);
 db.clientConnections.insertOne( { connectTime: ISODate() } )
 
 // Load DB scripts to be executed
-load('server/createJournalsView.js')
+load('server/createActiveViews.js')

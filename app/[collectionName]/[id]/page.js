@@ -8,10 +8,12 @@ import { getDocuments, getDocument } from '../../../serverFunctions.js';
 export const dynamic = 'force-static'
 export const dynamicParams = false;
 
-export async function generateStaticParams({params: {collectionName}}) {
+export async function generateStaticParams({params}) {
+  const viewArray = await params;
+  const collectionName = viewArray[0].collectionName;
   const res = await getDocuments(collectionName);
   return (Array.isArray(res) && res || []).map( (journal, index) => {
-    return { id: journal.title?.replaceAll(" ", "-").toLowerCase() }
+    return { collectionName: collectionName, id: journal.title?.replaceAll(" ", "-").toLowerCase() }
   })
 }
 

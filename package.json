@@ -1,6 +1,6 @@
 {
   "name": "seandre_website",
-  "version": "3.0",
+  "version": "5.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -76,6 +76,7 @@
     "mongod": "^2.0.0",
     "mongodb": "^6.18.0",
     "mongoose": "^8.12.1",
+    "mongosh": "^2.5.6",
     "next": "15.4.6",
     "npm": "11.5.2",
     "package-directory": "8.1.0",
