@@ -5,8 +5,15 @@ import Navbar from '../../components/Navbar';
 import styles from '../../styles/journalmenu.module.scss';
 import { getDocuments } from '../../serverFunctions.js';
 
+export async function generateStaticParams({params}) {
+  const arrayObj = await params;
+  const collectionName = params[0]?.collectionName;
+  return [{collectionName: collectionName}];
+}
+
 export default async function Journal({params}) {
-  const {collectionName} = await params;
+  const arrayObj = await params;
+  const collectionName = params.collectionName;
   const journals = await getDocuments(collectionName);
     return (
             <div>
