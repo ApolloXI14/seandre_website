@@ -13,7 +13,7 @@ export async function generateStaticParams({params}) {
 
 export default async function Journal({params}) {
   const arrayObj = await params;
-  const collectionName = params.collectionName;
+  const collectionName = arrayObj.collectionName;
   const journals = await getDocuments(collectionName);
     return (
             <div>
