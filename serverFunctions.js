@@ -4,6 +4,15 @@ import  { makeMongoDBConnection }  from './server3.js'
 
 const db = await makeMongoDBConnection();
 
+export async function getViews() {
+    try{
+        const activeViews = db.collection('activeViews');
+        return await activeViews.find({}).toArray();
+    } catch(err) {
+        throw new Error(`getViews error: ${err}`);
+    }
+}
+
 // Queries a MongoDB collection to return an array of documents
 export async function getDocuments(collectionName, dateSort = -1) {
     try {

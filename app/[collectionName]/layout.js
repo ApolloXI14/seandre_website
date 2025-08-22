@@ -2,13 +2,15 @@
 
 import React from "react";
 
+import { getViews } from '../../serverFunctions.js';
+
 const fetchCache = 'default-cache'
 
-// TODO: Make a query to get collection names dynamically and generate
-// them here, instead of hardcoding them
 export async function generateStaticParams() {
-  return [{collectionName: 'journals'}];
-  //return [{collectionName: 'journals'}, {collectionName: 'stories'}];
+  const res = await getViews();
+  return res.map( (view) => {
+    return [{collectionName: view._id}]
+  })
 }
 
 export default async function JournalLayout({ children, params   }) {
