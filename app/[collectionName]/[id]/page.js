@@ -48,7 +48,7 @@ export default async function JournalEntry({params}) {
 	      	<JournalEntryComp
                 prevEntryTitle={prevEntryTitle}
                 nextEntryTitle={nextEntryTitle}
-                currentEntryId={id}
+                collectionName={collectionName}
                 html={html}
 	      	/>
 	      	</Suspense>
