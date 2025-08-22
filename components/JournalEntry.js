@@ -13,8 +13,8 @@ export default function JournalEntry({prevEntryTitle, nextEntryTitle, currentEnt
 	      	<div id={styles['journalEntryDiv-flex']}>
 	      		<div className={styles.previous}>
 	      			{({prevEntryTitle}) &&
-			    		<Link href={`/journal/${prevEntryTitle}`}>&#10094;</Link> ||
-			    		<div><Link href="/journal">&#10094;</Link></div>
+			    		<Link href={`/journals/${prevEntryTitle}`}>&#10094;</Link> ||
+			    		<div><Link href="/journals">&#10094;</Link></div>
 			    	 }
 	      		</div>
 		         <div id={styles.htmlDiv}>
@@ -22,8 +22,8 @@ export default function JournalEntry({prevEntryTitle, nextEntryTitle, currentEnt
 			    </div>
 			    <div className={styles.nextBtn}>
 			    	{({nextEntryTitle}) &&
-			    		<div><Link  href={`/journal/${nextEntryTitle}`}>&#10095;</Link></div> ||
-			    		<div><Link href="/journal">&#10095; </Link></div>
+			    		<div><Link  href={`/journals/${nextEntryTitle}`}>&#10095;</Link></div> ||
+			    		<div><Link href="/journals">&#10095; </Link></div>
 			    	 }
 			    </div>
 		    </div>
