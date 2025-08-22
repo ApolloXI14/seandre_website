@@ -6,15 +6,15 @@ import styles from "../styles/journalentry.module.scss";
 import Link from "next/link";
 import parse from "html-react-parser";
 
-export default function JournalEntry({prevEntryTitle, nextEntryTitle, currentEntryId, html}) {
+export default function JournalEntry({prevEntryTitle, nextEntryTitle, collectionName, html}) {
     return(
       	<div  id="journalEntryContainer">
 			<Navbar/>
 	      	<div id={styles['journalEntryDiv-flex']}>
 	      		<div className={styles.previous}>
 	      			{({prevEntryTitle}) &&
-			    		<Link href={`/journals/${prevEntryTitle}`}>&#10094;</Link> ||
-			    		<div><Link href="/journals">&#10094;</Link></div>
+			    		<Link href={`/${collectionName}/${prevEntryTitle}`}>&#10094;</Link> ||
+			    		<div><Link href={`/${collectionName}/`}>&#10094;</Link></div>
 			    	 }
 	      		</div>
 		         <div id={styles.htmlDiv}>
@@ -22,8 +22,8 @@ export default function JournalEntry({prevEntryTitle, nextEntryTitle, currentEnt
 			    </div>
 			    <div className={styles.nextBtn}>
 			    	{({nextEntryTitle}) &&
-			    		<div><Link  href={`/journals/${nextEntryTitle}`}>&#10095;</Link></div> ||
-			    		<div><Link href="/journals">&#10095; </Link></div>
+			    		<div><Link  href={`/${collectionName}/${nextEntryTitle}`}>&#10095;</Link></div> ||
+			    		<div><Link href={`/${collectionName}`}>&#10095; </Link></div>
 			    	 }
 			    </div>
 		    </div>
