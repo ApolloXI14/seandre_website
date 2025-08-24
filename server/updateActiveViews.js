@@ -1,10 +1,5 @@
 use journal
 
-// Make sure "homes" is actually a view because locally it somehow was
-// a collection
-db.homes.drop();
-db.createView("homes", "homesMaster", [{$match: {isActive: true}}])
-
 db.activeViews.drop();
 db.createView("activeViews", "journals", [
     { $match: {}},
