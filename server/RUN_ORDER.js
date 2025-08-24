@@ -1,7 +1,11 @@
-const scriptArray = ['fixHomeLinks.js', 'createStoriesCollection.js', 'updateActiveViews.js', 'homesUpdate.js', 'createViewUserRole.js']
+const scriptArray = [ './createStoriesCollection.js', 'fixHomeLinks.js', 'updateActiveViews.js', 'homesUpdate.js', 'createViewUserRole.js']
 
 for (script in scriptArray) {
-	load(script);
+	try {
+		load(script);
+	} catch (err) {
+		throw new Error(`Error running scripts: ${err}`)
+	}
 }
 
 

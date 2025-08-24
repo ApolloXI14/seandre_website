@@ -1,3 +1,5 @@
+use journal
+
 // Make sure "homes" is actually a view because locally it somehow was
 // a collection
 db.homes.drop();

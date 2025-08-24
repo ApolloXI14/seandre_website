@@ -1,3 +1,5 @@
+use journal
+
 // Copy all documents into "newHomesMaster" while replacing all "/journal\/\d+" references with "LINK_TO_JOURNALS"
 db.homesMaster.updateMany({}, [{ $set: { match: { $regexFind: { input: "$content", regex: /journal\/\d+/ } } } }, { $set: { content: { $cond: { if: { $ne: ["$match", null] }, then: { $replaceOne: { input: "$content", find: "$match.match", replacement: "LINK_TO_JOURNALS" } }, else: "$content" } } } } ])
 
