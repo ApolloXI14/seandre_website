@@ -20,8 +20,9 @@ export default function Navbar() {
 			    <div className={styles['dropdown-content']}>
 		    			<ul className={styles['ul-class']}>
 				      		<div><Link href="/poems">Poems</Link></div>
-				      		<div><Link href="/">Short Stories</Link></div>
+				      		<div><Link href="/stories">Short Stories</Link></div>
 				      		<div><Link href="/journals">Journal</Link></div>
+				      		<div><Link href="/homes">Updates</Link></div>
 			      		</ul>
 			    </div>
 			  </div>
