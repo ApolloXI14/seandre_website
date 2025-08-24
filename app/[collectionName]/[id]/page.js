@@ -13,7 +13,7 @@ export async function generateStaticParams({params}) {
   const collectionName = viewArray[0].collectionName;
   const res = await getDocuments(collectionName);
   return (Array.isArray(res) && res || []).map( (journal, index) => {
-    return { collectionName: collectionName, id: journal.title?.replaceAll(" ", "-").toLowerCase() }
+    return { collectionName: collectionName, id: journal.baseCase }
   })
 }
 
@@ -41,8 +41,8 @@ export default async function JournalEntry({params}) {
     //       previousEntryObj = res[0]?.value;
     //       nextEntryObj = res[1]?.value;
     //     })
-    const prevEntryTitle = previousEntryObj?.title?.replaceAll(" ", "-").toLowerCase() || '';
-    const nextEntryTitle = nextEntryObj?.title?.replaceAll(" ", "-").toLowerCase() || '';
+    const prevEntryTitle = previousEntryObj?.baseCase || '';
+    const nextEntryTitle = nextEntryObj?.baseCase || '';
     const html = journalObj?.content || '';
     return(
       	<div  id="journalEntryContainer">

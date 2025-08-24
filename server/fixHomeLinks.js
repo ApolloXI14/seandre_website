@@ -9,5 +9,5 @@ db.homesMaster.updateMany({}, {$unset: {match: ""}})
 // 3. Update "homes" view with new pipeline to create "baseLink" by kebab-casing "$title" and
 // concating as needed
 db.homes.drop();
-db.createView("homes", "homesMaster", [ {$match: {isActive: true}}, { $addFields: { baseLink: { $toLower: { $replaceAll: { input: "$title", find: " ", replacement: "-" }  } } } }, { $addFields: { content: { $replaceAll: { input: "$content", find: "LINK_TO_JOURNALS", replacement: {$concat: ["journals", "/",            "$baseLink"]} } } }}, {$project: {isActive: 0}} ]
+db.createView("homes", "homesMaster", [ {$match: {isActive: true}}, { $addFields: { baseLink: { $toLower: { $replaceAll: { input: "$title", find: " ", replacement: "-" }  } } } }, { $addFields: { content: { $replaceAll: { input: "$content", find: "LINK_TO_JOURNALS", replacement: {$concat: ["journals", "/", "$baseLink"]} } } }}, {$project: {isActive: 0}} ]
 )

@@ -1,11 +1,9 @@
-const scriptArray = [ './createStoriesCollection.js', 'fixHomeLinks.js', 'updateActiveViews.js', 'homesUpdate.js', 'createViewUserRole.js']
+const scriptArray = ['viewsUpdate.js'];
 
-for (script in scriptArray) {
+return scriptArray.forEach( (script) => {
 	try {
-		load(script);
-	} catch (err) {
+		return load(script);
+	} catch(err) {
 		throw new Error(`Error running scripts: ${err}`)
 	}
-}
-
-
+})
