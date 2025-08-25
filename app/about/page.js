@@ -8,6 +8,7 @@ import{ init } from '@emailjs/browser';
 import Recaptcha from '../../components/Recaptcha';
 
 export default function About() {
+    const formValidationMap = require('../validators/about.js');
     const [errorMessage, setError] = useState('');
     const [isSubmitted, submitForm] = useState(false);
     // "form" states are id/name attributes, which must match EmailJS template
@@ -19,20 +20,6 @@ export default function About() {
 
     const [isValidObj, validateField] = useReducer((state, action) => {
       setError("");
-      const formValidationMap = {
-        name: {
-          isValid: (value) => value === value.match(/\w+'?\w+\s?/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), ''),
-          errorMessage: 'Please correct the name'
-        },
-        email: {
-          isValid: (value) => value.match(/[\w+.]+@\w+.[a-z]{2,3}/) && value === value.match(/[\w+.]+@\w+.[a-z]{2,3}/)[0],
-          errorMessage: 'Please format the email correctly'
-        },
-        message: {
-          isValid: (value) => value === value.match(/\w+.?\s?|\$\d+\s+.+|\(/g)?.reduce( (word, currentWord) => word = word.concat(currentWord), ''),
-          errorMessage: 'Please remove invalid characters from the message.'
-        }
-      }
       const value = action.value;
       const type = action.type;
       if (value === "") {
