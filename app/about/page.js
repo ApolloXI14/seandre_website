@@ -25,7 +25,7 @@ export default function About() {
           errorMessage: 'Please correct the name'
         },
         email: {
-          isValid: (value) => value.match(/[\w+.]+@\w+.[a-z]{3}/) && value === value.match(/[\w+.]+@\w+.[a-z]{3}/)[0],
+          isValid: (value) => value.match(/[\w+.]+@\w+.[a-z]{2,3}/) && value === value.match(/[\w+.]+@\w+.[a-z]{2,3}/)[0],
           errorMessage: 'Please format the email correctly'
         },
         message: {
