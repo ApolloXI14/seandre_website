@@ -6,9 +6,9 @@ import Navbar from '../../components/Navbar';
 import emailjs from "@emailjs/browser";
 import{ init } from '@emailjs/browser';
 import Recaptcha from '../../components/Recaptcha';
+import {formValidationMap} from '../validators/about.js'
 
 export default function About() {
-    const formValidationMap = require('../validators/about.js');
     const [errorMessage, setError] = useState('');
     const [isSubmitted, submitForm] = useState(false);
     // "form" states are id/name attributes, which must match EmailJS template
