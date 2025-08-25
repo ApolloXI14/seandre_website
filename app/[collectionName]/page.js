@@ -13,7 +13,7 @@ export async function generateStaticParams({params}) {
 
 export default async function Journal({params}) {
   const arrayObj = await params;
-  const collectionName = params.collectionName;
+  const collectionName = arrayObj.collectionName;
   const journals = await getDocuments(collectionName);
     return (
             <div>
@@ -22,7 +22,7 @@ export default async function Journal({params}) {
                   <ul>
                     <ul className={styles.listClass}>
                       {(journals || []).map((entry, index, array) => (
-                        <li key={index++}><Link href={`${collectionName}/${entry.title?.replaceAll(" ", "-").toLowerCase()}`}>
+                        <li key={index++}><Link href={`${collectionName}/${entry.baseCase}`}>
                           {entry.title}</Link> - <cite>Published {entry.date?.toString().slice(2,4) + '/' + entry.date?.toString().slice(4,6) + '/' + entry.date?.toString().slice(0,2)}</cite></li>
                         ))}
                     </ul>

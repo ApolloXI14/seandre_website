@@ -11,7 +11,7 @@ export async function generateStaticParams({params}) {
   const collectionName = viewArray[0].collectionName;
   const res = await getDocuments(collectionName);
   return (Array.isArray(res) && res || []).map( (journal, index) => {
-    return { id: journal.title?.replaceAll(" ", "-").toLowerCase() }
+    return { id: journal.baseCase }
   })
 }
 

@@ -140,7 +140,7 @@ one!</p>
               {Object.keys(form || []).map( (key, index) => (
                          <div key={index} index={index} id={key + '-input'} className={styles.tooltip}>
                         {!isValidObj[key].isValid && <span className={styles.tooltiptext}>{isValidObj[key].errorMessage}</span>}
-                          <label id={!isValidObj[key].isValid && styles.errorDiv}>
+                          <label id={!isValidObj[key].isValid ? styles.errorDiv : undefined}>
                             {key.charAt(0).toUpperCase() + key.substring(1,key.length)}:
                           </label>
                           {key === 'message' &&
