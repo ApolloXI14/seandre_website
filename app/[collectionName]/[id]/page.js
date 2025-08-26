@@ -2,7 +2,7 @@
 import { Suspense } from "react";
 import JournalEntryComp from "../../../components/JournalEntry";
 import Navbar from "../../../components/Navbar";
-import { getDocuments, getDocument } from '../../../serverFunctions.js';
+import { getDocuments, getThreeDocuments } from '../../../serverFunctions.js';
 
 
 export const dynamic = 'force-static'
@@ -23,19 +23,15 @@ function Loading() {
 
 export default async function JournalEntry({params}) {
     const { collectionName, id } = await params;
+    let currentEntryObj;
     let previousEntryObj;
     let nextEntryObj;
-    const journalObj = await getDocument(collectionName, id ).then( (currentEntry) => {
-        return currentEntry;
+    const journalObj = await getThreeDocuments(collectionName, id ).then( (entries) => {
+        return entries[0]; // using ".toArray()" on the "getThreeDocuments" aggregate for this makes the return formatted like this
     });
-    if (journalObj) {
-      previousEntryObj = await getDocument(collectionName, journalObj._id - 1 ).then( (prevEntry) => {
-        return prevEntry;
-    });
-      nextEntryObj = await getDocument(collectionName, journalObj._id + 1 ).then( (nextEntry) => {
-          return nextEntry;
-      });
-    }
+    nextEntryObj = journalObj?.nextMatch[0];
+    previousEntryObj = journalObj?.lastMatch[0];
+
     // return Promise.allSettled([getJournalEntry( journalObj._id - 1 ), getJournalEntry( journalObj._id + 1 )]).then( (res) => {
     //       //console.log('allSettled res: ', res);
     //       previousEntryObj = res[0]?.value;
@@ -57,4 +53,3 @@ export default async function JournalEntry({params}) {
 	    </div>
       );
 }
-

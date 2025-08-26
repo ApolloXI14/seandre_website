@@ -77,7 +77,7 @@ export default function About() {
                 if (error.status === 400) {
                   setError('Please check the captcha checkbox');
                 } else {
-                  setError('Captcha has thrown an error: ', error.status);
+                  setError('Captcha has thrown an error: ${error.status}');
                 }
             });
         } else {
@@ -95,6 +95,10 @@ export default function About() {
             publicKey: '68UreaEbAYt26Ojdg'
         });
     }, []);
+
+    function Loading() {
+      return <h2>🌀 Loading...</h2>;
+    }
 
     return(
          <div id={styles.aboutDiv}>

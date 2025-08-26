@@ -1,7 +1,6 @@
 use journal
 // TODO: Figure out a way to get the view title ($$CURRENT maybe?)
 
-
 db.journals.drop();
 db.createView("journals", "journalsMaster", [
     {$match: {isActive: true}},

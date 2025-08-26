@@ -49,5 +49,5 @@ db.homesMaster.updateOne({_id: 9}, {$set: {
 }})
 
 db.homesMaster.updateOne({_id: 10}, {$set: {
-    content: `<div><h1>I have published my first book!</h1><div>Click <a href="journals/my-first-ebook">here</a> to make history.</div></div>`
+        content: `<div><h1>I have published my first book!</h1><div>Click <a href="journals/my-first-ebook">here</a> to make history.</div></div>`
 }})
