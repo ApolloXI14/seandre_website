@@ -1,4 +1,4 @@
-const scriptArray = ['viewsUpdate.js', 'homesUpdate.js', 'createLinksView.js'];
+const scriptArray = ['createContentCollection.js'];
 
 return scriptArray.forEach( (script) => {
 	try {
