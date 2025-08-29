@@ -18,8 +18,23 @@
 	  	width: 50%;
 	}
 
-}
+	// Fade in effect
+	opacity: 0;
+	transition: opacity 1s;
+	animation: fadeInAnimation ease 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	@keyframes fadeInAnimation {
+		0% {
+			opacity: 0;
+		}
 
+		100% {
+			opacity: 1;
+		}
+	}
+
+}
 
 .btnTxt {
 	font-size: 20px;
@@ -48,6 +63,11 @@
 
 .nextBtn {
 	right: 0;
+}
+
+.backBtn {
+	text-align: center;
+	color: white;
 }
 
 /* On hover, add a black background color with a little bit see-through */
