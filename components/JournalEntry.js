@@ -27,7 +27,7 @@ export default function JournalEntry({prevEntryTitle, nextEntryTitle, collection
 			    	 }
 			    </div>
 		    </div>
-		    <div className={styles.backBtn}><Link href={`/${collectionName}`}>Back to {collectionName}</Link></div>
+		    <div className={styles.backBtn}><Link href={`/${collectionName}`}>Back to {collectionName.charAt(0).toUpperCase() + collectionName.substring(1, collectionName.length)}</Link></div>
 	    </div>
 
       );
