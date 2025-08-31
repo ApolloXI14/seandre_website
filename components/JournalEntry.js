@@ -27,7 +27,10 @@ export default function JournalEntry({prevEntryTitle, nextEntryTitle, collection
 			    	 }
 			    </div>
 		    </div>
+		    <div id={styles['bottom-div']}>
+		    <div> Copyright © Sean McHugh </div>
 		    <div className={styles.backBtn}><Link href={`/${collectionName}`}>Back to {collectionName.charAt(0).toUpperCase() + collectionName.substring(1, collectionName.length)}</Link></div>
+		    </div>
 	    </div>
 
       );
