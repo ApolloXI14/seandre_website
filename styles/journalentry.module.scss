@@ -47,6 +47,7 @@
 
 #journalEntryDiv-flex {
 	display: flex;
+	flex-flow: column;
 }
 
 .previous, .nextBtn {

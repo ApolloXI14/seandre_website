@@ -1,4 +1,4 @@
-const scriptArray = ['createContentCollection.js'];
+const scriptArray = ['createPoemsCategoryInContentCollection.js'];
 
 return scriptArray.forEach( (script) => {
 	try {
