@@ -1,0 +1,52 @@
+'use server'
+
+import  { makeMongoDBConnection }  from './server.js'
+
+const db = await makeMongoDBConnection();
+
+export async function getViews() {
+    try{
+        const activeViews = db.collection('activeViews');
+        return await activeViews.find({}).toArray();
+    } catch(err) {
+        throw new Error(`getViews error: ${err}`);
+    }
+}
+
+// Queries a MongoDB collection to return an array of documents
+export async function getDocuments(collectionName, dateSort = -1) {
+    try {
+        const dbCollection = db.collection(collectionName);
+        return await dbCollection.find({}, {title: 1, date: 1, content: 1}).sort({date: dateSort}).toArray();
+    } catch(err) {
+        throw new Error(`Failed to get documents from ${collectionName}: ${err}`);
+    }
+}
+
+// Queries a MongoDB collection to return a specific document obj by name or _id
+export async function getDocument(collectionName, id) {
+    try {
+        const collection = db.collection(collectionName);
+        const isParamId = /^\d+$/.test(id);
+        //const searchQuery = !isParamId && id?.replaceAll('-', " ") || Number(id); // if title is in request, find just
+        //const title = req?.params?.title.replaceAll('-', " "); // if title is in request, find just that title, otherwise return all
+        //const dateSort = req?.dateSort || -1; // sort DESC date by default
+        const query = {baseCase: new RegExp(id, 'i')} ;
+        const options = {sort: {date: -1}};
+        return await collection.findOne(query, {title: 1, date: 1, content: 1});
+    } catch(err) {
+        throw new Error(`Failed to get document ${id} from ${collectionName}: ${err}`);
+    }
+}
+
+// Queries for the current entry and returns the previous and next according to date
+export async function getThreeDocuments(collectionName, id) {
+    try {
+        const collection = db.collection(collectionName);
+        const searchPipeline = [  { $match: { baseCase: id } }, { $sort: { date: 1 } }, { $limit: 1 }, {   $set: { matchedDate: "$date" } }, { $lookup: { from: collectionName, let: { matchedDate: "$matchedDate" }, pipeline: [ { $match: { $expr: { $gt: ["$date", "$$matchedDate"] } } }, {     $sort: { date: 1 } }, { $limit: 1 } ], as: "nextMatch" } }, { $lookup: { from: collectionName, let: { matchedDate: "$matchedDate" }, pipeline: [ { $match: { $expr: { $lt: ["$date", "$$matchedDate"] } } }, { $sort: { date: -1 } }, { $limit: 1 } ], as: "lastMatch" } } ];
+        // Using ".toArray()" to make it return data, otherwise it returns a "cursor"
+        return await collection.aggregate(searchPipeline).toArray();
+    } catch(err) {
+        throw new Error(`getThreeDocuments error: ${err}`)
+    }
+}
