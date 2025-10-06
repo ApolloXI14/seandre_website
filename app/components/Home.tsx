@@ -4,6 +4,7 @@ import React from 'react';
 import styles from '../styles/home.module.scss';
 import parse from 'html-react-parser';
 import { getDocuments } from '../serverFunctions.js';
+// import '../styles/styles.css';
 
 // export async function loader({ params }) {
 //   //                    ^? { categoryId: string; productId: string }
@@ -27,7 +28,3 @@ export function HomeComp() {
 }
 
 const homeArray = await getDocuments("homes");
-
-// export function HomeComp(/*{homeArray}*/) {
-//     return <HomeDiv />
-// }

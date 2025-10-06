@@ -1,5 +1,4 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
 import { Navbar } from '../components/Navbar';
 import { HomeComp } from '../components/Home';
 
@@ -10,11 +9,8 @@ export function meta({}: Route.MetaArgs) {
   ];
 }
 
-// const arr = [<Navbar />, <Welcome />];
 const arr = [<Navbar />, <HomeComp />];
 
 export default function Home() {
-  return (
-    arr
-    );
+  return arr;
 }
