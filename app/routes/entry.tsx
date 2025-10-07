@@ -1,5 +1,4 @@
 import type { Route } from "./+types/entry";
-import { Navbar } from '../components/Navbar';
 import { getThreeDocuments } from '../serverFunctions.ts';
 import { EntryComp } from '../components/Entry';
 
