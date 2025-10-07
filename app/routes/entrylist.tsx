@@ -1,0 +1,20 @@
+import type { Route } from "./+types/entrylist";
+import { Navbar } from '../components/Navbar';
+import { getDocuments } from '../serverFunctions.ts';
+import { EntryListComp } from '../components/EntryList';
+
+
+export async function loader({params}: Route.LoaderArgs) {
+  let entryList = await getDocuments(params.collectionName);
+  return { entryList }
+}
+
+export default function EntryList({loaderData, params}: Route.ComponentProps) {
+    const { entryList } = loaderData;
+    const collectionName = params.collectionName;
+    const arr = [<Navbar />, <EntryListComp
+                list={entryList}
+                collectionName={params.collectionName}
+                />];
+    return arr;
+}

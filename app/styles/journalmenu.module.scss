@@ -1,0 +1,34 @@
+#journalMenuDiv {
+	text-align: center;
+	padding-top: 1rem;
+	color: white;
+	ul {
+		padding-inline-start: 0;
+	}
+
+
+	// Fade in effect
+	opacity: 0;
+	transition: opacity 1s;
+	animation: fadeInAnimation ease 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+	@keyframes fadeInAnimation {
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
+		}
+	}
+}
+
+#journalMenuDiv a:visited {
+	color: grey;
+}
+
+.listClass {
+	padding-inline-start: 0;
+	list-style-type:none;
+}
