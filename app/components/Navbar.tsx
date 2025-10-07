@@ -12,8 +12,8 @@ export function Navbar() {
    	};
       return(
          <div className={styles.navbarDiv}>
-          <div className={styles.linkDiv}><Link href="/">Home</Link></div>
-		  <div className={styles.linkDiv}><Link href="/">Music</Link></div>
+          <div className={styles.linkDiv}><Link to="/">Home</Link></div>
+		  <div className={styles.linkDiv}><Link to="/">Music</Link></div>
 
 			  <div className={styles.dropdown}>
 			    <button id="dropbtn" className={styles.dropbtn}>Writing</button>

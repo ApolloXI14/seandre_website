@@ -12,7 +12,7 @@ export function EntryListComp({list, collectionName}) {
     return (
         <div id={styles.journalMenuDiv} ref={scrollToTopRef}>
             {(list || []).map((entry, index, array) => (
-            <li key={index++}><Link href={`${collectionName}/${entry.baseCase}`}>
+            <li key={index++}><Link to={`${entry.baseCase}`}>
                 {entry.title}</Link> - <cite>Published {entry.date?.toString().slice(2,4) + '/' + entry.date?.toString().slice(4,6) + '/' + entry.date?.toString().slice(0,2)}</cite></li>
             ))}
         </div>

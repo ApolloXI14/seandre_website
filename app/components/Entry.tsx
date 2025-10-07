@@ -9,8 +9,8 @@ export function EntryComp({prevEntryTitle, nextEntryTitle, collectionName, html}
 	      	<div id={styles['journalEntryDiv-flex']}>
 	      		<div className={styles.previous}>
 	      			{({prevEntryTitle}) &&
-			    		<Link href={`/${collectionName}/${prevEntryTitle}`}>&#10094;</Link> ||
-			    		<div><Link href={`/${collectionName}/`}>&#10094;</Link></div>
+			    		<Link to={`/${collectionName}/${prevEntryTitle}`}>&#10094;</Link> ||
+			    		<div><Link to={`/${collectionName}/`}>&#10094;</Link></div>
 			    	 }
 	      		</div>
 		         <div id={styles.htmlDiv}>
@@ -18,14 +18,14 @@ export function EntryComp({prevEntryTitle, nextEntryTitle, collectionName, html}
 			    </div>
 			    <div className={styles.nextBtn}>
 			    	{({nextEntryTitle}) &&
-			    		<div><Link href={`/${collectionName}/${nextEntryTitle}`}>&#10095;</Link></div> ||
-			    		<div><Link href={`/${collectionName}`}>&#10095; </Link></div>
+			    		<div><Link to={`/${collectionName}/${nextEntryTitle}`}>&#10095;</Link></div> ||
+			    		<div><Link to={`/${collectionName}`}>&#10095; </Link></div>
 			    	 }
 			    </div>
 		    </div>
 		    <div id={styles['bottom-div']}>
 		    <div> Copyright © Sean McHugh </div>
-		    <div className={styles.backBtn}><Link href={`/${collectionName}`}>Back to {collectionName.charAt(0).toUpperCase() + collectionName.substring(1, collectionName.length)}</Link></div>
+		    <div className={styles.backBtn}><Link to={`/${collectionName}`}>Back to {collectionName.charAt(0).toUpperCase() + collectionName.substring(1, collectionName.length)}</Link></div>
 		    </div>
 	    </div>
 
