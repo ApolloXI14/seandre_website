@@ -12,7 +12,7 @@ export async function loader({params}: Route.LoaderArgs) {
 export default function EntryList({loaderData, params}: Route.ComponentProps) {
     const { entryList } = loaderData;
     const collectionName = params.collectionName;
-    const arr = [<Navbar />, <EntryListComp
+    const arr = [<EntryListComp
                 list={entryList}
                 collectionName={params.collectionName}
                 />];

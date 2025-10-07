@@ -12,7 +12,7 @@ export function Navbar() {
    	};
       return(
          <div className={styles.navbarDiv}>
-          <div className={styles.linkDiv}><Link to="/">Home</Link></div>
+          <div className={styles.linkDiv}><Link to="/" reloadDocument>Home</Link></div>
 		  <div className={styles.linkDiv}><Link to="/">Music</Link></div>
 
 			  <div className={styles.dropdown}>

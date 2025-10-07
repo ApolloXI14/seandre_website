@@ -31,36 +31,5 @@ const client = new MongoClient("mongodb://myUserAdmin:CA0ABEB4C4F9BD2A62F53FAE2A
   }
 });
 
-/*
-async function run() {
-    let db;
-  try {
-    // Connect the client to the server	(optional starting in v4.7)
-    db = await makeMongoDBConnection();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    //console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-run().catch(console.dir);*/
-
-
-//let db = conn.db("journal");
-
-// module.exports.makeMongoDBConnection = makeMongoDBConnection;
 
 export default makeMongoDBConnection;
-
-// module.exports = (async function(){
-//  //some async initiallizers
-//  //e.g. await the db module that has the same structure like this
-//   var db = await makeMongoDBConnection();
-//   //resolve the export promise
-//   return db;
-//   // return {
-//   //   db
-//   // };
-// })()

@@ -21,7 +21,7 @@ export default function Entry({loaderData, params}: Route.ComponentProps) {
     const html = journalEntryObj[0]?.content || '';
     const collectionName = params.collectionName;
 
-    const arr = [<Navbar />, <EntryComp
+    const arr = [<EntryComp
                 prevEntryTitle={prevEntryTitle}
                 nextEntryTitle={nextEntryTitle}
                 collectionName={collectionName}
