@@ -1,5 +1,3 @@
-'use server'
-
 import  { makeMongoDBConnection }  from './server.js'
 
 const db = await makeMongoDBConnection();

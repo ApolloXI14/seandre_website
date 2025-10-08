@@ -1,5 +1,3 @@
-'use server';
-
 // require("dotenv").config();
 //const { MongoClient, ServerApiVersion } = require('mongodb');
 import * as dotenv from "dotenv";
@@ -31,5 +29,5 @@ const client = new MongoClient("mongodb://myUserAdmin:CA0ABEB4C4F9BD2A62F53FAE2A
   }
 });
 
-
+// export const viteNodeApp = makeMongoDBConnection;
 export default makeMongoDBConnection;
