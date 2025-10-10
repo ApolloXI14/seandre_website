@@ -5,6 +5,7 @@
   "scripts": {
     "build": "react-router build",
     "build2": "vite --configLoader runner",
+    "build3": "vite build",
     "dev": "react-router dev",
     "start": "npm run dev",
     "typecheck": "react-router typegen && tsc"
