@@ -13,73 +13,28 @@ export default {
     let activeViewsArray = [];
     //const collectionNameArray = ["homes", "poems", "stories"];
     let res = await getViews();
-    // activeViewsArray = res.map( (view) => {
-    //   return "/" + view._id;
-    // })
-    //   // .then( (val) => {
-    //   //   console.log('test: ', val)
-    //   // } )
-    // console.log('activeViewsArray: ', activeViewsArray);
-    // let res2 = ["poems", "stories", "journals"].map( async (collectionName) => {
-    //   async function getViewDocs(viewName) {
-    //     return await getDocuments(viewName);
-    //   }
-    //   // console.log('collectionName: ', await getViewDocs(collectionName))
-    //   return await getViewDocs(collectionName);
-    //   // console.log('test: ', res[0]);
-    //   // console.log('res: ', res)
-    //   // let resArray = []
-    //   // resArray = res.map( (item) => {
-    //   //   // console.log('??: ', item)
-    //   //   return "/" + item.realPath;
-    //   // });
-    //   // realPathsArray = [...realPathsArray, ...resArray];
-    // //   console.log('realPathsArray: ', realPathsArray)
-    // //   // return resArray;
-    // });
 
-    // console.log('realPathsArray final: ', realPathsArray)
+    let res2 = await Promise.all(
+      ["poems", "stories", "journals"].map(async (collectionName) => {
+        async function getViewDocs(viewName) {
+          return await getDocuments(viewName);
+        }
+        return await getViewDocs(collectionName);
+      })
+    );
 
-//   // TODO: Fix the dynamic method above to replace this hardcoded logic
-    let poemsRealPaths = [];
-    const poemsPathArray = await getDocuments('poems');
-    poemsRealPaths = poemsPathArray.map( (item) => {
-      return "/" + item.realPath;
-    });
+    var test = res2.map( (item) => {
+      return item.map( (item2) => {
+        return "/" + item2.realPath
+      } )
+    } )
+    realPathsArray = test.flat();
 
-    let storiesRealPaths = [];
-    const storiesPathArray = await getDocuments('stories');
-    storiesRealPaths = storiesPathArray.map( (item) => {
-      return "/" + item.realPath;
-    });
-
-    let journalsRealPaths = [];
-    const journalsPathArray = await getDocuments('journals');
-    journalsRealPaths = journalsPathArray.map( (item) => {
-      return "/" + item.realPath;
-    });
-    // console.log('res2: ', res2)
-
-
-    // return ["/",
-    //         "/poems", ...poemsRealPaths,
-    //         "/stories", ...storiesRealPaths,
-    //         "/journals", ...journalsPathArray];
-
-        // return ["/",
-        //     ...activeViewsArray];
-
-    // console.log('???: ', ...res2.map( (item) => {
-    //       return "/" + item.realPath;
-    //     }))
-
-    return ["/",
+        return ["/",
       ...res.map( (view) => {
           return "/" + view._id;
         }),
-        ...poemsRealPaths,
-        ...storiesRealPaths,
-        ...journalsRealPaths
+        ...realPathsArray
            ]
 
 
