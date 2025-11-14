@@ -9,8 +9,15 @@ import parse from 'html-react-parser';
 //   //                    ^? { categoryId: string; productId: string }
 // }
 
+interface Entry {
+	title: string;
+	date: number;
+	content: string;
+	baseCase: string;
+	realpath: string;
+}
 
-export default function HomeComp({homeArray}: {homeArray: Array<any>[]}) {
+export default function HomeComp({homeArray}: {homeArray: Array<Entry>[]}) {
     return (
 		<div id="homeDiv">
 			{homeArray.map( (entry : any, index: number) => (
