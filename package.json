@@ -60,7 +60,7 @@
     "find-cache-dir": "^3.3.1",
     "findup-sync": "^5.0.0",
     "global-modules": "^2.0.0",
-    "html-react-parser": "^5.2.6",
+    "html-react-parser": "^5.2.10",
     "html-webpack-plugin": "^4.5.0",
     "image-webpack-loader": "^8.1.0",
     "img-loader": "4.0.0",
@@ -77,8 +77,7 @@
     "mongodb": "^7.0.0",
     "mongoose": "^8.12.1",
     "mongosh": "^2.5.6",
-    "next": "^16.0.1",
-    "npm": "11.5.2",
+    "next": "^16.0.10",
     "package-directory": "8.1.0",
     "prop-types": "15.8.1",
     "react": "18.3.1",
@@ -97,7 +96,6 @@
     "tiny-warning": "^1.0.3",
     "typescript": "^5.9.3",
     "url": "^0.11.0",
-    "vercel": "^45.0.9",
     "webpack": "^5.10.0",
     "webpack-cli": "6.0.1",
     "webpack-dev-server": "^5.0.4",
@@ -113,11 +111,13 @@
     "@types/react": "19.2.4",
     "babel-plugin-polyfill-corejs3": "^0.10.4",
     "babel-plugin-polyfill-regenerator": "^0.2.2",
+    "baseline-browser-mapping": "^2.9.6",
     "eslint": ">=8.0.0",
     "eslint-config-next": "15.4.6",
     "imagemin": "^8.0.0",
     "imagemin-pngquant": "^10.0.0",
-    "pngquant-bin": "^9.0.0",
-    "regenerator-runtime": "^0.13.7"
+    "npm": "^11.7.0",
+    "regenerator-runtime": "^0.13.7",
+    "vercel": "^50.1.0"
   }
 }

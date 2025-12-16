@@ -6,6 +6,7 @@
     ".next/dev/types/**/*.ts"
   ],
   "compilerOptions": {
+    "types": ["node"],
     "allowImportingTsExtensions": true,
     "strict": true,
     "noUnusedLocals": true,
