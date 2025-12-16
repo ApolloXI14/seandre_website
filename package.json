@@ -77,7 +77,7 @@
     "mongodb": "^6.18.0",
     "mongoose": "^8.12.1",
     "mongosh": "^2.5.6",
-    "next": "15.4.6",
+    "next": "15.4.10",
     "npm": "11.5.2",
     "package-directory": "8.1.0",
     "prop-types": "15.8.1",
