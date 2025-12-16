@@ -17,7 +17,7 @@ function Loading() {
 
 
 export default async function App() {
-     const homeArray = await getDocuments("homes");
+    const homeArray = await getDocuments("homes");
 	return (
         <div>
           <Navbar />
