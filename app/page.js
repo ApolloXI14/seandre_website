@@ -8,7 +8,8 @@ import Home from '../components/Home'
 import { getDocuments } from '../serverFunctions.js';
 
 export const metadata = {
-  title: "Seandre's Site"
+  title: 'Seandre\'s Site',
+  description: 'Writing, music and thoughts',
 }
 
 function Loading() {
@@ -19,7 +20,7 @@ function Loading() {
 export default async function App() {
     const homeArray = await getDocuments("homes");
 	return (
-        <div>
+          <div>
           <Navbar />
           <div id="homeDiv">
             <Suspense fallback="{<Loading />}">
