@@ -21,6 +21,11 @@ function Loading() {
   return <h2>🌀 Loading...</h2>;
 }
 
+export const metadata = {
+  title: 'Seandre\'s Site',
+  description: 'Writing, music and thoughts',
+}
+
 export default async function JournalEntry({params}) {
     const { collectionName, id } = await params;
     let currentEntryObj;

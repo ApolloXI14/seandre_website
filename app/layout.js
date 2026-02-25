@@ -1,15 +1,17 @@
+'use client'
 import React from "react";
 import '../styles.css';
+import styles from '../styles/home.module.scss';
 
-export const metadata = {
-  title: 'Seandre\'s Site',
-  description: 'Writing, music and thoughts',
-}
+import { usePathname } from 'next/navigation'
+
 
 export default function RootLayout({ children }) {
+  const pathname = usePathname();
+  const bg = pathname.includes('about') ? 'aboutbg' : 'homebg';
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={styles[bg]}>{children}</body>
     </html>
   )
 }

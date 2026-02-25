@@ -111,7 +111,7 @@
     "@types/react": "19.2.4",
     "babel-plugin-polyfill-corejs3": "^0.10.4",
     "babel-plugin-polyfill-regenerator": "^0.2.2",
-    "baseline-browser-mapping": "^2.9.6",
+    "baseline-browser-mapping": "^2.10.0",
     "eslint": ">=8.0.0",
     "eslint-config-next": "15.4.6",
     "imagemin": "^8.0.0",

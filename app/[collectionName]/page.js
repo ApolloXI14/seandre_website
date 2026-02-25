@@ -11,6 +11,11 @@ export async function generateStaticParams({params}) {
   return [{collectionName: collectionName}];
 }
 
+export const metadata = {
+  title: 'Seandre\'s Site',
+  description: 'Writing, music and thoughts',
+}
+
 export default async function Journal({params}) {
   const arrayObj = await params;
   const collectionName = arrayObj.collectionName;
