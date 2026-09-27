@@ -118,6 +118,6 @@
     "imagemin-pngquant": "^10.0.0",
     "npm": "^11.7.0",
     "regenerator-runtime": "^0.13.7",
-    "vercel": "^50.1.0"
+    "vercel": "^60.1.3"
   }
 }
